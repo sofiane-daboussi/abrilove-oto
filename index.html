@@ -454,10 +454,15 @@
     }
     raf = requestAnimationFrame(step);
   }
-  window.addEventListener('load', function(){
+  function tryStart() {
     calcWidths();
-    raf = requestAnimationFrame(step);
-  });
+    if (halfWidth > 0) {
+      raf = requestAnimationFrame(step);
+    } else {
+      setTimeout(tryStart, 100);
+    }
+  }
+  tryStart();
   var wrap = document.getElementById('abri-wrap');
   wrap.addEventListener('mousedown', function(){ paused = true; });
   wrap.addEventListener('mouseup', function(){ paused = false; });
