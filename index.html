@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ton profil : L'Amoureuse Accro</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -12,7 +13,7 @@
     background-color: #660a43;
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
-    padding: 24px 16px 48px;
+    padding: 24px 16px 60px;
   }
 
   .card {
@@ -21,14 +22,13 @@
     max-width: 680px;
     margin: 0 auto;
     padding: 36px 28px 48px;
-    overflow: hidden;
   }
 
   .profil-tag {
     display: inline-block;
     background: #fdf0f7;
     color: #660a43;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -38,10 +38,10 @@
   }
 
   h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 34px;
-    font-weight: 600;
-    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
     color: #1a1a1a;
     margin-bottom: 28px;
   }
@@ -52,10 +52,11 @@
   }
 
   .narrative p {
-    font-size: 17px;
-    line-height: 1.75;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
     color: #2d2d2d;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .narrative p strong {
@@ -69,131 +70,47 @@
   }
 
   .divider {
-    width: 48px;
+    width: 40px;
     height: 3px;
     background: #660a43;
     border-radius: 2px;
-    margin: 36px 0;
+    margin: 32px 0;
   }
 
-  .offer-block {
-    background: #fdf0f7;
-    border-radius: 16px;
-    padding: 28px 24px;
-    margin-top: 36px;
-  }
-
-  .offer-block .label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #660a43;
-    margin-bottom: 10px;
-  }
-
-  .offer-block h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 16px;
-    line-height: 1.3;
-  }
-
-  .offer-block .description {
-    font-size: 15px;
-    color: #444;
-    line-height: 1.65;
-    margin-bottom: 20px;
-  }
-
-  .price-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .price-current {
-    font-size: 32px;
-    font-weight: 600;
-    color: #660a43;
-  }
-
-  .price-old {
-    font-size: 18px;
-    color: #999;
-    text-decoration: line-through;
-  }
-
-  .price-badge {
-    background: #660a43;
-    color: white;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
-  }
-
-  .timer-block {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    color: #660a43;
-    font-weight: 500;
-  }
-
-  .timer-block .timer {
-    font-weight: 700;
-    font-size: 16px;
-  }
-
-  .cta-btn {
+  .cta-scroll {
     display: block;
     width: 100%;
     background: #660a43;
     color: white;
     text-align: center;
-    padding: 18px 24px;
+    padding: 16px 24px;
     border-radius: 12px;
-    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-    letter-spacing: 0.01em;
+    margin: 28px 0;
+    cursor: pointer;
+    border: none;
     transition: background 0.2s;
   }
 
-  .cta-btn:hover {
-    background: #4d0832;
-  }
+  .cta-scroll:hover { background: #4d0832; }
 
-  .cta-sub {
-    text-align: center;
-    font-size: 13px;
-    color: #888;
-    margin-top: 10px;
-  }
-
-  .testimonials {
-    margin-top: 40px;
-  }
+  .testimonials { margin: 36px 0; }
 
   .testimonials h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
     font-weight: 600;
     color: #1a1a1a;
     margin-bottom: 20px;
-    line-height: 1.3;
   }
 
   .testimonial {
     border-left: 3px solid #660a43;
     padding: 14px 18px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     background: #fafafa;
     border-radius: 0 8px 8px 0;
   }
@@ -203,33 +120,176 @@
     line-height: 1.65;
     color: #333;
     font-style: italic;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .testimonial .author {
     font-size: 13px;
     font-weight: 600;
     color: #660a43;
-    font-style: normal;
   }
 
-  .final-cta {
+  /* BLOC PAIEMENT */
+  .payment-block {
+    background: #fdf0f7;
+    border-radius: 16px;
+    padding: 28px 24px;
     margin-top: 36px;
-    text-align: center;
   }
 
-  .final-cta p {
-    font-size: 16px;
-    color: #444;
+  .payment-block .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #660a43;
+    margin-bottom: 10px;
+  }
+
+  .payment-block h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .payment-block .desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
     margin-bottom: 20px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .price-current {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #660a43;
+  }
+
+  .price-old {
+    font-size: 18px;
+    color: #aaa;
+    text-decoration: line-through;
+  }
+
+  .price-badge {
+    background: #660a43;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .timer-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #660a43;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  #timer { font-size: 16px; font-weight: 700; }
+
+  /* Email input */
+  .email-row {
+    margin-bottom: 16px;
+  }
+
+  .email-row label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+  }
+
+  .email-row input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .email-row input:focus { border-color: #660a43; }
+
+  #payment-element { margin-bottom: 20px; }
+
+  #pay-btn {
+    display: block;
+    width: 100%;
+    background: #660a43;
+    color: white;
+    text-align: center;
+    padding: 17px 24px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  #pay-btn:hover { background: #4d0832; }
+  #pay-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+  .pay-sub {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+  }
+
+  #payment-message {
+    text-align: center;
+    font-size: 14px;
+    color: #660a43;
+    margin-top: 12px;
+    min-height: 20px;
+  }
+
+  #success-block {
+    display: none;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #success-block h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+  }
+
+  #success-block p {
+    font-size: 15px;
+    color: #555;
     line-height: 1.6;
   }
 
   @media (max-width: 480px) {
-    body { padding: 16px 12px 40px; }
-    .card { padding: 28px 20px 40px; }
-    h1 { font-size: 28px; }
-    .price-current { font-size: 28px; }
+    body { padding: 14px 10px 48px; }
+    .card { padding: 24px 18px 36px; }
+    h1 { font-size: 24px; }
+    .price-current { font-size: 26px; }
   }
 </style>
 </head>
@@ -237,54 +297,63 @@
 
 <div class="card">
 
-  <span class="profil-tag">Ton profil · Résultat du quiz</span>
+  <span class="profil-tag">Résultat du quiz · Ton profil</span>
 
   <h1>Tu es une <em>Amoureuse Accro.</em><br>Et tu le savais déjà.</h1>
 
   <div class="narrative">
-
     <p>Tu viens de finir ce quiz. Et quelque part, tu n'es pas vraiment surprise par le résultat.</p>
-
     <p>Parce que tu le vis depuis longtemps.</p>
-
     <p>Cette façon de t'emballer pour quelqu'un en quelques jours. De commencer à imaginer une histoire avant même qu'elle existe vraiment. De surveiller ton téléphone sans vraiment te l'avouer.</p>
-
     <p>Et quand il répond moins vite. Quand le ton change un peu. Quand il y a un silence de trop — <strong>ton cerveau s'allume.</strong> Tu analyses. Tu cherches une explication. Tu espères que c'est rien.</p>
-
     <p>T'as pas besoin qu'on te l'explique. Tu sais exactement de quoi on parle.</p>
 
     <div class="divider"></div>
 
     <p>De l'extérieur, tout a l'air sous contrôle. Tu es intelligente, autonome, tu gères ta vie.</p>
-
     <p>Mais à l'intérieur, il y a souvent cette pensée qui revient : <em>« Pourquoi ça recommence toujours pareil ? »</em></p>
-
     <p>Tu rencontres quelqu'un. Il y a de l'intensité, de la connexion, quelque chose de fort. Tu te dis que cette fois, c'est différent.</p>
-
     <p>Et puis… quelque chose se répète. Pas exactement la même histoire. Pas exactement le même homme. Mais toujours le même goût à la fin. <strong>Une distance. Un silence. Une blessure familière.</strong></p>
-
     <p>Alors tu te demandes : est-ce que c'est moi qui choisis mal ? Est-ce que j'attire toujours le même type ? Ou est-ce que le problème, c'est moi ?</p>
 
     <div class="divider"></div>
 
     <p>Le problème, ce n'est pas toi.</p>
-
     <p>C'est que personne ne t'a jamais montré comment ton système d'attachement fonctionne. Pourquoi tu t'accroches si vite. Pourquoi l'intensité te rassure au lieu de t'alerter. Pourquoi tu confonds <strong>l'espoir d'une relation</strong> avec une relation réelle.</p>
-
     <p>Une fois que tu comprends ça — vraiment — quelque chose change. Tu ne deviens pas froide. Tu ne te fermes pas. Tu deviens simplement <em>plus libre.</em></p>
-
     <p>Libre de ne plus courir après quelqu'un qui avance à moitié. Libre de reconnaître très tôt quand tu donnes trop à quelqu'un qui donne trop peu. Libre d'aimer sans te consumer.</p>
-
     <p>C'est exactement ce que j'ai écrit dans cet e-book.</p>
-
   </div>
 
-  <div class="offer-block">
-    <div class="label">✦ Offre réservée aux résultats du quiz</div>
+  <button class="cta-scroll" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'})">
+    Je veux mon e-book → 17€
+  </button>
+
+  <div class="testimonials">
+    <h3>Ce que disent les femmes qui l'ont lu…</h3>
+    <div class="testimonial">
+      <p>« J'ai pleuré au chapitre 3. C'était exactement moi. J'avais jamais mis des mots dessus comme ça. »</p>
+      <span class="author">— Camille, 29 ans</span>
+    </div>
+    <div class="testimonial">
+      <p>« Je comprenais pas pourquoi je retombais toujours sur le même type d'homme. Après ce guide, j'ai enfin compris le mécanisme. »</p>
+      <span class="author">— Laura, 34 ans</span>
+    </div>
+    <div class="testimonial">
+      <p>« Le chapitre sur la dopamine et l'attachement m'a changé la vie. Littéralement. »</p>
+      <span class="author">— Inès, 26 ans</span>
+    </div>
+  </div>
+
+  <button class="cta-scroll" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'})">
+    Je choisis de comprendre → 17€
+  </button>
+
+  <!-- BLOC PAIEMENT -->
+  <div class="payment-block" id="paiement">
+    <div class="label">✦ Offre réservée · résultats du quiz</div>
     <h2>Accro aux mauvais hommes — L'e-book</h2>
-    <p class="description">
-      Le guide complet pour l'Amoureuse Accro. 10 chapitres pour comprendre pourquoi tu t'attaches si vite, comment reconnaître un homme réellement disponible, et surtout — comment revenir à toi avant de t'accrocher. Environ 200 pages, à lire à ton rythme.
-    </p>
+    <p class="desc">~200 pages. 10 chapitres pour comprendre ton attachement, reconnaître un homme réellement disponible, et aimer sans te consumer. PDF envoyé immédiatement par mail.</p>
 
     <div class="price-row">
       <span class="price-current">17€</span>
@@ -292,69 +361,139 @@
       <span class="price-badge">−50%</span>
     </div>
 
-    <div class="timer-block">
-      ⏳ Offre disponible pendant <span class="timer" id="timer">30:00</span>
+    <div class="timer-row">
+      ⏳ Offre disponible pendant <span id="timer">30:00</span>
     </div>
 
-    <a href="https://buy.stripe.com/14A4gz7op8U5eYX7IGejK0l" class="cta-btn">
-      Je veux mon e-book →
-    </a>
-    <p class="cta-sub">Paiement sécurisé · PDF envoyé immédiatement par mail</p>
-  </div>
-
-  <div class="testimonials">
-    <h3>Ce que disent les femmes qui l'ont lu…</h3>
-
-    <div class="testimonial">
-      <p>« J'ai pleuré au chapitre 3. C'était exactement moi. J'avais jamais mis des mots dessus comme ça. »</p>
-      <span class="author">— Camille, 29 ans</span>
+    <div class="email-row">
+      <label for="email-input">Ton email (pour recevoir le PDF)</label>
+      <input type="email" id="email-input" placeholder="ton@email.com" />
     </div>
 
-    <div class="testimonial">
-      <p>« Je comprenais pas pourquoi je retombais toujours sur le même type d'homme. Après ce guide, j'ai enfin compris le mécanisme. »</p>
-      <span class="author">— Laura, 34 ans</span>
-    </div>
+    <div id="payment-element"></div>
+    <div id="payment-message"></div>
 
-    <div class="testimonial">
-      <p>« Le chapitre sur la dopamine et l'attachement m'a changé la vie. Littéralement. »</p>
-      <span class="author">— Inès, 26 ans</span>
-    </div>
-  </div>
+    <button id="pay-btn" disabled>Chargement…</button>
+    <p class="pay-sub">Paiement sécurisé · PDF envoyé immédiatement</p>
 
-  <div class="final-cta">
-    <p>Tu peux continuer à analyser ses messages. À espérer que ça change. À te demander ce qui cloche chez toi.<br><br>Ou tu peux comprendre une fois pour toutes ce qui se joue — et commencer à aimer autrement.</p>
-    <a href="https://buy.stripe.com/14A4gz7op8U5eYX7IGejK0l" class="cta-btn">
-      Je choisis de comprendre →
-    </a>
-    <p class="cta-sub" style="margin-top:12px;">17€ · Accès immédiat · PDF + mises à jour à vie</p>
+    <div id="success-block">
+      <h3>🎉 Paiement confirmé !</h3>
+      <p>Ton e-book arrive dans ta boîte mail dans quelques minutes.<br>Vérifie tes spams si tu ne le vois pas.</p>
+    </div>
   </div>
 
 </div>
 
 <script>
-  // Timer 30 minutes
-  const stored = localStorage.getItem('oto_timer_end');
+  // Timer 30 min
+  const stored = localStorage.getItem('oto_accro_end');
   let endTime;
   if (stored) {
     endTime = parseInt(stored);
   } else {
     endTime = Date.now() + 30 * 60 * 1000;
-    localStorage.setItem('oto_timer_end', endTime);
+    localStorage.setItem('oto_accro_end', endTime);
   }
-
   function updateTimer() {
     const remaining = endTime - Date.now();
-    if (remaining <= 0) {
-      document.getElementById('timer').textContent = '00:00';
-      return;
-    }
+    if (remaining <= 0) { document.getElementById('timer').textContent = '00:00'; return; }
     const mins = Math.floor(remaining / 60000);
     const secs = Math.floor((remaining % 60000) / 1000);
-    document.getElementById('timer').textContent =
-      String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
+    document.getElementById('timer').textContent = String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0');
     setTimeout(updateTimer, 1000);
   }
   updateTimer();
+
+  // Stripe
+  const stripe = Stripe('pk_live_51Rm9dBI8ilInoMaXKDs2hp5pR1Fq3fcK60MlclXizEDZZxFAUN92E6jpKjILZX0dHtO7gUa3KMfQZKchX6qaPIi8003ZsII2e7');
+  const WORKER_URL = 'https://abrilove-oto-worker.sofiane-daboussi.workers.dev';
+
+  let elements;
+  let clientSecret;
+
+  async function initStripe() {
+    try {
+      const email = document.getElementById('email-input').value.trim();
+      const res = await fetch(`${WORKER_URL}/create-payment-intent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ profil: 'accro', email }),
+      });
+      const data = await res.json();
+      if (data.error) { showMessage(data.error); return; }
+
+      clientSecret = data.clientSecret;
+
+      elements = stripe.elements({ clientSecret, appearance: {
+        theme: 'stripe',
+        variables: { colorPrimary: '#660a43', borderRadius: '10px', fontFamily: 'DM Sans, sans-serif' }
+      }});
+
+      const paymentElement = elements.create('payment');
+      paymentElement.mount('#payment-element');
+
+      const btn = document.getElementById('pay-btn');
+      btn.disabled = false;
+      btn.textContent = 'Obtenir mon e-book →';
+
+    } catch(e) {
+      showMessage('Erreur de connexion. Réessaie.');
+    }
+  }
+
+  // Init Stripe quand email valide
+  let initDone = false;
+  document.getElementById('email-input').addEventListener('blur', function() {
+    if (!initDone && this.value.includes('@') && this.value.includes('.')) {
+      initDone = true;
+      initStripe();
+    }
+  });
+
+  // Paiement
+  document.getElementById('pay-btn').addEventListener('click', async function() {
+    if (!elements) return;
+    const btn = this;
+    btn.disabled = true;
+    btn.textContent = 'Traitement…';
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: { return_url: window.location.href },
+      redirect: 'if_required',
+    });
+
+    if (error) {
+      showMessage(error.message);
+      btn.disabled = false;
+      btn.textContent = 'Obtenir mon e-book →';
+    } else {
+      document.getElementById('payment-element').style.display = 'none';
+      document.getElementById('email-input').parentElement.style.display = 'none';
+      document.getElementById('pay-btn').style.display = 'none';
+      document.querySelector('.pay-sub').style.display = 'none';
+      document.getElementById('timer-row') && (document.getElementById('timer-row').style.display = 'none');
+      document.getElementById('success-block').style.display = 'block';
+    }
+  });
+
+  function showMessage(msg) {
+    document.getElementById('payment-message').textContent = msg;
+  }
+
+  // Vérif si retour depuis Stripe redirect
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('payment_intent_client_secret')) {
+    stripe.retrievePaymentIntent(params.get('payment_intent_client_secret')).then(({ paymentIntent }) => {
+      if (paymentIntent.status === 'succeeded') {
+        document.getElementById('payment-element').style.display = 'none';
+        document.getElementById('email-input').parentElement.style.display = 'none';
+        document.getElementById('pay-btn').style.display = 'none';
+        document.querySelector('.pay-sub').style.display = 'none';
+        document.getElementById('success-block').style.display = 'block';
+      }
+    });
+  }
 </script>
 
 </body>
