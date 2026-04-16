@@ -474,8 +474,6 @@
     return at > 0 && dot > at + 1 && dot < e.length - 1;
   }
 
-  const emailFromUrl = params.get('email') || params.get('prefilled_email') || '';
-
   document.addEventListener('DOMContentLoaded', function() {
     if (emailFromUrl) document.getElementById('email-field').value = emailFromUrl;
 
@@ -572,6 +570,7 @@
 
   // Retour redirect Stripe
   const params = new URLSearchParams(window.location.search);
+const emailFromUrl = params.get('email') || params.get('prefilled_email') || '';
   if (params.get('payment_intent_client_secret')) {
     document.addEventListener('DOMContentLoaded', async function() {
       document.getElementById('paiement').scrollIntoView({ behavior: 'smooth' });
