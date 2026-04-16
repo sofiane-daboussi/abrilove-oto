@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#660A43">
   <title>Ton profil : L'Amoureuse Accro</title>
-  <script src="https://js.stripe.com/v3/"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -724,6 +723,24 @@ body {
     setTimeout(updateTimer, 1000);
   }
   updateTimer();
+  const observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      const s = document.createElement('script');
+      s.src = 'https://js.stripe.com/v3/';
+      s.onload = function() {
+        stripe = Stripe(PK);
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        elements = stripe.elements({ mode: 'payment', amount: 1700, currency: 'eur', appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF1E7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } } });
+        const paymentElement = elements.create('payment', { layout: 'tabs', paymentMethodOrder: isMobile ? ['apple_pay', 'google_pay', 'card'] : ['card', 'apple_pay', 'google_pay'] });
+        paymentElement.mount('#payment-element');
+        paymentElement.on('ready', function() { const sk = document.getElementById('stripe-skeleton'); if (sk) sk.remove(); });
+        if (emailFromUrl) document.getElementById('email-field').value = emailFromUrl;
+      };
+      document.head.appendChild(s);
+      observer.disconnect();
+    }
+  }, { rootMargin: '200px' });
+  observer.observe(document.getElementById('paiement'));
 
   // Carousel
   (function(){
@@ -765,14 +782,6 @@ body {
   function isValidEmail(e) { const at = e.indexOf('@'); const dot = e.lastIndexOf('.'); return at > 0 && dot > at + 1 && dot < e.length - 1; }
   const params = new URLSearchParams(window.location.search);
   const emailFromUrl = params.get('email') || params.get('prefilled_email') || '';
-  document.addEventListener('DOMContentLoaded', function() {
-    if (emailFromUrl) document.getElementById('email-field').value = emailFromUrl;
-    elements = stripe.elements({ mode: 'payment', amount: 1700, currency: 'eur', appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF1E7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } } });
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    const paymentElement = elements.create('payment', { layout: 'tabs', paymentMethodOrder: isMobile ? ['apple_pay', 'google_pay', 'card'] : ['card', 'apple_pay', 'google_pay'] });
-    paymentElement.mount('#payment-element');
-    paymentElement.on('ready', function() { const sk = document.getElementById('stripe-skeleton'); if (sk) sk.remove(); });
-  });
   async function handlePay() {
     const email = document.getElementById('email-field').value.trim();
     const errEl = document.getElementById('payment-errors');
