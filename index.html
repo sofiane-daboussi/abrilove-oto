@@ -546,6 +546,117 @@
 
 </div>
 
+  <div style="margin-top:48px;padding:36px 28px;background:var(--creme);border-radius:20px;">
+  <div style="display:flex;gap:40px;align-items:center;flex-wrap:wrap;">
+
+    <!-- TEXTE GAUCHE -->
+    <div style="flex:1;min-width:240px;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--brun);margin-bottom:16px;line-height:1.3;">Tu as une question avant de te décider ?</h3>
+      <p style="font-size:15px;color:var(--brun2);line-height:1.75;margin-bottom:20px;">Tu analyses ses messages depuis des heures. Tu sais pas si tu dois lui écrire. Tu te demandes si tu t'accroches trop ou si c'est lui le problème.</p>
+      <p style="font-size:15px;color:var(--brun2);line-height:1.75;margin-bottom:24px;">Pose ta question — tu reçois une réponse en quelques secondes, maintenant, peu importe l'heure. Des milliers d'heures de coaching en relations amoureuses, disponibles pour toi instantanément.</p>
+      <div style="position:relative;display:inline-block;width:100%;">
+        <div style="position:absolute;top:-12px;right:12px;background:#FFF1E7;color:#660A43;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;border:1.5px solid #660A43;">7 premiers messages offerts</div>
+        <a href="https://ia.abrilove.fr" style="display:block;width:100%;padding:14px;background:#660A43;color:white;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;text-decoration:none;box-sizing:border-box;text-align:center;">Poser ma question maintenant →</a>
+      </div>
+      <p style="font-size:11px;color:var(--brun2);opacity:0.6;margin-top:8px;text-align:center;">Sans carte bancaire</p>
+    </div>
+
+    <!-- IPHONE DROITE -->
+    <div style="flex-shrink:0;display:flex;justify-content:center;width:100%;max-width:280px;margin:0 auto;">
+      <style>
+      .iphone{width:260px;background:#FFF1E7;border-radius:44px;border:11px solid #1a0812;box-shadow:0 0 0 1px #3a1020,0 30px 70px rgba(0,0,0,0.4);overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;}
+      .iphone .status-bar{background:#FFF1E7;display:flex;align-items:center;justify-content:space-between;padding:10px 22px 8px;font-size:13px;font-weight:700;color:#2a0a1a;position:relative;}
+      .iphone .dynamic-island{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:95px;height:30px;background:#1a0812;border-radius:20px;}
+      .iphone .chat-header{display:flex;align-items:center;gap:8px;padding:4px 14px 10px;border-bottom:1px solid rgba(102,10,67,0.1);}
+      .iphone .back{color:#660A43;font-size:22px;font-weight:300;}
+      .iphone .avatar{width:34px;height:34px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+      .iphone .avatar img{width:100%;height:100%;object-fit:cover;}
+      .iphone .info{flex:1;}
+      .iphone .name{font-size:12px;font-weight:700;color:#2a0a1a;}
+      .iphone .online{font-size:10px;color:#4caf50;font-weight:500;}
+      .iphone .messages{padding:12px;display:flex;flex-direction:column;gap:7px;min-height:340px;background:#FFF1E7;}
+      .iphone .row{display:flex;flex-direction:column;}
+      .iphone .bubble{max-width:80%;padding:9px 13px;border-radius:18px;font-size:12.5px;line-height:1.45;opacity:0;transform:translateY(6px);transition:opacity 0.4s,transform 0.4s;}
+      .iphone .bubble.show{opacity:1;transform:translateY(0);}
+      .iphone .bubble-u{background:#660A43;color:#fff;align-self:flex-end;border-radius:18px 18px 4px 18px;}
+      .iphone .bubble-a{background:rgba(102,10,67,0.1);color:#2a0a1a;align-self:flex-start;border-radius:18px 18px 18px 4px;}
+      .iphone .sender{font-size:9.5px;font-weight:700;color:#660A43;margin-bottom:3px;padding-left:2px;}
+      .iphone .typing{display:flex;gap:4px;padding:10px 14px;background:rgba(102,10,67,0.1);border-radius:18px 18px 18px 4px;width:fit-content;opacity:0;transition:opacity 0.3s;}
+      .iphone .typing.show{opacity:1;}
+      .iphone .typing span{width:6px;height:6px;border-radius:50%;background:#660A43;opacity:0.35;animation:abri-dot 1.2s infinite;}
+      .iphone .typing span:nth-child(2){animation-delay:0.2s;}
+      .iphone .typing span:nth-child(3){animation-delay:0.4s;}
+      .iphone .input-bar{display:flex;align-items:center;gap:8px;padding:8px 12px 18px;background:#FFF1E7;border-top:1px solid rgba(102,10,67,0.08);}
+      .iphone .input-field{flex:1;background:rgba(102,10,67,0.07);border:none;border-radius:20px;padding:9px 13px;font-size:12px;color:rgba(42,10,26,0.35);}
+      .iphone .send-btn{width:30px;height:30px;background:#660A43;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+      .iphone .send-btn svg{width:13px;height:13px;fill:#FFF1E7;}
+      @keyframes abri-dot{0%,60%,100%{opacity:0.2;transform:scale(0.8);}30%{opacity:1;transform:scale(1);}}
+      @media(max-width:600px){.iphone-wrap{max-width:100% !important;}}
+      </style>
+
+      <div class="iphone">
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="dynamic-island"></div>
+          <span>●●●</span>
+        </div>
+        <div class="chat-header">
+          <span class="back">‹</span>
+          <div class="avatar"><img src="https://cdn.prod.website-files.com/686bb5337ed61a425660e143/69b163fc41e69155b8609953_Copie%20de%20Copie%20de%20Copie%20de%20Copie%20de%20Blue%20and%20Pink%20Soft%20Magazine%20Cover%20Mockup%20Instagram%20Post%20(6).avif"></div>
+          <div class="info">
+            <div class="name">Sofi & Oli — Abrilove</div>
+            <div class="online">● En ligne</div>
+          </div>
+        </div>
+        <div class="messages" id="abri-msgs">
+          <div class="row" id="abri-m1" style="align-items:flex-end;display:none"><div class="bubble bubble-u">Il me laisse en vu depuis 2 jours… 😞</div></div>
+          <div class="row" id="abri-t1" style="display:none"><div class="typing"><span></span><span></span><span></span></div></div>
+          <div class="row" id="abri-m2" style="align-items:flex-start;display:none"><div class="sender">Sofi & Oli 💛</div><div class="bubble bubble-a">C'est nouveau chez lui ou il l'a déjà fait avant ?</div></div>
+          <div class="row" id="abri-m3" style="align-items:flex-end;display:none"><div class="bubble bubble-u">Jamais… 😔</div></div>
+          <div class="row" id="abri-t2" style="display:none"><div class="typing"><span></span><span></span><span></span></div></div>
+          <div class="row" id="abri-m4" style="align-items:flex-start;display:none"><div class="sender">Sofi & Oli 💛</div><div class="bubble bubble-a">Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div></div>
+        </div>
+        <div class="input-bar">
+          <div class="input-field">Écris ta situation…</div>
+          <div class="send-btn"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  const steps=[
+    {show:'abri-m1',delay:600},
+    {show:'abri-t1',delay:2000},
+    {hide:'abri-t1',show:'abri-m2',delay:4500},
+    {show:'abri-m3',delay:7000},
+    {show:'abri-t2',delay:8800},
+    {hide:'abri-t2',show:'abri-m4',delay:12000},
+    {restart:true,delay:17000}
+  ];
+  function run(arr){
+    arr.forEach(s=>setTimeout(()=>{
+      if(s.restart){reset();return;}
+      if(s.hide){const el=document.getElementById(s.hide);el.style.display='none';const t=el.querySelector('.typing');if(t)t.classList.remove('show');}
+      if(s.show){const el=document.getElementById(s.show);el.style.display='flex';el.style.flexDirection='column';setTimeout(()=>{const b=el.querySelector('.bubble');const t=el.querySelector('.typing');if(b)b.classList.add('show');if(t)t.classList.add('show');document.getElementById('abri-msgs').scrollTop=9999;},30);}
+    },s.delay));
+  }
+  function reset(){
+    ['abri-m1','abri-m2','abri-m3','abri-m4','abri-t1','abri-t2'].forEach(id=>{
+      const el=document.getElementById(id);el.style.display='none';
+      const b=el.querySelector('.bubble');const t=el.querySelector('.typing');
+      if(b)b.classList.remove('show');if(t)t.classList.remove('show');
+    });
+    document.getElementById('abri-msgs').scrollTop=0;
+    setTimeout(()=>run(steps),800);
+  }
+  run(steps);
+})();
+</script>
+
 <!-- POPUP CONFIRMATION -->
 <div id="popup-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);z-index:999;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
   <div style="background:#FFF1E7;border-radius:20px;padding:28px 24px;max-width:360px;width:100%;text-align:center;font-family:sans-serif;">
