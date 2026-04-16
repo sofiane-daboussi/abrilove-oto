@@ -777,7 +777,7 @@ body {
   // Stripe
   const WORKER_URL = 'https://abrilove-oto-worker.sofiane-daboussi.workers.dev';
   const PK = 'pk_live_51Rm9dBI8ilInoMaXKDs2hp5pR1Fq3fcK60MlclXizEDZZxFAUN92E6jpKjILZX0dHtO7gUa3KMfQZKchX6qaPIi8003ZsII2e7';
-  let elements, clientSecret;
+  let stripe, elements, clientSecret;
   function isValidEmail(e) { const at = e.indexOf('@'); const dot = e.lastIndexOf('.'); return at > 0 && dot > at + 1 && dot < e.length - 1; }
   const params = new URLSearchParams(window.location.search);
   const emailFromUrl = params.get('email') || params.get('prefilled_email') || '';
