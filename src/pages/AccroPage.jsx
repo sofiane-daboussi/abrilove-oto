@@ -428,14 +428,13 @@ export default function AccroPage() {
             <>
               <label className="field-label" htmlFor="email-field">Email · pour recevoir ton PDF</label>
               <input type="email" id="email-field" className="field-input" placeholder="ton@email.fr" autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} />
-              <div id="payment-element">
-                {stripeSkeleton && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '18px' }}>
-                    <div className="stripe-skeleton-bar" />
-                    <div className="stripe-skeleton-bar" />
-                  </div>
-                )}
-              </div>
+              {stripeSkeleton && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '18px' }}>
+                  <div className="stripe-skeleton-bar" />
+                  <div className="stripe-skeleton-bar" />
+                </div>
+              )}
+              <div id="payment-element" />
               {payError && <div className="payment-errors">{payError}</div>}
               <button className="btn-pay" disabled={paying} onClick={handlePay}>
                 <span>{paying ? 'Traitement...' : 'Obtenir mon e-book →'}</span>
