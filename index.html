@@ -664,9 +664,14 @@ body {
       bar.classList.remove('visible');
       hideTimer = setTimeout(function() { bar.classList.remove('animating'); }, 400);
     }
+    var lastY = window.scrollY;
     function updateBar() {
+      var currentY = window.scrollY;
+      var scrollingUp = currentY < lastY;
+      lastY = currentY;
       var triggerPassed = trigger.getBoundingClientRect().top < 0;
-      if (triggerPassed) showBar();
+      if (scrollingUp) hideBar();
+      else if (triggerPassed) showBar();
     }
     window.addEventListener('scroll', updateBar, { passive: true });
   });
