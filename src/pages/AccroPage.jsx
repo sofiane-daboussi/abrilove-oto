@@ -52,10 +52,12 @@ export default function AccroPage() {
   const [stripeSkeleton, setStripeSkeleton] = useState(true)
   const [stickyVisible, setStickyVisible] = useState(false)
   const [stickyAnimating, setStickyAnimating] = useState(false)
+  const [sliderPos, setSliderPos] = useState(50)
 
   const narrativeEndRef = useRef(null)
   const paiementRef = useRef(null)
-  const pourToiRef = useRef(null)
+  const baContainerRef = useRef(null)
+  const isDragging = useRef(false)
   const carouselRef = useRef(null)
   const trackRef = useRef(null)
   const stickyHideTimer = useRef(null)
@@ -164,18 +166,42 @@ export default function AccroPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Pour-toi animation
+  // Slider hint animation
   useEffect(() => {
-    if (!pourToiRef.current) return
-    let triggered = false
-    const observer = new IntersectionObserver(entries => {
-      if (!entries[0].isIntersecting || triggered) return
-      triggered = true
-      const items = pourToiRef.current.querySelectorAll('.pour-toi-item, .pour-toi-separator, .pour-toi-subtitle')
-      items.forEach((el, i) => setTimeout(() => el.classList.add('revealed'), i * 120))
-    }, { threshold: 0 })
-    observer.observe(pourToiRef.current)
-    return () => observer.disconnect()
+    const t = setTimeout(() => {
+      let start = null
+      function frame(ts) {
+        if (!start) start = ts
+        const p = Math.min((ts - start) / 1200, 1)
+        setSliderPos(50 - 22 * Math.sin(p * Math.PI))
+        if (p < 1) requestAnimationFrame(frame)
+        else setSliderPos(50)
+      }
+      requestAnimationFrame(frame)
+    }, 900)
+    return () => clearTimeout(t)
+  }, [])
+
+  // Slider drag
+  useEffect(() => {
+    function getPos(e) {
+      if (!baContainerRef.current) return 50
+      const rect = baContainerRef.current.getBoundingClientRect()
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX
+      return Math.min(95, Math.max(5, ((clientX - rect.left) / rect.width) * 100))
+    }
+    function onMove(e) { if (isDragging.current) setSliderPos(getPos(e)) }
+    function onUp() { isDragging.current = false }
+    window.addEventListener('mousemove', onMove)
+    window.addEventListener('mouseup', onUp)
+    window.addEventListener('touchmove', onMove, { passive: true })
+    window.addEventListener('touchend', onUp)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseup', onUp)
+      window.removeEventListener('touchmove', onMove)
+      window.removeEventListener('touchend', onUp)
+    }
   }, [])
 
   // Carousel
@@ -370,20 +396,57 @@ export default function AccroPage() {
           )}
         </div>
 
-        {/* POUR TOI / PAS POUR TOI */}
-        <div className="pour-toi-section" ref={pourToiRef}>
-          <p className="pour-toi-title">Cet e-book est pour toi si…</p>
-          <div className="pour-toi-item oui"><div className="pt-icon">✓</div><p className="pt-text">Tu retombes dans le même schéma, même quand tu te promets "cette fois ce sera différent."</p></div>
-          <div className="pour-toi-item oui"><div className="pt-icon">✓</div><p className="pt-text">Tu t'attaches trop vite, puis tu attends, analyses, espères, et tu t'épuises doucement.</p></div>
-          <div className="pour-toi-item oui"><div className="pt-icon">✓</div><p className="pt-text">Tu sur-analyses les messages et les silences parce que tu ne sais plus ce qui est réel.</p></div>
-          <div className="pour-toi-item oui"><div className="pt-icon">✓</div><p className="pt-text">Tu veux des repères clairs pour reconnaître un vrai intérêt et arrêter de vivre dans le doute.</p></div>
-          <div className="pour-toi-item oui"><div className="pt-icon">✓</div><p className="pt-text">Tu ne veux plus perdre ton temps et ton cœur dans des relations qui n'avancent pas.</p></div>
-          <div className="pour-toi-item oui"><div className="pt-icon">✓</div><p className="pt-text">Tu veux revenir à toi : plus de calme, plus de clarté, et savoir ce que tu fais.</p></div>
-          <div className="pour-toi-separator" />
-          <p className="pour-toi-subtitle">Ce n'est pas pour toi si…</p>
-          <div className="pour-toi-item non"><div className="pt-icon">✕</div><p className="pt-text">Tu veux "le faire changer" ou trouver la phrase parfaite pour qu'il devienne sérieux.</p></div>
-          <div className="pour-toi-item non"><div className="pt-icon">✕</div><p className="pt-text">Tu n'as aucune envie de regarder tes propres schémas, parce que c'est toujours "la faute des hommes."</p></div>
-          <div className="pour-toi-item non"><div className="pt-icon">✕</div><p className="pt-text">Tu veux rester dans le doute plutôt qu'apprendre à voir clair, même si ça fait un peu mal au début.</p></div>
+        {/* AVANT / APRÈS SLIDER */}
+        <div className="ba-section">
+          <p className="ba-title">Glisse pour voir la différence</p>
+          <p className="ba-hint">← Avant · Après →</p>
+          <div
+            className="ba-container"
+            ref={baContainerRef}
+            onMouseDown={e => { isDragging.current = true; const rect = e.currentTarget.getBoundingClientRect(); setSliderPos(Math.min(95, Math.max(5, ((e.clientX - rect.left) / rect.width) * 100))) }}
+            onTouchStart={e => { isDragging.current = true; const rect = e.currentTarget.getBoundingClientRect(); setSliderPos(Math.min(95, Math.max(5, ((e.touches[0].clientX - rect.left) / rect.width) * 100))) }}
+          >
+            <div className="ba-avant">
+              {[
+                "Tu analyses ses messages en boucle sans trouver de réponse.",
+                "Tu t'accroches même quand tu sens que ça ne va nulle part.",
+                "Tu ne sais plus si tu surréagis ou si c'est réel.",
+                "Tu confonds l'intensité avec quelque chose de vrai.",
+                "Tu perds ton énergie dans des relations qui stagnent.",
+                "Tu te demandes pourquoi ça recommence toujours pareil.",
+              ].map((text, i) => (
+                <div key={i} className="ba-item">
+                  <span className="ba-item-icon">✕</span>
+                  <span className="ba-item-text">{text}</span>
+                </div>
+              ))}
+            </div>
+            <div className="ba-apres" style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}>
+              {[
+                "Tu lis la situation clairement, sans te raconter d'histoires.",
+                "Tu reconnais quand tu donnes trop à quelqu'un qui donne peu.",
+                "Tu fais confiance à ce que tu ressens, sans te corriger.",
+                "Tu sais faire la différence entre intensité et intérêt réel.",
+                "Tu n'investis plus ton cœur là où ça ne grandit pas.",
+                "Tu comprends le schéma — et tu sais comment en sortir.",
+              ].map((text, i) => (
+                <div key={i} className="ba-item">
+                  <span className="ba-item-icon">✓</span>
+                  <span className="ba-item-text">{text}</span>
+                </div>
+              ))}
+            </div>
+            <span className="ba-corner-label ba-label-avant">Avant</span>
+            <span className="ba-corner-label ba-label-apres">Après</span>
+            <div className="ba-handle" style={{ left: `${sliderPos}%` }}>
+              <div className="ba-handle-line" />
+              <div className="ba-handle-knob">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M6 3l-4 6 4 6M12 3l4 6-4 6" stroke="#660A43" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* INTERRUPTEUR */}
