@@ -370,6 +370,31 @@ body {
     .iphone .send-btn svg{width:13px;height:13px;fill:#FFF1E7;}
     @keyframes abri-dot{0%,60%,100%{opacity:0.2;transform:scale(0.8);}30%{opacity:1;transform:scale(1);}}
 
+    .quiz-section { margin-top:48px; }
+    .quiz-intro { font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--brun);line-height:1.4;margin-bottom:6px; }
+    .quiz-sub { font-size:13px;color:var(--brun2);margin-bottom:20px; }
+    .quiz-card { display:flex;align-items:flex-start;gap:12px;background:var(--creme2);border:2px solid transparent;border-radius:12px;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:all 0.2s ease;user-select:none; }
+    .quiz-card.checked { background:#fde8f0;border-color:#660A43; }
+    .quiz-check { width:22px;height:22px;min-width:22px;border-radius:6px;border:2px solid #C0AFA4;display:flex;align-items:center;justify-content:center;transition:all 0.2s;margin-top:1px; }
+    .quiz-card.checked .quiz-check { background:#660A43;border-color:#660A43; }
+    .quiz-check svg { display:none;width:12px;height:12px;stroke:white;stroke-width:3; }
+    .quiz-card.checked .quiz-check svg { display:block; }
+    .quiz-text { font-size:14px;color:var(--brun2);line-height:1.6; }
+    .quiz-card.checked .quiz-text { color:var(--brun); }
+    .quiz-conclusion { display:none;margin-top:32px;background:#660A43;border-radius:14px;padding:20px;text-align:center; }
+    .quiz-conclusion.visible { display:block; }
+    .quiz-conclusion p { font-family:'Playfair Display',serif;font-size:16px;color:white;line-height:1.5;margin-bottom:14px; }
+    .quiz-conclusion a { display:inline-block;background:white;color:#660A43;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;text-decoration:none; }
+
+    .faq-list { display:flex;flex-direction:column;gap:10px; }
+    .faq-item { border:1.5px solid var(--creme2);border-radius:12px;overflow:hidden; }
+    .faq-q { width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:none;padding:16px 18px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--brun);cursor:pointer;text-align:left; }
+    .faq-icon { font-size:20px;font-weight:300;color:var(--rose);flex-shrink:0;transition:transform 0.25s; }
+    .faq-q.open .faq-icon { transform:rotate(45deg); }
+    .faq-a { max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;padding:0 18px; }
+    .faq-a.open { max-height:200px;padding:0 18px 16px; }
+    .faq-a p { font-size:14px;color:var(--brun2);line-height:1.7; }
+
     @media (max-width: 480px) {
       body { padding: 14px 10px 24px; }
       .card { padding: 24px 18px 36px; }
@@ -598,11 +623,83 @@ body {
 </div>
 
 <script>
+  function quizToggle(card) {
+    card.classList.toggle('checked');
+    const n = document.querySelectorAll('.quiz-card.checked').length;
+    const el = document.getElementById('quiz-conclusion');
+    const msg = el.querySelector('p');
+    if (n === 0) { el.classList.remove('visible'); return; }
+    const messages = {
+      1: "Tu as coché 1 case.<br>Une seule résonnance suffit. C'est un signal que tu mérites d'explorer.",
+      2: "Tu as coché 2 cases.<br>Ces deux points ne sont pas des coïncidences. Il y a un fil, et ce livre t'aide à le voir.",
+      3: "Tu as coché 3 cases.<br>Tu commences à voir un schéma. Ce n'est pas une fatalité, c'est quelque chose qui se comprend et se change.",
+      4: "Tu as coché 4 cases.<br>Ces schémas sont profondément ancrés, mais ils ont une origine. Et surtout, une sortie.",
+      5: "Tu as coché 5 cases.<br>Tu portes beaucoup en silence. Ce livre t'explique pourquoi, et comment poser tout ça.",
+      6: "Tu as coché 6 cases.<br>Tu te reconnais dans presque tout. Ce n'est pas ta faute, mais tu as le pouvoir de changer ça.",
+      7: "Tu as coché 7 cases.<br>Tu vis avec ça depuis longtemps. Il est temps que quelqu'un t'explique vraiment ce qui se passe.",
+      8: "Tu as coché les 8 cases.<br>Ce livre a été écrit pour exactement là où tu en es. Tu mérites de comprendre et d'avancer."
+    };
+    msg.innerHTML = `${messages[n]}<br><br><strong>Cet e-book a été écrit pour toi.</strong>`;
+    el.classList.add('visible');
+  }
+
+  function faqToggle(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.closest('.faq-item').querySelector('.faq-a').classList.remove('open'); });
+    if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+  }
+
   function abriToggleEbook() {
     document.getElementById('abri-section-ebook').classList.toggle('active');
     document.getElementById('abri-toggle-ebook').classList.toggle('on');
   }
 </script>
+
+  <!-- QUIZ CHECKLIST -->
+  <div class="quiz-section">
+    <p class="quiz-intro">Fais un petit test : réponds OUI si tu te reconnais dans ces points…</p>
+    <p class="quiz-sub">Clique sur tout ce qui te parle.</p>
+
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Tu te sens bloquée et perdue et, quand tu regardes les autres femmes, tu as l'impression qu'elles connaissent des "secrets" pour vivre pleinement… pendant que toi, tu as la sensation de stagner.</p>
+    </div>
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Tu es paralysée par la peur de retomber dans un schéma qui va te blesser, dans une relation, au travail, ou même dans ta famille.</p>
+    </div>
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Tu as l'impression d'attirer encore et encore ce qui est indisponible ou toxique, puis tu te retrouves seule avec ce sentiment terrible : tu n'es pas importante.</p>
+    </div>
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Tu te fais de moins en moins confiance. Tu as peur de refaire le mauvais choix et de perdre encore du temps.</p>
+    </div>
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Tu manques de confiance en toi. De vieilles blessures reviennent, la peur du rejet se réactive, et chaque nouvelle tentative finit par cette pensée : "encore une fois, ça n'a pas marché."</p>
+    </div>
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Tu sais que tu "fais quelque chose de travers", que "ça ne devrait pas être comme ça"… mais tu n'arrives pas à trouver une sortie claire.</p>
+    </div>
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Parfois, tu te dis que rien ne changera pour toi, parce que tes erreurs et tes expériences passées continueront toujours à te tirer vers le bas.</p>
+    </div>
+    <div class="quiz-card" onclick="quizToggle(this)">
+      <div class="quiz-check"><svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+      <p class="quiz-text">Tu t'es récemment posé cette question : "Et si le problème, c'était moi ?". Et il ne te reste que de la culpabilité et un sentiment d'égarement.</p>
+    </div>
+
+    <div class="quiz-conclusion" id="quiz-conclusion">
+      <p>Si tu t'es reconnue ne serait-ce qu'une fois…<br><strong>cet e-book a été écrit pour toi.</strong></p>
+      <a href="#paiement" onclick="document.getElementById('paiement').scrollIntoView({behavior:'smooth'});return false;">Je veux mon e-book → 17€</a>
+    </div>
+  </div>
 
   <!-- BLOC PAIEMENT -->
   <div class="payment-block" id="paiement">
@@ -682,6 +779,64 @@ body {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="margin-top:48px;">
+    <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--brun);margin-bottom:20px;text-align:center;">Questions fréquentes</h3>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          C'est quoi exactement cet e-book ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Un guide de ~200 pages qui décrypte le profil "Amoureuse Accro" : pourquoi tu t'attaches à des hommes qui ne sont pas disponibles, comment sortir de ce schéma, et ce que tu mérites vraiment. Envoyé en PDF immédiatement après paiement.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Comment je reçois mon e-book ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Tu entres ton email dans le formulaire de paiement, et tu reçois le PDF directement dans ta boîte mail dans les minutes qui suivent. Pense à vérifier tes spams si tu ne le vois pas.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          C'est sécurisé de payer ici ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Oui. Le paiement est géré par Stripe, la référence mondiale en matière de sécurité des paiements en ligne. Tes données bancaires ne passent jamais par nos serveurs.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Est-ce que ça correspond à ma situation ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Si tu te retrouves à analyser ses messages en boucle, à attendre qu'il revienne, à t'accrocher même quand ça fait mal — oui, ce livre a été écrit pour toi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          C'est un achat unique ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Oui, 17€ une seule fois. Pas d'abonnement, pas de frais cachés. Tu gardes l'accès à vie, et toutes les mises à jour futures sont incluses.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
