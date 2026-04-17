@@ -185,7 +185,7 @@ export default function AccroPage() {
     }
     const observer = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) runHint()
-    }, { threshold: 0.3 })
+    }, { threshold: 0.7 })
     observer.observe(baContainerRef.current)
     return () => observer.disconnect()
   }, [])
