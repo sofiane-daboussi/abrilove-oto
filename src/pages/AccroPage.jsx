@@ -364,6 +364,12 @@ export default function AccroPage() {
           <div className="flip-book">
             {/* Page derrière — Pour toi si (révélée après le retournement) */}
             <div className="flip-page-back">
+              <button className="flip-back-btn" onClick={() => setFlipped(false)}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Retour
+              </button>
               <p className="book-page-title">Par contre, c'est pour toi si…</p>
               {[
                 "Tu retombes dans le même schéma, même quand tu te promets « cette fois ce sera différent. »",
@@ -381,7 +387,6 @@ export default function AccroPage() {
               <button className="flip-next-btn flip-cta" onClick={scrollToPaiement}>
                 Je veux mon e-book → 17€
               </button>
-              <button className="flip-back-btn" onClick={() => setFlipped(false)}>← Retour</button>
             </div>
 
             {/* Page devant — Pas pour toi si (visible en premier) */}

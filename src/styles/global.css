@@ -428,13 +428,12 @@ p strong, p em { color: #660A43; }
 .book-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #660A43; margin-bottom: 14px; }
 
 .flip-book {
-  position: relative;
+  display: grid;
   perspective: 1200px;
   perspective-origin: 30% center;
 }
 .flip-page-back {
-  position: absolute;
-  inset: 0;
+  grid-area: 1 / 1;
   z-index: 1;
   background: #660A43;
   border-radius: 10px;
@@ -443,13 +442,12 @@ p strong, p em { color: #660A43; }
   flex-direction: column;
   gap: 12px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-  overflow-y: auto;
 }
 .flip-page-front {
-  position: relative;
+  grid-area: 1 / 1;
   z-index: 2;
   width: calc(100% - 48px);
-  background: #3b1628;
+  background: #34303a;
   border-radius: 10px;
   padding: 28px 16px 32px;
   display: flex;
@@ -473,7 +471,7 @@ p strong, p em { color: #660A43; }
   position: absolute;
   inset: 0;
   border-radius: 10px;
-  background: linear-gradient(to left, #4a1a35 0%, #5a1f3e 60%, #4a1a35 100%);
+  background: linear-gradient(to left, #2e2a33 0%, #3d3844 60%, #2e2a33 100%);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: rotateY(180deg);
