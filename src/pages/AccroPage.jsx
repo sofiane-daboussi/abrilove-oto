@@ -365,6 +365,8 @@ export default function AccroPage() {
           <div className="book-wrap">
             <div className="book-spine" />
             <div className="book-pages">
+              <div className="book-pg-stack book-pg-stack-4" />
+              <div className="book-pg-stack book-pg-stack-3" />
               <div className="book-pg-stack book-pg-stack-2" />
               <div className="book-pg-stack book-pg-stack-1" />
 
@@ -386,6 +388,7 @@ export default function AccroPage() {
                   if (d.direction === 'horizontal' && dx > 25) { d.triggered = true; setFlipped(false) }
                 }}
               >
+                <div className="book-page-rule" />
                 <button className="book-btn-back" onClick={() => setFlipped(false)}>
                   <div className="book-peek-arrow">
                     <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
@@ -430,6 +433,7 @@ export default function AccroPage() {
                 }}
               >
                 <div className="book-face-front">
+                  <div className="book-page-rule" />
                   {[
                     "Tu veux « le faire changer » ou trouver la phrase parfaite pour qu'il devienne sérieux.",
                     "Tu n'as aucune envie de regarder tes propres schémas, parce que c'est toujours « la faute des hommes ».",
