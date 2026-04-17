@@ -361,8 +361,7 @@ export default function AccroPage() {
 
         {/* LIVRE POUR TOI / PAS POUR TOI */}
         <div className="book-section">
-          <p className="book-title">Cet e-book est fait pour toi ?</p>
-          <p className="book-subtitle">Pardon, cet e-book n'est pas fait pour toi si…</p>
+          <p className="book-title">Pardon, cet e-book n'est pas fait pour toi si…</p>
           <div className="flip-book">
             <div className="flip-page-stack flip-page-stack-2" />
             <div className="flip-page-stack flip-page-stack-1" />
@@ -391,7 +390,6 @@ export default function AccroPage() {
                 </svg>
                 Retour
               </button>
-              <p className="book-page-title">Par contre, c'est pour toi si…</p>
               {[
                 "Tu retombes dans le même schéma, même quand tu te promets « cette fois ce sera différent. »",
                 "Tu t'attaches trop vite, puis tu attends, analyses, espères, et tu t'épuises doucement.",
