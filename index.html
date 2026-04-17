@@ -403,9 +403,10 @@ body {
     .quiz-card.checked .quiz-check svg { display:block; }
     .quiz-text { font-size:14px;line-height:1.6; }
     .quiz-card.checked .quiz-text { color:var(--brun); }
-    .quiz-conclusion { display:none;margin-top:32px;background:#660A43;border-radius:14px;padding:20px;text-align:center; }
-    .quiz-conclusion.visible { display:block; }
-    .quiz-conclusion p { font-family:'Playfair Display',serif;font-size:16px;color:white;line-height:1.5;margin-bottom:14px; }
+    .quiz-conclusion { display:none;margin-top:32px;background:#660A43;border-radius:14px;padding:20px 20px 28px;text-align:center; }
+    .quiz-conclusion.visible { display:flex;flex-direction:column;align-items:center;gap:20px; }
+    .quiz-conclusion p { font-family:'Playfair Display',serif;font-size:16px;color:white;line-height:1.5;margin:0;text-align:center; }
+    .quiz-conclusion p strong { color:white; }
     .quiz-conclusion a { display:inline-block;background:white;color:#660A43;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;text-decoration:none; }
 
     .faq-list { display:flex;flex-direction:column;gap:10px; }
@@ -626,16 +627,16 @@ body {
     const msg = el.querySelector('p');
     if (n === 0) { el.classList.remove('visible'); return; }
     const messages = {
-      1: "Tu as coché 1 case.<br>Une seule résonnance suffit. C'est un signal que tu mérites d'explorer.",
-      2: "Tu as coché 2 cases.<br>Ces deux points ne sont pas des coïncidences. Il y a un fil, et ce livre t'aide à le voir.",
-      3: "Tu as coché 3 cases.<br>Tu commences à voir un schéma. Ce n'est pas une fatalité, c'est quelque chose qui se comprend et se change.",
-      4: "Tu as coché 4 cases.<br>Ces schémas sont profondément ancrés, mais ils ont une origine. Et surtout, une sortie.",
-      5: "Tu as coché 5 cases.<br>Tu portes beaucoup en silence. Ce livre t'explique pourquoi, et comment poser tout ça.",
-      6: "Tu as coché 6 cases.<br>Tu te reconnais dans presque tout. Ce n'est pas ta faute, mais tu as le pouvoir de changer ça.",
-      7: "Tu as coché 7 cases.<br>Tu vis avec ça depuis longtemps. Il est temps que quelqu'un t'explique vraiment ce qui se passe.",
-      8: "Tu as coché les 8 cases.<br>Ce livre a été écrit pour exactement là où tu en es. Tu mérites de comprendre et d'avancer."
+      1: "Tu as coché 1 case. Une seule résonnance suffit. C'est un signal que tu mérites d'explorer.",
+      2: "Tu as coché 2 cases. Ces deux points ne sont pas des coïncidences. Il y a un fil, et ce livre t'aide à le voir.",
+      3: "Tu as coché 3 cases. Tu commences à voir un schéma. Ce n'est pas une fatalité, c'est quelque chose qui se comprend et se change.",
+      4: "Tu as coché 4 cases. Ces schémas sont profondément ancrés, mais ils ont une origine. Et surtout, une sortie.",
+      5: "Tu as coché 5 cases. Tu portes beaucoup en silence. Ce livre t'explique pourquoi, et comment poser tout ça.",
+      6: "Tu as coché 6 cases. Tu te reconnais dans presque tout. Ce n'est pas ta faute, mais tu as le pouvoir de changer ça.",
+      7: "Tu as coché 7 cases. Tu vis avec ça depuis longtemps. Il est temps que quelqu'un t'explique vraiment ce qui se passe.",
+      8: "Tu as coché les 8 cases. Ce livre a été écrit pour exactement là où tu en es. Tu mérites de comprendre et d'avancer."
     };
-    msg.innerHTML = `${messages[n]}<br><br><strong>Cet e-book a été écrit pour toi.</strong>`;
+    msg.innerHTML = `${messages[n]} <strong>Cet e-book a été écrit pour toi.</strong>`;
     el.classList.add('visible');
   }
 
@@ -699,17 +700,17 @@ body {
 
   <div class="abri-section" id="abri-section-ebook">
     <div class="abri-left">
-      <h2>Tu as deux choix.</h2>
+      <h2>Tu as deux choix :</h2>
     </div>
 
     <div class="abri-right">
       <div class="abri-text-wrapper">
         <div class="abri-text-off">
           <p>Continuer à <strong>analyser ses messages, attendre, douter…</strong></p>
-          <p class="abri-ou">ou tu peux <strong>actionner l'interrupteur.</strong></p>
+          <p class="abri-ou">ou tu peux <strong>actionner l'interrupteur…</strong></p>
         </div>
         <div class="abri-text-on">
-          <p>Comprendre enfin pourquoi tu t'accroches, et comment arrêter. C'est exactement ce que cet e-book t'apporte.</p>
+          <p>et comprendre enfin pourquoi tu t'accroches, et comment arrêter. C'est exactement ce que cet e-book t'apporte.</p>
         </div>
       </div>
 
