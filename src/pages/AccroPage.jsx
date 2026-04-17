@@ -362,99 +362,102 @@ export default function AccroPage() {
         {/* LIVRE POUR TOI / PAS POUR TOI */}
         <div className="book-section">
           <p className="book-title">Pardon, cet e-book n'est pas fait pour toi si…</p>
-          <div className="flip-book">
-            <div className="flip-page-stack flip-page-stack-2" />
-            <div className="flip-page-stack flip-page-stack-1" />
+          <div className="book-wrap">
+            <div className="book-spine" />
+            <div className="book-pages">
+              <div className="book-pg-stack book-pg-stack-2" />
+              <div className="book-pg-stack book-pg-stack-1" />
 
-            {/* Page derrière — Pour toi si (révélée après le retournement) */}
-            <div
-              className="flip-page-back"
-              onTouchStart={e => {
-                if (!flipped) return
-                flipBackDragRef.current = { startX: e.touches[0].clientX, startY: e.touches[0].clientY, direction: null, triggered: false }
-              }}
-              onTouchMove={e => {
-                if (!flipped) return
-                const d = flipBackDragRef.current
-                if (d.triggered || d.direction === 'vertical') return
-                const dx = e.touches[0].clientX - d.startX
-                const dy = Math.abs(e.touches[0].clientY - d.startY)
-                if (Math.abs(dx) < 8 && dy < 8) return
-                if (!d.direction) d.direction = dy > Math.abs(dx) ? 'vertical' : 'horizontal'
-                if (d.direction === 'horizontal' && dx > 25) { d.triggered = true; setFlipped(false) }
-              }}
-            >
-              <button className="flip-back-btn" onClick={() => setFlipped(false)}>
-                <div className="flip-peek-arrow">
-                  <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
-                    <path d="M7 2l-4 5 4 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </button>
-              {[
-                "Tu retombes dans le même schéma, même quand tu te promets « cette fois ce sera différent. »",
-                "Tu t'attaches trop vite, puis tu attends, analyses, espères, et tu t'épuises doucement.",
-                "Tu sur-analyses les messages et les silences parce que tu ne sais plus ce qui est réel.",
-                "Tu veux des repères clairs pour reconnaître un vrai intérêt et arrêter de vivre dans le doute.",
-                "Tu ne veux plus perdre ton temps et ton cœur dans des relations qui n'avancent pas.",
-                "Tu veux revenir à toi : plus de calme, plus de clarté, et savoir ce que tu fais.",
-              ].map((text, i) => (
-                <div key={i} className="book-item">
-                  <span className="book-item-icon">✓</span>
-                  <span className="book-item-text">{text}</span>
-                </div>
-              ))}
-              <button className="flip-next-btn flip-cta" onClick={scrollToPaiement}>
-                Je veux mon e-book → 17€
-              </button>
-            </div>
-
-            {/* Page devant — Pas pour toi si (visible en premier) */}
-            <div
-              className={`flip-page-front${flipped ? ' flipped' : ''}`}
-              onTouchStart={e => {
-                if (flipped) return
-                flipDragRef.current = { startX: e.touches[0].clientX, startY: e.touches[0].clientY, direction: null, triggered: false }
-              }}
-              onTouchMove={e => {
-                if (flipped) return
-                const d = flipDragRef.current
-                if (d.triggered || d.direction === 'vertical') return
-                const dx = d.startX - e.touches[0].clientX
-                const dy = Math.abs(e.touches[0].clientY - d.startY)
-                if (Math.abs(dx) < 8 && dy < 8) return
-                if (!d.direction) d.direction = dy > Math.abs(dx) ? 'vertical' : 'horizontal'
-                if (d.direction === 'horizontal' && dx > 25) { d.triggered = true; setFlipped(true) }
-              }}
-            >
-              <div className="flip-page-face-front">
+              {/* Page derrière — Pour toi si */}
+              <div
+                className="book-pg-back"
+                onTouchStart={e => {
+                  if (!flipped) return
+                  flipBackDragRef.current = { startX: e.touches[0].clientX, startY: e.touches[0].clientY, direction: null, triggered: false }
+                }}
+                onTouchMove={e => {
+                  if (!flipped) return
+                  const d = flipBackDragRef.current
+                  if (d.triggered || d.direction === 'vertical') return
+                  const dx = e.touches[0].clientX - d.startX
+                  const dy = Math.abs(e.touches[0].clientY - d.startY)
+                  if (Math.abs(dx) < 8 && dy < 8) return
+                  if (!d.direction) d.direction = dy > Math.abs(dx) ? 'vertical' : 'horizontal'
+                  if (d.direction === 'horizontal' && dx > 25) { d.triggered = true; setFlipped(false) }
+                }}
+              >
+                <button className="book-btn-back" onClick={() => setFlipped(false)}>
+                  <div className="book-peek-arrow">
+                    <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
+                      <path d="M7 2l-4 5 4 5" stroke="#660A43" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </button>
                 {[
-                  "Tu veux « le faire changer » ou trouver la phrase parfaite pour qu'il devienne sérieux.",
-                  "Tu n'as aucune envie de regarder tes propres schémas, parce que c'est toujours « la faute des hommes ».",
-                  "Tu veux rester dans le doute plutôt qu'apprendre à voir clair, même si ça fait un peu mal au début.",
+                  "Tu retombes dans le même schéma, même quand tu te promets « cette fois ce sera différent. »",
+                  "Tu t'attaches trop vite, puis tu attends, analyses, espères, et tu t'épuises doucement.",
+                  "Tu sur-analyses les messages et les silences parce que tu ne sais plus ce qui est réel.",
+                  "Tu veux des repères clairs pour reconnaître un vrai intérêt et arrêter de vivre dans le doute.",
+                  "Tu ne veux plus perdre ton temps et ton cœur dans des relations qui n'avancent pas.",
+                  "Tu veux revenir à toi : plus de calme, plus de clarté, et savoir ce que tu fais.",
                 ].map((text, i) => (
                   <div key={i} className="book-item">
-                    <span className="book-item-icon">✕</span>
+                    <span className="book-item-icon">✓</span>
                     <span className="book-item-text">{text}</span>
                   </div>
                 ))}
-                <button className="flip-next-btn" onClick={() => setFlipped(true)}>
-                  Par contre, c'est pour toi si… →
+                <button className="book-btn-cta" onClick={scrollToPaiement}>
+                  Je veux mon e-book → 17€
                 </button>
               </div>
-              <div className="flip-page-face-back" />
-            </div>
 
-            {/* Peek tab */}
-            {!flipped && (
-              <div className="flip-peek-tab" onClick={() => setFlipped(true)}>
-                <div className="flip-peek-arrow">
-                  <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
-                    <path d="M3 2l4 5-4 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+              {/* Page devant — Pas pour toi si */}
+              <div
+                className={`book-pg-front${flipped ? ' flipped' : ''}`}
+                onTouchStart={e => {
+                  if (flipped) return
+                  flipDragRef.current = { startX: e.touches[0].clientX, startY: e.touches[0].clientY, direction: null, triggered: false }
+                }}
+                onTouchMove={e => {
+                  if (flipped) return
+                  const d = flipDragRef.current
+                  if (d.triggered || d.direction === 'vertical') return
+                  const dx = d.startX - e.touches[0].clientX
+                  const dy = Math.abs(e.touches[0].clientY - d.startY)
+                  if (Math.abs(dx) < 8 && dy < 8) return
+                  if (!d.direction) d.direction = dy > Math.abs(dx) ? 'vertical' : 'horizontal'
+                  if (d.direction === 'horizontal' && dx > 25) { d.triggered = true; setFlipped(true) }
+                }}
+              >
+                <div className="book-face-front">
+                  {[
+                    "Tu veux « le faire changer » ou trouver la phrase parfaite pour qu'il devienne sérieux.",
+                    "Tu n'as aucune envie de regarder tes propres schémas, parce que c'est toujours « la faute des hommes ».",
+                    "Tu veux rester dans le doute plutôt qu'apprendre à voir clair, même si ça fait un peu mal au début.",
+                  ].map((text, i) => (
+                    <div key={i} className="book-item">
+                      <span className="book-item-icon">✕</span>
+                      <span className="book-item-text">{text}</span>
+                    </div>
+                  ))}
+                  <button className="book-btn-flip" onClick={() => setFlipped(true)}>
+                    Par contre, c'est pour toi si… →
+                  </button>
                 </div>
+                <div className="book-face-back" />
               </div>
-            )}
+
+              {/* Peek tab droite */}
+              {!flipped && (
+                <div className="book-peek-tab" onClick={() => setFlipped(true)}>
+                  <div className="book-peek-arrow">
+                    <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
+                      <path d="M3 2l4 5-4 5" stroke="#660A43" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
