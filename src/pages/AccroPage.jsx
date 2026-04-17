@@ -52,13 +52,10 @@ export default function AccroPage() {
   const [stripeSkeleton, setStripeSkeleton] = useState(true)
   const [stickyVisible, setStickyVisible] = useState(false)
   const [stickyAnimating, setStickyAnimating] = useState(false)
-  const [sliderPos, setSliderPos] = useState(55)
+  const [flipped, setFlipped] = useState(false)
 
   const narrativeEndRef = useRef(null)
   const paiementRef = useRef(null)
-  const baContainerRef = useRef(null)
-  const isDragging = useRef(false)
-  const touchStartRef = useRef({ x: 0, y: 0, decided: false })
   const carouselRef = useRef(null)
   const trackRef = useRef(null)
   const stickyHideTimer = useRef(null)
@@ -167,63 +164,6 @@ export default function AccroPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Book hint animation on scroll into view
-  useEffect(() => {
-    if (!baContainerRef.current) return
-    let triggered = false
-    function runHint() {
-      if (triggered) return
-      triggered = true
-      let start = null
-      function frame(ts) {
-        if (!start) start = ts
-        const p = Math.min((ts - start) / 1300, 1)
-        setSliderPos(55 - 28 * Math.sin(p * Math.PI))
-        if (p < 1) requestAnimationFrame(frame)
-        else setSliderPos(55)
-      }
-      requestAnimationFrame(frame)
-    }
-    const observer = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) runHint()
-    }, { threshold: 0.7 })
-    observer.observe(baContainerRef.current)
-    return () => observer.disconnect()
-  }, [])
-
-  // Book drag — only on horizontal touch, dissocié du scroll vertical
-  useEffect(() => {
-    function getPos(e) {
-      if (!baContainerRef.current) return 55
-      const rect = baContainerRef.current.getBoundingClientRect()
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX
-      return Math.min(88, Math.max(12, ((clientX - rect.left) / rect.width) * 100))
-    }
-    function onMove(e) {
-      if (!isDragging.current) return
-      if (e.touches) {
-        if (!touchStartRef.current.decided) {
-          const dx = Math.abs(e.touches[0].clientX - touchStartRef.current.x)
-          const dy = Math.abs(e.touches[0].clientY - touchStartRef.current.y)
-          if (dx < 4 && dy < 4) return
-          if (dy > dx) { isDragging.current = false; return }
-          touchStartRef.current.decided = true
-        }
-      }
-      setSliderPos(getPos(e))
-    }
-    function onUp() { isDragging.current = false; touchStartRef.current.decided = false }
-    window.addEventListener('mousemove', onMove)
-    window.addEventListener('mouseup', onUp)
-    window.addEventListener('touchmove', onMove, { passive: true })
-    window.addEventListener('touchend', onUp)
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('mouseup', onUp)
-      window.removeEventListener('touchmove', onMove)
-      window.removeEventListener('touchend', onUp)
-    }
-  }, [])
 
   // Carousel
   useEffect(() => {
@@ -420,43 +360,13 @@ export default function AccroPage() {
         {/* LIVRE POUR TOI / PAS POUR TOI */}
         <div className="book-section">
           <p className="book-title">Cet e-book est fait pour toi ?</p>
-          <p className="book-hint">← Glisse pour explorer →</p>
-          <div className="book-outer">
-          <div
-            className="book-spread"
-            ref={baContainerRef}
-            onMouseDown={e => { isDragging.current = true; touchStartRef.current = { x: e.clientX, y: e.clientY, decided: true } }}
-            onTouchStart={e => { isDragging.current = true; touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, decided: false } }}
-          >
-            <div className="book-page book-page-left" style={{ width: `${sliderPos}%` }}>
-              <p className="book-page-title">Pour toi si…</p>
-              {[
-                "Tu retombes dans le même schéma, même quand tu te promets \"cette fois ce sera différent.\"",
-                "Tu t'attaches trop vite, puis tu attends, analyses, espères, et tu t'épuises doucement.",
-                "Tu sur-analyses les messages et les silences parce que tu ne sais plus ce qui est réel.",
-                "Tu veux des repères clairs pour reconnaître un vrai intérêt et arrêter de vivre dans le doute.",
-                "Tu ne veux plus perdre ton temps et ton cœur dans des relations qui n'avancent pas.",
-                "Tu veux revenir à toi : plus de calme, plus de clarté, et savoir ce que tu fais.",
-              ].map((text, i) => (
-                <div key={i} className="book-item">
-                  <span className="book-item-icon">✓</span>
-                  <span className="book-item-text">{text}</span>
-                </div>
-              ))}
-              <div className="page-fold" />
-            </div>
-            <div className="book-spine">
-              <div className="book-handle">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M6 3l-4 6 4 6M12 3l4 6-4 6" stroke="#660A43" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-            </div>
-            <div className="book-page book-page-right">
+          <div className="flip-book">
+            {/* Page 2 — toujours derrière */}
+            <div className="flip-page-back">
               <p className="book-page-title">Pas pour toi si…</p>
               {[
-                "Tu veux \"le faire changer\" ou trouver la phrase parfaite pour qu'il devienne sérieux.",
-                "Tu n'as aucune envie de regarder tes propres schémas, parce que c'est toujours \"la faute des hommes.\"",
+                "Tu veux « le faire changer » ou trouver la phrase parfaite pour qu'il devienne sérieux.",
+                "Tu n'as aucune envie de regarder tes propres schémas, parce que c'est toujours « la faute des hommes ».",
                 "Tu veux rester dans le doute plutôt qu'apprendre à voir clair, même si ça fait un peu mal au début.",
               ].map((text, i) => (
                 <div key={i} className="book-item">
@@ -464,9 +374,41 @@ export default function AccroPage() {
                   <span className="book-item-text">{text}</span>
                 </div>
               ))}
-              <div className="page-fold" />
+              <button className="flip-back-btn" onClick={() => setFlipped(false)}>← Retour</button>
             </div>
-          </div>
+
+            {/* Page 1 — se retourne */}
+            <div className={`flip-page-front${flipped ? ' flipped' : ''}`}>
+              <div className="flip-page-face-front">
+                <p className="book-page-title">Pour toi si…</p>
+                {[
+                  "Tu retombes dans le même schéma, même quand tu te promets « cette fois ce sera différent. »",
+                  "Tu t'attaches trop vite, puis tu attends, analyses, espères, et tu t'épuises doucement.",
+                  "Tu sur-analyses les messages et les silences parce que tu ne sais plus ce qui est réel.",
+                  "Tu veux des repères clairs pour reconnaître un vrai intérêt et arrêter de vivre dans le doute.",
+                  "Tu ne veux plus perdre ton temps et ton cœur dans des relations qui n'avancent pas.",
+                  "Tu veux revenir à toi : plus de calme, plus de clarté, et savoir ce que tu fais.",
+                ].map((text, i) => (
+                  <div key={i} className="book-item">
+                    <span className="book-item-icon">✓</span>
+                    <span className="book-item-text">{text}</span>
+                  </div>
+                ))}
+                <button className="flip-next-btn" onClick={() => setFlipped(true)}>
+                  Pas pour toi ? Tourner la page →
+                </button>
+              </div>
+              <div className="flip-page-face-back" />
+            </div>
+
+            {/* Onglet peek visible sur la droite */}
+            {!flipped && (
+              <div className="flip-peek-tab" onClick={() => setFlipped(true)}>
+                <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                  <path d="M3 4l4 5-4 5" stroke="#9b7b6a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            )}
           </div>
         </div>
 
