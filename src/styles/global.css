@@ -435,18 +435,18 @@ p strong, p em { color: #660A43; }
 .book-spine {
   width: 24px;
   flex-shrink: 0;
-  background: linear-gradient(to right, #0d0402 0%, #1e0904 18%, #4a1f0a 42%, #5a2810 52%, #3d1508 68%, #1a0805 85%, #0d0402 100%);
+  background: linear-gradient(to right, #3a0620 0%, #5c0e3c 30%, #7a1655 55%, #5c0e3c 75%, #3a0620 100%);
   border-radius: 6px 0 0 6px;
   position: relative;
   z-index: 5;
-  box-shadow: inset -4px 0 10px rgba(0,0,0,0.65), inset 3px 0 5px rgba(255,190,80,0.12), inset 1px 0 2px rgba(255,210,110,0.18);
+  box-shadow: inset -3px 0 8px rgba(0,0,0,0.4), inset 2px 0 4px rgba(255,180,200,0.12);
 }
 .book-spine::after {
   content: '';
   position: absolute;
   top: 12%; bottom: 12%;
   left: 50%; width: 1px;
-  background: linear-gradient(to bottom, transparent, rgba(255,190,80,0.18) 30%, rgba(255,190,80,0.18) 70%, transparent);
+  background: linear-gradient(to bottom, transparent, rgba(255,180,200,0.2) 30%, rgba(255,180,200,0.2) 70%, transparent);
 }
 /* Zone pages — grille pour l'empilement */
 .book-pages {
@@ -579,11 +579,11 @@ p strong, p em { color: #660A43; }
 /* Titre couverture */
 .book-cover-title {
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-size: 19px;
   font-weight: 700;
   color: rgba(255, 230, 210, 0.95);
-  line-height: 1.45;
-  margin: 0 0 10px;
+  line-height: 1.4;
+  margin: 0 0 12px;
 }
 .book-cover-divider {
   height: 1px;
