@@ -365,14 +365,6 @@ export default function AccroPage() {
         </div>
         <div ref={narrativeEndRef} id="narrative-end" />
 
-        <div className="abri-track-wrap" ref={carouselRef}>
-          <div className="abri-track" ref={trackRef} />
-        </div>
-
-        <button className="cta-scroll" onClick={scrollToPaiement}>
-          Je choisis de comprendre → 17€
-        </button>
-
         {/* QUIZ */}
         <div className="quiz-section">
           <p className="quiz-intro">Est-ce que tu te reconnais là-dedans?</p>
@@ -531,6 +523,22 @@ export default function AccroPage() {
           </div>
         </div>
 
+        {/* BÉNÉFICES */}
+        <div className="benefits-section">
+          <p className="benefits-title">Concrètement, après ce livre…</p>
+          {[
+            "Tu arrêtes de perdre des heures à analyser ses messages, tu lis les intentions, pas les mots.",
+            "Tu reconnais très tôt quand tu donnes trop à quelqu'un qui donne trop peu.",
+            "Tu dates avec plus de calme, moins de doute, et sans cette tension permanente.",
+            "Tu n'attends plus d'être choisie. Tu choisis.",
+          ].map((text, i) => (
+            <div key={i} className="benefits-item">
+              <span className="benefits-check">✓</span>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+
         {/* OBJECTIONS */}
         <div className="obj-section" ref={objSectionRef}>
           <p className="obj-title">Tu te demandes peut-être…</p>
@@ -563,22 +571,6 @@ export default function AccroPage() {
           </div>
         </div>
 
-        {/* BÉNÉFICES */}
-        <div className="benefits-section">
-          <p className="benefits-title">Concrètement, après ce livre…</p>
-          {[
-            "Tu arrêtes de perdre des heures à analyser ses messages, tu lis les intentions, pas les mots.",
-            "Tu reconnais très tôt quand tu donnes trop à quelqu'un qui donne trop peu.",
-            "Tu dates avec plus de calme, moins de doute, et sans cette tension permanente.",
-            "Tu n'attends plus d'être choisie. Tu choisis.",
-          ].map((text, i) => (
-            <div key={i} className="benefits-item">
-              <span className="benefits-check">✓</span>
-              <p>{text}</p>
-            </div>
-          ))}
-        </div>
-
         {/* INTERRUPTEUR */}
         <div className={`abri-section${toggleOn ? ' active' : ''}`}>
           <div className="abri-left">
@@ -601,6 +593,11 @@ export default function AccroPage() {
               Je veux mon e-book → 17€
             </button>
           </div>
+        </div>
+
+        {/* CAROUSEL */}
+        <div className="abri-track-wrap" style={{ marginTop: '72px' }} ref={carouselRef}>
+          <div className="abri-track" ref={trackRef} />
         </div>
 
         {/* PAIEMENT */}
