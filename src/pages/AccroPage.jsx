@@ -575,6 +575,11 @@ export default function AccroPage() {
           </div>
         </div>
 
+        {/* CAROUSEL */}
+        <div className="abri-track-wrap" style={{ marginTop: '72px' }} ref={carouselRef}>
+          <div className="abri-track" ref={trackRef} />
+        </div>
+
         {/* INTERRUPTEUR */}
         <div className={`abri-section${toggleOn ? ' active' : ''}`}>
           <div className="abri-left">
@@ -597,11 +602,6 @@ export default function AccroPage() {
               Je veux mon e-book → 17€
             </button>
           </div>
-        </div>
-
-        {/* CAROUSEL */}
-        <div className="abri-track-wrap" style={{ marginTop: '72px' }} ref={carouselRef}>
-          <div className="abri-track" ref={trackRef} />
         </div>
 
         {/* PAIEMENT */}
