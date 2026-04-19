@@ -241,14 +241,15 @@ p strong, p em { color: #660A43; }
   min-height: 16px;
 }
 
-.order-bump { display: flex; align-items: flex-start; gap: 12px; border: 2px dashed rgba(102,10,67,0.3); border-radius: 12px; padding: 14px; margin-bottom: 16px; cursor: pointer; transition: all 0.2s ease; background: transparent; }
+.order-bump { display: flex; flex-direction: column; gap: 10px; border: 2px dashed rgba(102,10,67,0.3); border-radius: 12px; padding: 14px; margin-bottom: 16px; cursor: pointer; transition: all 0.2s ease; background: transparent; }
 .order-bump.selected { border-color: #660A43; background: rgba(102,10,67,0.05); }
-.order-bump-check { width: 20px; height: 20px; min-width: 20px; border-radius: 5px; border: 2px solid rgba(102,10,67,0.4); background: transparent; display: flex; align-items: center; justify-content: center; margin-top: 2px; transition: all 0.2s ease; }
+.order-bump-title { font-size: 13px; font-weight: 600; color: var(--brun); line-height: 1.4; }
+.order-bump-row { display: flex; align-items: center; gap: 10px; }
+.order-bump-check { width: 20px; height: 20px; min-width: 20px; border-radius: 5px; border: 2px solid rgba(102,10,67,0.4); background: transparent; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s ease; }
 .order-bump.selected .order-bump-check { background: #660A43; border-color: #660A43; }
 .order-bump-check svg { width: 11px; height: 11px; }
 .order-bump-img { width: 52px; height: 68px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
 .order-bump-content { flex: 1; }
-.order-bump-title { font-size: 14px; color: var(--brun); line-height: 1.4; margin-bottom: 4px; }
 .order-bump-sub { font-size: 12px; color: var(--brun2); line-height: 1.5; margin-bottom: 6px; }
 .order-bump-price { font-size: 13px; color: #660A43; }
 .order-bump-old { text-decoration: line-through; color: var(--brun2); font-size: 12px; }

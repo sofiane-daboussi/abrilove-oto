@@ -73,6 +73,7 @@ export default function AccroPage() {
   const [stickyAnimating, setStickyAnimating] = useState(false)
   const [flipped, setFlipped] = useState(false)
   const [addBump, setAddBump] = useState(false)
+  const [addBump2, setAddBump2] = useState(false)
   const [objFlipped, setObjFlipped] = useState(OBJECTIONS.map(() => false))
   const objSectionRef = useRef(null)
   const flipDragRef = useRef({ startX: 0, startY: 0, direction: null, triggered: false })
@@ -192,8 +193,9 @@ export default function AccroPage() {
   // Mise à jour montant Stripe si bump change
   useEffect(() => {
     if (!elementsRef.current) return
-    elementsRef.current.update({ amount: addBump ? 2600 : 1700 })
-  }, [addBump])
+    const total = 1700 + (addBump ? 900 : 0) + (addBump2 ? 900 : 0)
+    elementsRef.current.update({ amount: total })
+  }, [addBump, addBump2])
 
   // Auto-flip première carte objection
   useEffect(() => {
@@ -318,7 +320,7 @@ export default function AccroPage() {
     try {
       const res = await fetch(WORKER_URL + '/create-payment-intent', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ profil: 'accro', email, bump: addBump })
+        body: JSON.stringify({ profil: 'accro', email, bump: addBump, bump2: addBump2 })
       })
       const data = await res.json()
       if (data.error) { setPayError('Erreur : ' + data.error); setPaying(false); return }
@@ -615,11 +617,11 @@ export default function AccroPage() {
         {/* PAIEMENT */}
         <div className="payment-block" ref={paiementRef} id="paiement">
           <span className="offer-label">✦ Offre réservée · résultats du quiz</span>
-          <h2>{addBump ? 'Accro aux mauvais hommes + Applis de rencontre' : 'Accro aux mauvais hommes'}</h2>
-          <p className="offer-sub">{addBump ? '2 e-books · PDF envoyés immédiatement par mail · Mises à jour à vie' : '~200 pages · PDF envoyé immédiatement par mail · Mises à jour à vie'}</p>
+          <h2>{addBump && addBump2 ? 'Pack 3 e-books' : addBump ? 'Accro aux mauvais hommes + Applis de rencontre' : addBump2 ? 'Accro aux mauvais hommes + Tu t\'es encore fait ghoster' : 'Accro aux mauvais hommes'}</h2>
+          <p className="offer-sub">{(addBump || addBump2) ? `${1 + (addBump ? 1 : 0) + (addBump2 ? 1 : 0)} e-books · PDF envoyés immédiatement par mail · Mises à jour à vie` : '~200 pages · PDF envoyé immédiatement par mail · Mises à jour à vie'}</p>
           <div className="price-row">
-            <span className="price-current">{addBump ? '26€' : '17€'}</span>
-            <span className="price-old">{addBump ? '68€' : '34€'}</span>
+            <span className="price-current">{17 + (addBump ? 9 : 0) + (addBump2 ? 9 : 0)}€</span>
+            <span className="price-old">{34 + (addBump ? 34 : 0) + (addBump2 ? 18 : 0)}€</span>
           </div>
           <p className="price-note">Paiement unique · Accès à vie</p>
           <div className="timer-row">
@@ -638,20 +640,36 @@ export default function AccroPage() {
               )}
               <div id="payment-element" />
               <div className={`order-bump${addBump ? ' selected' : ''}`} onClick={() => setAddBump(v => !v)}>
-                <div className="order-bump-check">
-                  {addBump && <svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                <p className="order-bump-title">Ajoute <strong>« Comment trouver l'amour sur les applications de rencontre »</strong></p>
+                <div className="order-bump-row">
+                  <div className="order-bump-check">
+                    {addBump && <svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  </div>
+                  <div className="order-bump-content">
+                    <p className="order-bump-sub">Un e-book de 250 pages pour transformer ton approche du dating, sans perdre ton temps ni te perdre en chemin.</p>
+                    <p className="order-bump-price"><span className="order-bump-old">34€</span> → <strong>+9€ seulement</strong></p>
+                  </div>
+                  <img src="/images/dating.png" alt="Applis de rencontre" className="order-bump-img" />
                 </div>
-                <img src="/images/dating.png" alt="Applis de rencontre" className="order-bump-img" />
-                <div className="order-bump-content">
-                  <p className="order-bump-title">Ajoute <strong>« Applis de rencontre »</strong></p>
-                  <p className="order-bump-sub">Comment utiliser les applis pour rencontrer quelqu'un de bien — sans y perdre ton énergie.</p>
-                  <p className="order-bump-price"><span className="order-bump-old">34€</span> → <strong>+9€ seulement</strong></p>
+              </div>
+
+              <div className={`order-bump${addBump2 ? ' selected' : ''}`} onClick={() => setAddBump2(v => !v)}>
+                <p className="order-bump-title">Ajoute <strong>« Tu t'es encore fait ghoster »</strong></p>
+                <div className="order-bump-row">
+                  <div className="order-bump-check">
+                    {addBump2 && <svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  </div>
+                  <div className="order-bump-content">
+                    <p className="order-bump-sub">Comprendre pourquoi tu as été ghostée, guérir le rejet, et poser les bases d'un amour sain.</p>
+                    <p className="order-bump-price"><span className="order-bump-old">18€</span> → <strong>+9€ seulement</strong></p>
+                  </div>
+                  <img src="/images/ghosting.png" alt="Tu t'es encore fait ghoster" className="order-bump-img" />
                 </div>
               </div>
 
               {payError && <div className="payment-errors">{payError}</div>}
               <button className="btn-pay" disabled={paying} onClick={handlePay}>
-                <span>{paying ? 'Traitement...' : (addBump ? 'Obtenir mes 2 e-books →' : 'Obtenir mon e-book →')}</span>
+                <span>{paying ? 'Traitement...' : (addBump && addBump2 ? 'Obtenir mes 3 e-books →' : (addBump || addBump2) ? 'Obtenir mes 2 e-books →' : 'Obtenir mon e-book →')}</span>
                 {paying && <div className="spinner" />}
               </button>
               <div className="secure-note">
