@@ -190,6 +190,16 @@ export default function AccroPage() {
   }, [])
 
 
+  // Fade-in au scroll
+  useEffect(() => {
+    const els = document.querySelectorAll('.fade-section')
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target) } })
+    }, { threshold: 0.08 })
+    els.forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
   // Mise à jour montant Stripe si bump change
   useEffect(() => {
     if (!elementsRef.current) return
@@ -358,7 +368,7 @@ export default function AccroPage() {
           <br />Et tu le savais déjà.
         </h1>
 
-        <div className="narrative">
+        <div className="narrative fade-section">
           <p>Tu viens de finir ce quiz. Et quelque part, tu n'es pas vraiment surprise par le résultat.</p>
           <p>Parce que tu le vis depuis longtemps.</p>
           <p>Cette façon de t'emballer pour quelqu'un en quelques jours. De commencer à imaginer une histoire avant même qu'elle existe vraiment. De surveiller ton téléphone sans vraiment te l'avouer.</p>
@@ -382,7 +392,7 @@ export default function AccroPage() {
         </button>
 
         {/* QUIZ */}
-        <div className="quiz-section">
+        <div className="quiz-section fade-section">
           <p className="quiz-intro">Est-ce que tu te reconnais là-dedans?</p>
           <p className="quiz-sub">Coche ce qui te parle.</p>
           {QUIZ_ITEMS.map((text, i) => (
@@ -402,7 +412,7 @@ export default function AccroPage() {
         </div>
 
         {/* SI TU NE CHANGES RIEN */}
-        <div className="inaction-section">
+        <div className="inaction-section fade-section">
           <p className="inaction-title">Si tu ne changes rien…</p>
           <div className="inaction-list">
             {[
@@ -422,7 +432,7 @@ export default function AccroPage() {
         </div>
 
         {/* LIVRE POUR TOI / PAS POUR TOI */}
-        <div className="book-section">
+        <div className="book-section fade-section">
           <div className="book-wrap">
             <div className="book-spine" />
             <div className="book-pages">
@@ -540,7 +550,7 @@ export default function AccroPage() {
         </div>
 
         {/* BÉNÉFICES */}
-        <div className="benefits-section">
+        <div className="benefits-section fade-section">
           <p className="benefits-title">Concrètement, après ce livre…</p>
           {[
             "Tu arrêtes de perdre des heures à analyser ses messages, tu lis les intentions, pas les mots.",
@@ -556,7 +566,7 @@ export default function AccroPage() {
         </div>
 
         {/* OBJECTIONS */}
-        <div className="obj-section" ref={objSectionRef}>
+        <div className="obj-section fade-section" ref={objSectionRef}>
           <p className="obj-title">Tu te demandes peut-être…</p>
           <p className="obj-hint"><span>👇</span> Touche une carte pour voir la réponse</p>
           <div className="obj-grid">
@@ -588,7 +598,7 @@ export default function AccroPage() {
         </div>
 
         {/* CAROUSEL */}
-        <p className="carousel-title">Elles aussi étaient à ta place.</p>
+        <p className="carousel-title fade-section">Elles aussi étaient à ta place.</p>
         <div className="abri-track-wrap" ref={carouselRef}>
           <div className="abri-track" ref={trackRef} />
         </div>
@@ -618,7 +628,7 @@ export default function AccroPage() {
         </div>
 
         {/* PAIEMENT */}
-        <div className="payment-block" ref={paiementRef} id="paiement">
+        <div className="payment-block fade-section" ref={paiementRef} id="paiement">
           <span className="offer-label">✦ Offre réservée · résultats du quiz</span>
           <h2>{addBump && addBump2 ? 'Pack 3 e-books' : addBump ? 'Accro aux mauvais hommes + Applis de rencontre' : addBump2 ? 'Accro aux mauvais hommes + Tu t\'es encore fait ghoster' : 'Accro aux mauvais hommes'}</h2>
           <p className="offer-sub">{(addBump || addBump2) ? `${1 + (addBump ? 1 : 0) + (addBump2 ? 1 : 0)} e-books · PDF envoyés immédiatement par mail · Mises à jour à vie` : '~200 pages · PDF envoyé immédiatement par mail · Mises à jour à vie'}</p>
