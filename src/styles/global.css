@@ -828,6 +828,7 @@ p strong, p em { color: #660A43; }
   width: 100%;
   border-radius: 20px;
   padding: 36px 28px;
+  margin-top: 72px;
   display: flex;
   align-items: center;
   gap: 32px;
