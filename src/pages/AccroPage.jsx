@@ -72,6 +72,7 @@ export default function AccroPage() {
   const [stickyVisible, setStickyVisible] = useState(false)
   const [stickyAnimating, setStickyAnimating] = useState(false)
   const [flipped, setFlipped] = useState(false)
+  const [addBump, setAddBump] = useState(false)
   const [objFlipped, setObjFlipped] = useState(OBJECTIONS.map(() => false))
   const objSectionRef = useRef(null)
   const flipDragRef = useRef({ startX: 0, startY: 0, direction: null, triggered: false })
@@ -187,6 +188,12 @@ export default function AccroPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+
+  // Mise à jour montant Stripe si bump change
+  useEffect(() => {
+    if (!elementsRef.current) return
+    elementsRef.current.update({ amount: addBump ? 2600 : 1700 })
+  }, [addBump])
 
   // Auto-flip première carte objection
   useEffect(() => {
@@ -311,7 +318,7 @@ export default function AccroPage() {
     try {
       const res = await fetch(WORKER_URL + '/create-payment-intent', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ profil: 'accro', email })
+        body: JSON.stringify({ profil: 'accro', email, bump: addBump })
       })
       const data = await res.json()
       if (data.error) { setPayError('Erreur : ' + data.error); setPaying(false); return }
@@ -630,6 +637,17 @@ export default function AccroPage() {
                 </div>
               )}
               <div id="payment-element" />
+              <div className={`order-bump${addBump ? ' selected' : ''}`} onClick={() => setAddBump(v => !v)}>
+                <div className="order-bump-check">
+                  {addBump && <svg viewBox="0 0 12 10" fill="none"><polyline points="1,5 4.5,8.5 11,1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                </div>
+                <div className="order-bump-content">
+                  <p className="order-bump-title">Ajoute <strong>« Applis de rencontre »</strong></p>
+                  <p className="order-bump-sub">Comment utiliser les applis pour rencontrer quelqu'un de bien — sans y perdre ton énergie.</p>
+                  <p className="order-bump-price"><span className="order-bump-old">34€</span> → <strong>+9€ seulement</strong></p>
+                </div>
+              </div>
+
               {payError && <div className="payment-errors">{payError}</div>}
               <button className="btn-pay" disabled={paying} onClick={handlePay}>
                 <span>{paying ? 'Traitement...' : 'Obtenir mon e-book →'}</span>
