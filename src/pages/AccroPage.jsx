@@ -599,12 +599,12 @@ export default function AccroPage() {
 
         {/* CAROUSEL */}
         <p className="carousel-title fade-section">Elles aussi étaient à ta place.</p>
-        <div className="abri-track-wrap" ref={carouselRef}>
+        <div className="abri-track-wrap fade-section" ref={carouselRef}>
           <div className="abri-track" ref={trackRef} />
         </div>
 
         {/* INTERRUPTEUR */}
-        <div className={`abri-section${toggleOn ? ' active' : ''}`}>
+        <div className={`abri-section fade-section${toggleOn ? ' active' : ''}`}>
           <div className="abri-left">
             <h2>Tu as deux choix :</h2>
           </div>
@@ -694,7 +694,7 @@ export default function AccroPage() {
         </div>
 
         {/* BLOC IA */}
-        <div style={{ marginTop: '72px' }}>
+        <div className="fade-section" style={{ marginTop: '72px' }}>
           <div style={{ display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: '240px' }}>
               <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 700, color: '#660A43', marginBottom: '16px', lineHeight: 1.3 }}>Tu as une question avant de te décider?</h3>
@@ -739,7 +739,7 @@ export default function AccroPage() {
         </div>
 
         {/* FAQ */}
-        <div style={{ marginTop: '72px' }}>
+        <div className="fade-section" style={{ marginTop: '72px' }}>
           <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#660A43', marginBottom: '20px', textAlign: 'center' }}>Questions fréquentes</h3>
           <div className="faq-list">
             {FAQ_ITEMS.map((item, i) => (
