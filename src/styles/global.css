@@ -887,7 +887,11 @@ p strong, p em { color: #660A43; }
 .toc-item:first-child { border-top: 1px solid rgba(102,10,67,0.12); }
 .toc-num { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: #660A43; opacity: 0.35; flex-shrink: 0; min-width: 24px; letter-spacing: 0.04em; }
 .toc-chapter { font-size: 14px; font-weight: 400; color: var(--brun); line-height: 1.5; }
-.toc-cta { margin-top: 28px; }
+.toc-hidden { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.4s ease; overflow: hidden; }
+.toc-hidden > div { min-height: 0; overflow: hidden; }
+.toc-hidden.open { grid-template-rows: 1fr; }
+.toc-toggle-btn { margin-top: 4px; background: none; border: none; color: #660A43; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; padding: 10px 0; text-align: left; }
+.toc-cta { margin-top: 20px; }
 
 .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.55); z-index: 999; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
 

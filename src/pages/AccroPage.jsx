@@ -85,6 +85,7 @@ export default function AccroPage() {
   const [stickyVisible, setStickyVisible] = useState(false)
   const [stickyAnimating, setStickyAnimating] = useState(false)
   const [flipped, setFlipped] = useState(false)
+  const [tocExpanded, setTocExpanded] = useState(false)
   const [addBump, setAddBump] = useState(false)
   const [addBump2, setAddBump2] = useState(false)
   const [objFlipped, setObjFlipped] = useState(OBJECTIONS.map(() => false))
@@ -621,13 +622,26 @@ export default function AccroPage() {
           <p className="toc-eyebrow">À l'intérieur du livre</p>
           <h2 className="toc-heading">10 chapitres pour comprendre<br/>et te libérer.</h2>
           <div className="toc-list">
-            {TOC_ITEMS.map((title, i) => (
+            {TOC_ITEMS.slice(0, 3).map((title, i) => (
               <div key={i} className="toc-item">
                 <span className="toc-num">{String(i + 1).padStart(2, '0')}</span>
                 <p className="toc-chapter">{title}</p>
               </div>
             ))}
+            <div className={`toc-hidden${tocExpanded ? ' open' : ''}`}>
+              <div>
+                {TOC_ITEMS.slice(3).map((title, i) => (
+                  <div key={i} className="toc-item">
+                    <span className="toc-num">{String(i + 4).padStart(2, '0')}</span>
+                    <p className="toc-chapter">{title}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+          <button className="toc-toggle-btn" onClick={() => setTocExpanded(v => !v)}>
+            {tocExpanded ? 'Réduire ↑' : `Voir les ${TOC_ITEMS.length} chapitres ↓`}
+          </button>
           <button className="cta-scroll toc-cta" onClick={scrollToPaiement}>
             Je veux mes 10 chapitres → 17€
           </button>
