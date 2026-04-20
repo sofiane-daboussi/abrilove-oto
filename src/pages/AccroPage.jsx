@@ -619,8 +619,13 @@ export default function AccroPage() {
 
         {/* TABLE DES MATIÈRES */}
         <div className="toc-section fade-section">
-          <p className="toc-eyebrow">À l'intérieur du livre</p>
-          <h2 className="toc-heading">10 chapitres pour comprendre<br/>et te libérer.</h2>
+          <div className="toc-header">
+            <div className="toc-header-left">
+              <span className="toc-eyebrow">Sommaire</span>
+              <h2 className="toc-heading">Ce que tu vas découvrir.</h2>
+            </div>
+            <span className="toc-badge">10 chapitres</span>
+          </div>
           <div className="toc-list">
             {TOC_ITEMS.slice(0, 3).map((title, i) => (
               <div key={i} className="toc-item">
@@ -631,7 +636,7 @@ export default function AccroPage() {
             <div className={`toc-hidden${tocExpanded ? ' open' : ''}`}>
               <div>
                 {TOC_ITEMS.slice(3).map((title, i) => (
-                  <div key={i} className="toc-item">
+                  <div key={i} className="toc-item" style={{ animationDelay: `${i * 0.06}s` }}>
                     <span className="toc-num">{String(i + 4).padStart(2, '0')}</span>
                     <p className="toc-chapter">{title}</p>
                   </div>
@@ -640,7 +645,14 @@ export default function AccroPage() {
             </div>
           </div>
           <button className="toc-toggle-btn" onClick={() => setTocExpanded(v => !v)}>
-            {tocExpanded ? 'Réduire ↑' : `Voir les ${TOC_ITEMS.length} chapitres ↓`}
+            <span className="toc-toggle-line" />
+            <span className="toc-toggle-label">{tocExpanded ? 'Réduire' : `+ ${TOC_ITEMS.length - 3} chapitres`}</span>
+            <span className={`toc-toggle-arrow${tocExpanded ? ' flipped' : ''}`}>
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path d="M2 4.5l4.5 4.5 4.5-4.5" stroke="#660A43" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+            <span className="toc-toggle-line" />
           </button>
           <button className="cta-scroll toc-cta" onClick={scrollToPaiement}>
             Je veux mes 10 chapitres → 17€
