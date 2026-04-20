@@ -887,8 +887,10 @@ p strong, p em { color: #660A43; }
 .toc-badge { flex-shrink: 0; background: rgba(102,10,67,0.08); color: #660A43; font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 20px; letter-spacing: 0.04em; white-space: nowrap; margin-top: 4px; }
 .toc-list { display: flex; flex-direction: column; border-top: 1px solid rgba(102,10,67,0.12); }
 .toc-item { display: flex; align-items: flex-start; gap: 16px; padding: 14px 10px; border-bottom: 1px solid rgba(102,10,67,0.10); border-radius: 8px; transition: background 0.2s ease, padding-left 0.25s ease; cursor: default; }
-.toc-item:hover { background: rgba(102,10,67,0.04); padding-left: 16px; }
-.toc-item:hover .toc-num { opacity: 0.65; }
+@media (hover: hover) {
+  .toc-item:hover { background: rgba(102,10,67,0.04); padding-left: 16px; }
+  .toc-item:hover .toc-num { opacity: 0.65; }
+}
 .toc-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #660A43; opacity: 0.15; flex-shrink: 0; width: 32px; line-height: 1.2; transition: opacity 0.2s ease; }
 .toc-chapter { font-size: 14px; font-weight: 400; color: var(--brun); line-height: 1.55; padding-top: 3px; }
 .toc-hidden { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s ease; overflow: hidden; }
