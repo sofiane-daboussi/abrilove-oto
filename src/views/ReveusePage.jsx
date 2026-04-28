@@ -389,7 +389,7 @@ export default function ReveusePage() {
           <p>Et quand le message tarde. Quand le ton change un peu. Quand il dit « on verra » au lieu de « oui », <strong>ton cœur attend.</strong> Tu espères. Tu excuses. Tu te dis que ça va changer.</p>
           <p>T'as pas besoin qu'on te l'explique. Tu sais exactement de quoi on parle.</p>
           <p>De l'extérieur, tout a l'air sous contrôle. Tu es intelligente, autonome, tu gères ta vie.</p>
-          <p>Mais à l'intérieur, il y a souvent cette fatigue — <em>la fatigue de l'espoir.</em> D'attendre quelqu'un qui ne choisit pas clairement. De ne jamais savoir vraiment où tu en es.</p>
+          <p>Mais à l'intérieur, il y a souvent cette fatigue,<em>la fatigue de l'espoir.</em> D'attendre quelqu'un qui ne choisit pas clairement. De ne jamais savoir vraiment où tu en es.</p>
           <p>Et cette pensée qui revient : <em>« Est-ce qu'un jour quelqu'un sera simplement clair avec moi ? »</em></p>
           <p>Tu rencontres quelqu'un. Il y a quelque chose de prometteur, de doux, de potentiel. Tu te dis que cette fois, ce sera différent.</p>
           <p>Et puis… quelque chose se répète. Pas exactement la même histoire. Pas exactement le même homme. Mais toujours la même attente. <strong>Un « peut-être ». Un flou. Une fatigue familière.</strong></p>
