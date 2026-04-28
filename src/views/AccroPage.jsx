@@ -59,11 +59,12 @@ const TOC_ITEMS = [
 ]
 
 const FAQ_ITEMS = [
-  { q: "C'est quoi exactement cet e-book?", a: "Un guide de ~200 pages qui décrypte le profil \"Amoureuse Accro\" : pourquoi tu t'attaches à des hommes qui ne sont pas disponibles, comment sortir de ce schéma, et ce que tu mérites vraiment. Envoyé en PDF immédiatement après paiement." },
-  { q: "Comment je reçois mon e-book?", a: "Tu entres ton email dans le formulaire de paiement, et tu reçois le PDF directement dans ta boîte mail dans les minutes qui suivent. Pense à vérifier tes spams si tu ne le vois pas." },
-  { q: "C'est sécurisé de payer ici?", a: "Oui. Le paiement est géré par Stripe, la référence mondiale en matière de sécurité des paiements en ligne. Tes données bancaires ne passent jamais par nos serveurs." },
-  { q: "Est-ce que ça correspond à ma situation?", a: "Si tu te retrouves à analyser ses messages en boucle, à attendre qu'il revienne, à t'accrocher même quand ça fait mal, oui, ce livre a été écrit pour toi." },
-  { q: "C'est un achat unique?", a: "Oui, 17€ une seule fois. Pas d'abonnement, pas de frais cachés. Tu gardes l'accès à vie, et toutes les mises à jour futures sont incluses." },
+  { q: "L'accès aux contenus est-il permanent ?", a: "L'accès aux contenus est à vie." },
+  { q: "Puis-je lire l'e-book à mon rythme ?", a: "Oui. Chaque chapitre peut être lu séparément, à ton propre rythme. Ce n'est pas un livre « à lire de A à Z », mais un guide pratique auquel tu peux revenir quand tu en as besoin." },
+  { q: "Comment je reçois mon e-book ?", a: "Après le paiement, le fichier PDF sera envoyé automatiquement à ton adresse e-mail. Pense à vérifier ton dossier « Spam » ou « Promotions » si tu ne le vois pas tout de suite." },
+  { q: "Sur quels appareils puis-je le lire ?", a: "L'e-book est au format PDF, tu peux donc le lire sur ordinateur, tablette et téléphone, où que ce soit, comme c'est le plus pratique pour toi." },
+  { q: "C'est juste de la théorie ?", a: "C'est avant tout de la pratique. Dans l'e-book, tu trouveras non seulement de la connaissance, mais aussi des exemples concrets de conversations, de stratégies, de messages, et même des exercices pour travailler par toi-même." },
+  { q: "Le paiement est-il sécurisé ?", a: "En toute sécurité, par carte bancaire ou par virement en ligne rapide. Tout est chiffré et géré par un opérateur de paiement de confiance." },
 ]
 
 function isValidEmail(e) {
@@ -434,7 +435,8 @@ export default function AccroPage() {
               "Tu continueras à perdre des heures dans des conversations qui se terminent en silence.",
               "Tu continueras à te demander : « Est-ce que le problème, c'est moi ? »",
               "Tu continueras à sur-analyser des messages qui n'ont aucune vraie intention.",
-              "Tu continueras à baisser tes standards en espérant que cette fois, ça sera différent.",
+              "Tu continueras à baisser tes standards en te disant : « peut-être que cette fois, ça va marcher ».",
+              "Ton cœur continuera à se briser, pas parce que l'amour n'existe pas, mais parce que la clarté n'est jamais là.",
             ].map((item, i) => (
               <div key={i} className="inaction-item">
                 <span className="inaction-dot">💔</span>
@@ -442,7 +444,7 @@ export default function AccroPage() {
               </div>
             ))}
           </div>
-          <p className="inaction-conclusion">Pas parce qu'il y a quelque chose qui cloche chez toi. Parce que tu avances sans carte.</p>
+          <p className="inaction-conclusion">Le pire, c'est que ça s'installe doucement : tu commences à douter de toi. Pas parce que tu es faible, mais parce que tu avances sans outils, sans structure, sans méthode claire pour distinguer un vrai intérêt de signaux vides.</p>
           <button className="cta-scroll" onClick={scrollToPaiement}>Je veux comprendre → 17€</button>
         </div>
 
