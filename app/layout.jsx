@@ -25,14 +25,14 @@ const poppins = Poppins({
 
 export const metadata = {
   title: 'Abrilove',
-  icons: { icon: '/images/favicon.png' },
+  icons: { icon: '/images/favicon-v2.png' },
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${playfair.variable} ${dmSans.variable} ${poppins.variable}`}>
       <head>
-        <link rel="icon" href="/images/favicon.png" type="image/png" />
+        <link rel="icon" href="/images/favicon-v2.png" type="image/png" />
         <meta name="theme-color" content="#660A43" />
         <link rel="dns-prefetch" href="https://js.stripe.com" />
         <link rel="dns-prefetch" href="https://api.stripe.com" />
