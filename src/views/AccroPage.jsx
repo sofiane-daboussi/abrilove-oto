@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect, useRef } from 'react'
 
 const OBJECTIONS = [
@@ -101,10 +102,6 @@ export default function AccroPage() {
   const stickyIsVisible = useRef(false)
   const lastScrollY = useRef(0)
 
-  // URL params
-  const params = new URLSearchParams(window.location.search)
-  const emailFromUrl = params.get('email') || params.get('prefilled_email') || ''
-
   // Stripe refs
   const stripeRef = useRef(null)
   const elementsRef = useRef(null)
@@ -127,6 +124,8 @@ export default function AccroPage() {
 
   // Pre-fill email from URL
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const emailFromUrl = params.get('email') || params.get('prefilled_email') || ''
     if (emailFromUrl) setEmail(emailFromUrl)
   }, [])
 
@@ -162,6 +161,7 @@ export default function AccroPage() {
 
   // Check for redirect return
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
     const secret = params.get('payment_intent_client_secret')
     if (!secret) return
     const checkPayment = async () => {
