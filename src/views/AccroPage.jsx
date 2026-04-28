@@ -778,7 +778,7 @@ export default function AccroPage() {
                 </div>
                 <div className="chat-header">
                   <span className="back">‹</span>
-                  <div className="avatar"><img src="https://cdn.prod.website-files.com/686bb5337ed61a425660e143/69b163fc41e69155b8609953_Copie%20de%20Copie%20de%20Copie%20de%20Copie%20de%20Blue%20and%20Pink%20Soft%20Magazine%20Cover%20Mockup%20Instagram%20Post%20(6).avif" alt="Sofi & Oli" /></div>
+                  <div className="avatar"><img src="/images/sofi-oli-avatar.avif" alt="Sofi & Oli" width="80" height="80" /></div>
                   <div className="info">
                     <div className="name">Sofi & Oli, Abrilove</div>
                     <div className="online">● En ligne</div>
