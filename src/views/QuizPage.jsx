@@ -28,7 +28,7 @@ const PROFILE_QUESTIONS = {
 }
 
 const PROFILE_URLS = {
-  accro: 'https://accro.abrilove.fr',
+  accro: 'https://abrilove.fr/accro',
   reveuse: 'https://abrilove.fr/reveuse-en-attente-surprise',
   cerebrale: 'https://abrilove.fr/cerebrale-surprise',
   louve: 'https://abrilove.fr/louve-solitaire-surprise',
