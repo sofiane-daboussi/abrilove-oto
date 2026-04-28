@@ -243,7 +243,7 @@ export default function AccroPage() {
 
   // Carousel
   useEffect(() => {
-    const imgs = ['/images/accro1.avif', '/images/accro2.avif', '/images/accro3.avif', '/images/accro4.avif', '/images/accro5.avif', '/images/accro6.avif']
+    const imgs = ['https://accro.abrilove.fr/images/accro1.avif', 'https://accro.abrilove.fr/images/accro2.avif', 'https://accro.abrilove.fr/images/accro3.avif', 'https://accro.abrilove.fr/images/accro4.avif', 'https://accro.abrilove.fr/images/accro5.avif', 'https://accro.abrilove.fr/images/accro6.avif']
     const track = trackRef.current
     if (!track) return
     imgs.concat(imgs).forEach(src => {
@@ -693,7 +693,7 @@ export default function AccroPage() {
               <h2>{addBump && addBump2 ? 'Pack 3 e-books' : addBump ? 'Accro aux mauvais hommes + Applis de rencontre' : addBump2 ? 'Accro aux mauvais hommes + Tu t\'es encore fait ghoster' : 'Accro aux mauvais hommes'}</h2>
               <p className="offer-sub">{(addBump || addBump2) ? `${1 + (addBump ? 1 : 0) + (addBump2 ? 1 : 0)} e-books · PDF envoyés immédiatement par mail · Mises à jour à vie` : '~200 pages · PDF envoyé immédiatement par mail · Mises à jour à vie'}</p>
             </div>
-            <img src="/images/accro-cover.png" alt="Accro aux mauvais hommes" className="payment-book-img" />
+            <img src="https://accro.abrilove.fr/images/accro-cover.png" alt="Accro aux mauvais hommes" className="payment-book-img" />
           </div>
           <div className="price-row">
             <span className="price-current">{17 + (addBump ? 9 : 0) + (addBump2 ? 9 : 0)}€</span>
@@ -725,7 +725,7 @@ export default function AccroPage() {
                     <p className="order-bump-sub">Un e-book de 250 pages pour transformer ton approche du dating, sans perdre ton temps ni te perdre en chemin.</p>
                     <p className="order-bump-price"><span className="order-bump-old">34€</span> → <strong>+9€ seulement</strong></p>
                   </div>
-                  <img src="/images/dating.png" alt="Applis de rencontre" className="order-bump-img" />
+                  <img src="https://accro.abrilove.fr/images/dating.png" alt="Applis de rencontre" className="order-bump-img" />
                 </div>
               </div>
 
@@ -739,7 +739,7 @@ export default function AccroPage() {
                     <p className="order-bump-sub">Comprendre pourquoi tu as été ghostée, guérir le rejet, et poser les bases d'un amour sain.</p>
                     <p className="order-bump-price"><span className="order-bump-old">18€</span> → <strong>+9€ seulement</strong></p>
                   </div>
-                  <img src="/images/ghosting.png" alt="Tu t'es encore fait ghoster" className="order-bump-img" />
+                  <img src="https://accro.abrilove.fr/images/ghosting.png" alt="Tu t'es encore fait ghoster" className="order-bump-img" />
                 </div>
               </div>
 
