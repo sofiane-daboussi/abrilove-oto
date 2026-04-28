@@ -760,12 +760,12 @@ export default function AccroPage() {
         <div className="fade-section" style={{ marginTop: '72px' }}>
           <div style={{ display: 'flex', gap: '40px', alignItems: 'center', flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: '240px' }}>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 700, color: '#660A43', marginBottom: '16px', lineHeight: 1.3 }}>Tu as une question avant de te décider?</h3>
+              <h3 style={{ fontFamily: "var(--font-playfair), serif", fontSize: '22px', fontWeight: 700, color: '#660A43', marginBottom: '16px', lineHeight: 1.3 }}>Tu as une question avant de te décider?</h3>
               <p style={{ marginBottom: '20px' }}>Tu analyses ses messages depuis des heures. Tu sais pas si tu dois lui écrire. Tu te demandes si tu t'accroches trop ou si c'est lui le problème.</p>
               <p style={{ marginBottom: '24px' }}>Pose ta question, tu reçois une réponse en quelques secondes, maintenant, peu importe l'heure. Des milliers d'heures de coaching en relations amoureuses, disponibles pour toi instantanément.</p>
               <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
                 <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF1E7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
-                <a href="https://ia.abrilove.fr" target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "'DM Sans', sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box', textAlign: 'center' }}>Poser ma question maintenant →</a>
+                <a href="https://ia.abrilove.fr" target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box', textAlign: 'center' }}>Poser ma question maintenant →</a>
               </div>
               <p style={{ fontSize: '11px', color: 'var(--brun2)', opacity: 0.6, marginTop: '8px', textAlign: 'center' }}>Sans carte bancaire</p>
             </div>
@@ -803,7 +803,7 @@ export default function AccroPage() {
 
         {/* FAQ */}
         <div className="fade-section" style={{ marginTop: '72px' }}>
-          <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#660A43', marginBottom: '20px', textAlign: 'center' }}>Questions fréquentes</h3>
+          <h3 style={{ fontFamily: "var(--font-playfair), serif", fontSize: '20px', fontWeight: 700, color: '#660A43', marginBottom: '20px', textAlign: 'center' }}>Questions fréquentes</h3>
           <div className="faq-list">
             {FAQ_ITEMS.map((item, i) => (
               <div key={i} className="faq-item">
@@ -834,19 +834,19 @@ export default function AccroPage() {
         <div className="popup-overlay">
           <div style={{ background: '#FFF1E7', borderRadius: '20px', padding: '28px 24px', maxWidth: '360px', width: '100%', textAlign: 'center', fontFamily: 'sans-serif' }}>
             <div style={{ fontSize: '32px', marginBottom: '12px' }}>🎉</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#660A43', margin: '0 0 6px' }}>Ton e-book est en route !</h2>
+            <h2 style={{ fontFamily: "var(--font-playfair), serif", fontSize: '20px', fontWeight: 700, color: '#660A43', margin: '0 0 6px' }}>Ton e-book est en route !</h2>
             <p style={{ fontSize: '13px', color: '#5C3D2A', margin: '0 0 20px', lineHeight: 1.5 }}>Vérifie ta boîte mail, pense à checker tes spams.</p>
             <div style={{ background: '#fdf0f7', borderRadius: '14px', padding: '16px', marginBottom: '20px', textAlign: 'left' }}>
-              <p style={{ fontSize: '13px', fontWeight: 700, color: '#660A43', margin: '0 0 8px', fontFamily: "'Playfair Display', serif" }}>Et si tu voulais aller plus loin?</p>
+              <p style={{ fontSize: '13px', fontWeight: 700, color: '#660A43', margin: '0 0 8px', fontFamily: "var(--font-playfair), serif" }}>Et si tu voulais aller plus loin?</p>
               <p style={{ fontSize: '13px', color: '#5C3D2A', lineHeight: 1.6, margin: '0 0 10px' }}>Nous, Sofi & Oli, on a condensé des milliers d'heures de coaching en relations amoureuses dans <strong style={{ color: '#660A43' }}>l'Abri</strong>, notre IA. Tu poses ta question, elle comprend ta situation, et te répond en quelques secondes, 24h/24.</p>
               <p style={{ fontSize: '13px', color: '#5C3D2A', lineHeight: 1.6, margin: 0 }}>Un message qui te tracasse, un schéma qui revient, une situation avec un homme que tu n'arrives pas à décoder, <strong style={{ color: '#660A43' }}>l'Abri</strong> est là maintenant 🩷</p>
             </div>
             <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
               <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF1E7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 messages offerts</div>
-              <a href="https://ia.abrilove.fr" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "'DM Sans', sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box' }}>Commencer gratuitement →</a>
+              <a href="https://ia.abrilove.fr" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box' }}>Commencer gratuitement →</a>
             </div>
             <div style={{ marginTop: '12px' }}>
-              <a href="https://abrilove.fr" style={{ fontSize: '12px', color: '#5C3D2A', textDecoration: 'underline', fontFamily: "'DM Sans', sans-serif" }}>Retour au site</a>
+              <a href="https://abrilove.fr" style={{ fontSize: '12px', color: '#5C3D2A', textDecoration: 'underline', fontFamily: "var(--font-dm-sans), sans-serif" }}>Retour au site</a>
             </div>
           </div>
         </div>
