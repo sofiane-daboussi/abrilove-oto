@@ -196,7 +196,8 @@ export default function AccroPage() {
       const diff = currentY - lastScrollY.current
       lastScrollY.current = currentY
       const triggerPassed = narrativeEndRef.current?.getBoundingClientRect().top < 0
-      if (diff < -5) hideBar()
+      const atBottom = currentY + window.innerHeight >= document.documentElement.scrollHeight - 80
+      if (diff < -5 && !atBottom) hideBar()
       else if (diff > 5 && triggerPassed) showBar()
     }
     window.addEventListener('scroll', onScroll, { passive: true })
