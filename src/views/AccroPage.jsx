@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import { trackEvent, useScrollTracking } from '../utils/analytics'
 
 const OBJECTIONS = [
   {
@@ -106,6 +107,8 @@ export default function AccroPage() {
   // Stripe refs
   const stripeRef = useRef(null)
   const elementsRef = useRef(null)
+
+  useScrollTracking('accro')
 
   // Timer
   useEffect(() => {
@@ -312,6 +315,7 @@ export default function AccroPage() {
   }, [])
 
   function scrollToPaiement() {
+    trackEvent('cta_click', { profil: 'accro' })
     paiementRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -343,6 +347,7 @@ export default function AccroPage() {
     setPayError('')
     if (!isValidEmail(email)) { setPayError('Entre ton adresse email valide.'); return }
     if (!elementsRef.current || !stripeRef.current) { setPayError('Le formulaire de paiement n\'est pas encore chargé.'); return }
+    trackEvent('purchase_attempt', { profil: 'accro' })
     setPaying(true)
     const submitResult = await elementsRef.current.submit()
     if (submitResult.error) { setPayError(submitResult.error.message); setPaying(false); return }
@@ -360,7 +365,7 @@ export default function AccroPage() {
         redirect: 'if_required'
       })
       if (confirmResult.error) { setPayError(confirmResult.error.message); setPaying(false); return }
-      if (confirmResult.paymentIntent?.status === 'succeeded') { setShowPopup(true); setPaying(false) }
+      if (confirmResult.paymentIntent?.status === 'succeeded') { trackEvent('purchase_success', { profil: 'accro' }); setShowPopup(true); setPaying(false) }
     } catch (e) { setPayError('Une erreur est survenue.'); setPaying(false) }
   }
 

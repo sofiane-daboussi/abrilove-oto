@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import { trackEvent, useScrollTracking } from '../utils/analytics'
 
 const OBJECTIONS = [
   {
@@ -105,6 +106,8 @@ export default function LouvePage() {
 
   const stripeRef = useRef(null)
   const elementsRef = useRef(null)
+
+  useScrollTracking('louve')
 
   // Timer
   useEffect(() => {
@@ -310,6 +313,7 @@ export default function LouvePage() {
   }, [])
 
   function scrollToPaiement() {
+    trackEvent('cta_click', { profil: 'louve' })
     paiementRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -341,6 +345,7 @@ export default function LouvePage() {
     setPayError('')
     if (!isValidEmail(email)) { setPayError('Entre ton adresse email valide.'); return }
     if (!elementsRef.current || !stripeRef.current) { setPayError('Le formulaire de paiement n\'est pas encore chargé.'); return }
+    trackEvent('purchase_attempt', { profil: 'louve' })
     setPaying(true)
     const submitResult = await elementsRef.current.submit()
     if (submitResult.error) { setPayError(submitResult.error.message); setPaying(false); return }
@@ -358,7 +363,7 @@ export default function LouvePage() {
         redirect: 'if_required'
       })
       if (confirmResult.error) { setPayError(confirmResult.error.message); setPaying(false); return }
-      if (confirmResult.paymentIntent?.status === 'succeeded') { setShowPopup(true); setPaying(false) }
+      if (confirmResult.paymentIntent?.status === 'succeeded') { trackEvent('purchase_success', { profil: 'louve' }); setShowPopup(true); setPaying(false) }
     } catch (e) { setPayError('Une erreur est survenue.'); setPaying(false) }
   }
 
