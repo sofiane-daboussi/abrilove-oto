@@ -29,7 +29,7 @@ const PROFILE_QUESTIONS = {
 
 const PROFILE_URLS = {
   accro: 'https://abrilove.fr/accro',
-  reveuse: 'https://abrilove.fr/reveuse-en-attente-surprise',
+  reveuse: 'https://abrilove.fr/reveuse',
   cerebrale: 'https://abrilove.fr/cerebrale-surprise',
   louve: 'https://abrilove.fr/louve-solitaire-surprise',
 }
