@@ -31,7 +31,7 @@ const PROFILE_URLS = {
   accro: 'https://abrilove.fr/accro',
   reveuse: 'https://abrilove.fr/reveuse',
   cerebrale: 'https://abrilove.fr/cerebrale',
-  louve: 'https://abrilove.fr/louve-solitaire-surprise',
+  louve: 'https://abrilove.fr/louve',
 }
 
 const PRIORITY_ORDER = ['accro', 'cerebrale', 'louve', 'reveuse']
