@@ -1,4 +1,10 @@
-'use client'
-import dynamic from 'next/dynamic'
-const LouvePage = dynamic(() => import('../../src/views/LouvePage'), { ssr: false })
-export default function LouveRoute() { return <LouvePage /> }
+import LouveClient from './LouveClient'
+
+export const metadata = {
+  title: 'À remplir',
+  description: 'À remplir',
+}
+
+export default function LouveRoute() {
+  return <LouveClient />
+}

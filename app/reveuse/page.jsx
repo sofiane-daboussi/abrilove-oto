@@ -1,8 +1,10 @@
-'use client'
-import dynamic from 'next/dynamic'
+import ReveuseClient from './ReveuseClient'
 
-const ReveusePage = dynamic(() => import('../../src/views/ReveusePage'), { ssr: false })
+export const metadata = {
+  title: 'À remplir',
+  description: 'À remplir',
+}
 
 export default function ReveuseRoute() {
-  return <ReveusePage />
+  return <ReveuseClient />
 }

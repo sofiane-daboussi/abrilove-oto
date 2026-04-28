@@ -251,7 +251,7 @@ export default function CerebalePage() {
     if (!track) return
     imgs.concat(imgs).forEach(src => {
       const card = document.createElement('div'); card.className = 'abri-screen-card'
-      const img = document.createElement('img'); img.src = src; img.draggable = false
+      const img = document.createElement('img'); img.src = src; img.alt = ''; img.draggable = false
       card.appendChild(img); track.appendChild(card)
     })
     let pos = 0, paused = false, halfWidth = 0, rafId

@@ -1,8 +1,10 @@
-'use client'
-import dynamic from 'next/dynamic'
+import AccroClient from './AccroClient'
 
-const AccroPage = dynamic(() => import('../../src/views/AccroPage'), { ssr: false })
+export const metadata = {
+  title: 'À remplir',
+  description: 'À remplir',
+}
 
 export default function AccroRoute() {
-  return <AccroPage />
+  return <AccroClient />
 }

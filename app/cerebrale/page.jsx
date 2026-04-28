@@ -1,8 +1,10 @@
-'use client'
-import dynamic from 'next/dynamic'
+import CerebraleClient from './CerebraleClient'
 
-const CerebalePage = dynamic(() => import('../../src/views/CerebalePage'), { ssr: false })
+export const metadata = {
+  title: 'À remplir',
+  description: 'À remplir',
+}
 
 export default function CerebraleRoute() {
-  return <CerebalePage />
+  return <CerebraleClient />
 }
