@@ -4,19 +4,19 @@ import { useState, useEffect, useRef } from 'react'
 const OBJECTIONS = [
   {
     front: "C'est trop cher.",
-    back: "17€, c'est le prix d'un déjeuner. L'énergie perdue à attendre quelqu'un qui ne choisit pas clairement, elle, elle a un prix."
+    back: "17€, c'est le prix d'un déjeuner. L'énergie perdue à attendre quelqu'un qui ne te choisit pas clairement, elle, elle a un prix."
   },
   {
     front: "J'ai déjà tout essayé.",
-    back: "Si tu t'es déjà dit : « Je fais des efforts, j'essaie vraiment… et pourtant je retombe toujours dans les mêmes schémas. » Le problème, ce n'est pas toi. C'est que personne ne t'a jamais montré une méthode vraiment adaptée à toi. Ce n'est pas un énième texte motivationnel. C'est une méthode concrète, applicable immédiatement."
+    back: "T'as peut-être essayé d'attendre encore. Pas de comprendre pourquoi tu confonds espoir et engagement. C'est ça que ce livre t'apporte — une méthode concrète, pas un texte motivationnel."
   },
   {
     front: "Je n'ai pas le temps.",
-    back: "Chez une Rêveuse, « je n'ai pas le temps » veut souvent dire : trop d'énergie donnée au flou, trop de « on verra », trop de signes à interpréter, trop d'attente. 10 minutes suffisent pour retrouver un cadre clair. Cet e-book ne te prend pas du temps. Il t'en rend."
+    back: "Chez une Rêveuse, « pas le temps » veut dire trop d'énergie donnée au flou. 10 minutes suffisent. Cet e-book ne te prend pas du temps. Il t'en rend."
   },
   {
     front: "Je connais déjà mes schémas.",
-    back: "Connaître ses schémas et comprendre pourquoi tu restes dans l'attente, c'est pas la même chose. La deuxième, c'est ce qui change vraiment quelque chose."
+    back: "Connaître ses schémas et comprendre pourquoi tu restes dans l'attente, c'est pas la même chose. La deuxième, c'est ce qui change vraiment."
   },
 ]
 
@@ -487,12 +487,12 @@ export default function ReveusePage() {
                   </button>
                 </div>
                 {[
-                  "Tu as l'impression de retomber dans le même schéma… même quand tu te promets : « cette fois, ce sera différent. »",
-                  "Tu t'attaches vite parce que tu t'accroches à l'espoir et au potentiel : un « tu me manques », un bon rendez-vous… et ton cœur écrit la suite de l'histoire.",
-                  "Tu restes trop longtemps dans le « peut-être », parce que tu sais aimer, tu sais croire, et tu veux donner une chance, même quand ce n'est pas clair.",
-                  "Quand c'est flou, tu trouves presque toujours une explication : « il traverse une période difficile », « il a peur », « il lui faut du temps », et tu mets tes besoins en attente.",
-                  "Tu fais attention à ne pas être « trop » : tu n'oses pas demander clairement, tu t'adaptes, tu deviens « facile », en espérant que ça finira par devenir réel.",
-                  "Tu veux une relation où tu n'as plus besoin de deviner, où tu es choisie clairement, et où ça avance vers quelque chose de concret.",
+                  "Tu retombes dans le même schéma… même quand tu te promets : « cette fois, ce sera différent. »",
+                  "Tu t'accroches à l'espoir et au potentiel : un bon rendez-vous… et ton cœur écrit la suite de l'histoire.",
+                  "Tu restes dans le « peut-être » parce que tu veux donner une chance, même quand ce n'est pas clair.",
+                  "Quand c'est flou, tu trouves toujours une explication : « il a peur », « il lui faut du temps ».",
+                  "Tu n'oses pas demander clairement, tu t'adaptes, tu deviens « facile », en espérant que ça finira par devenir réel.",
+                  "Tu veux une relation où tu es choisie clairement, sans avoir besoin de deviner.",
                 ].map((text, i) => (
                   <div key={i} className="book-item">
                     <span className="book-item-icon">✓</span>
@@ -529,10 +529,10 @@ export default function ReveusePage() {
                   <div className="book-cover-divider" />
                   <p className="book-cover-subtitle">Ce livre n'est pas fait pour toi si…</p>
                   {[
-                    "Tu veux seulement comprendre et analyser, sans pratiquer, sans changer tes réflexes.",
-                    "Tu veux juste te rassurer que « ça va finir par venir » en attendant, sans changer tes choix, tes limites, ni ta façon d'agir.",
-                    "Tu cherches des « phrases pour le garder » et pour capter son attention, au lieu d'outils pour voir les faits et te choisir.",
-                    "Tu ne veux pas apprendre à poser des questions, à demander de la clarté et à mettre des limites, parce que tu as peur de « mettre la pression », même si tu t'oublies.",
+                    "Tu veux analyser, sans pratiquer ni changer tes réflexes.",
+                    "Tu veux juste te rassurer que « ça va venir » sans changer ta façon d'agir.",
+                    "Tu cherches des « phrases pour le garder », pas des outils pour te choisir.",
+                    "Tu refuses de demander de la clarté parce que tu as peur de « mettre la pression ».",
                   ].map((text, i) => (
                     <div key={i} className="book-item">
                       <span className="book-item-icon">✕</span>
@@ -568,10 +568,10 @@ export default function ReveusePage() {
         <div className="benefits-section fade-section">
           <p className="benefits-title">Concrètement, après ce livre…</p>
           {[
-            "Tu sortiras du mode « j'attends le signe » — Tu ne vivras plus tes débuts d'histoire dans l'attente d'un « peut-être ». Tu apprendras à te recentrer quand tu t'emballes, à couper l'illusion doucement, et à retrouver ton calme sans t'accrocher à la prochaine preuve.",
-            "Tu comprendras pourquoi tu t'accroches au potentiel et comment revenir au réel — Tu verras ce qui se passe quand ton cœur commence à écrire une histoire à partir de quelques mots, d'un regard, d'une promesse floue. Et surtout, tu apprendras à revenir aux faits : ce qu'il fait, ce qu'il choisit, ce qu'il construit, pas ce que tu espères.",
-            "Tu repéreras la clarté (ou l'absence de clarté) sans t'épuiser à analyser — Tu n'auras plus besoin de décoder chaque silence ou de lui trouver des excuses. Tu sauras quoi observer : régularité, initiative, cohérence, capacité à avancer. Moins de « il a besoin de temps », plus de réalité.",
-            "Tu apprendras à aimer sans te réduire ni attendre « que ça devienne sérieux » — Tu sauras demander de la clarté, poser tes limites, et choisir les hommes qui sont présents et intentionnés, pour construire une relation où tu n'as plus besoin de deviner.",
+            "Tu sortiras du mode « j'attends le signe » et tu apprendras à te recentrer quand tu t'emballes, sans t'accrocher à la prochaine preuve.",
+            "Tu comprendras pourquoi tu t'accroches au potentiel et comment revenir aux faits : ce qu'il fait, ce qu'il choisit, pas ce que tu espères.",
+            "Tu repéreras la clarté — ou l'absence de clarté — sans décoder chaque silence ni lui trouver des excuses.",
+            "Tu apprendras à demander de la clarté, poser tes limites, et choisir les hommes présents et intentionnés.",
           ].map((text, i) => (
             <div key={i} className="benefits-item">
               <span className="benefits-check">✓</span>
