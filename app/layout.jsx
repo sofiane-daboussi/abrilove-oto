@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
     <html lang="fr" className={`${playfair.variable} ${dmSans.variable} ${poppins.variable}`}>
       <head>
         <meta name="theme-color" content="#660A43" />
-        <link rel="preconnect" href="https://js.stripe.com" />
+        <link rel="dns-prefetch" href="https://js.stripe.com" />
         <link rel="dns-prefetch" href="https://api.stripe.com" />
       </head>
       <body>{children}</body>

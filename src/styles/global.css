@@ -90,8 +90,9 @@ p strong, p em { color: #660A43; }
   margin: 28px 0;
   cursor: pointer;
   border: none;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
   animation: pulse 2.5s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes pulse {
@@ -106,7 +107,6 @@ p strong, p em { color: #660A43; }
 .cta-scroll:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(102, 10, 67, 0.3);
-  letter-spacing: 0.03em;
 }
 
 .cta-scroll:active { transform: scale(0.97); }
@@ -222,16 +222,25 @@ p strong, p em { color: #660A43; }
 #payment-element { margin-bottom: 18px; }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(200%); }
 }
 
 .stripe-skeleton-bar {
   height: 44px;
-  background: linear-gradient(90deg, #F5E8DA 25%, #FFF1E7 50%, #F5E8DA 75%);
-  background-size: 200% 100%;
+  background: #F5E8DA;
   border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stripe-skeleton-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, #FFF1E7 50%, transparent 100%);
   animation: shimmer 1.2s infinite;
+  will-change: transform;
 }
 
 .payment-errors {
