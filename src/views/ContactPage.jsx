@@ -47,7 +47,6 @@ export default function ContactPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      padding: '88px 0 0',
       fontFamily: 'var(--font-dm-sans, sans-serif)',
     }}>
       <style>{`
@@ -85,7 +84,7 @@ export default function ContactPage() {
         background: '#FFF4F7',
         borderRadius: 20,
         maxWidth: 680,
-        margin: '0 auto',
+        margin: '56px auto 80px',
         padding: '36px 28px 48px',
       }}>
         <span style={{ position: 'absolute', top: '1rem', left: '15%', fontSize: '2rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite', zIndex: 0 }}>💗</span>
