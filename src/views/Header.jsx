@@ -1,6 +1,93 @@
 'use client'
 import { useState, useEffect } from 'react'
 
+const CHAT_MSGS = [
+  { role: 'user', text: 'Il me laisse en vu depuis 2 jours 😞' },
+  { role: 'ai', text: 'C\'est douloureux 💗' },
+  { role: 'ai', text: 'Qu\'est-ce qui s\'est passé ?' },
+  { role: 'user', text: 'On a eu une dispute...' },
+  { role: 'ai', text: 'Je suis là pour toi 🌸' },
+]
+
+function MiniChat() {
+  const [shown, setShown] = useState(1)
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setShown(s => s >= CHAT_MSGS.length ? 1 : s + 1)
+    }, shown >= CHAT_MSGS.length ? 3000 : 1400)
+    return () => clearTimeout(t)
+  }, [shown])
+
+  return (
+    <div style={{ width: 152, flexShrink: 0 }}>
+      <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 8, textAlign: 'center', margin: '0 0 8px' }}>
+        Tu veux parler à notre IA ?
+      </p>
+      <div style={{
+        background: 'rgba(0,0,0,0.35)',
+        borderRadius: 14,
+        overflow: 'hidden',
+        border: '1px solid rgba(255,255,255,0.1)',
+      }}>
+        <div style={{
+          background: 'rgba(255,255,255,0.06)',
+          padding: '7px 10px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 7,
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+        }}>
+          <div style={{
+            width: 26, height: 26, borderRadius: '50%',
+            background: 'linear-gradient(135deg, #ff6b9d, #9b2c75)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 12, flexShrink: 0,
+          }}>💗</div>
+          <div>
+            <div style={{ color: '#fff', fontSize: 10, fontWeight: 600, lineHeight: 1.2, fontFamily: 'var(--font-dm-sans, sans-serif)' }}>Sofi &amp; Oli</div>
+            <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 8, fontFamily: 'var(--font-dm-sans, sans-serif)' }}>IA Abrilove</div>
+          </div>
+        </div>
+        <div style={{ padding: '10px 8px', display: 'flex', flexDirection: 'column', gap: 5, minHeight: 110 }}>
+          {CHAT_MSGS.slice(0, shown).map((m, i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: m.role === 'user' ? 'flex-end' : 'flex-start', animation: 'chatPop 0.2s ease' }}>
+              <div style={{
+                background: m.role === 'user' ? 'linear-gradient(135deg, #9b59b6, #660A43)' : 'rgba(255,255,255,0.13)',
+                color: '#fff',
+                borderRadius: m.role === 'user' ? '10px 10px 2px 10px' : '10px 10px 10px 2px',
+                padding: '5px 8px',
+                fontSize: 9.5,
+                maxWidth: '88%',
+                lineHeight: 1.4,
+                fontFamily: 'var(--font-dm-sans, sans-serif)',
+              }}>
+                {m.text}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <a href="https://ia.abrilove.fr" style={{
+        display: 'block',
+        background: 'rgba(255,255,255,0.1)',
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 9.5,
+        padding: '7px',
+        borderRadius: 8,
+        textDecoration: 'none',
+        marginTop: 7,
+        fontWeight: 600,
+        border: '1px solid rgba(255,255,255,0.15)',
+        fontFamily: 'var(--font-dm-sans, sans-serif)',
+      }}>
+        Essayer gratuitement →
+      </a>
+    </div>
+  )
+}
+
 const LINKS = [
   { label: 'Accueil', href: '/' },
   { label: 'Coaching', href: '/coaching' },
@@ -156,26 +243,35 @@ export default function Header() {
           backdropFilter: 'blur(20px)',
           border: '1px solid rgba(255,255,255,0.12)',
           borderRadius: 20,
-          padding: '20px 20px 24px',
+          padding: '20px',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           gap: 16,
+          alignItems: 'flex-start',
         }}>
-          {LINKS.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
-              color: 'rgba(255,255,255,0.85)',
-              fontSize: 16,
-              textDecoration: 'none',
-              fontFamily: 'var(--font-dm-sans, sans-serif)',
-              padding: '4px 0',
-            }}>
-              {l.label}
-            </a>
-          ))}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14, flex: 1, paddingTop: 2 }}>
+            {LINKS.map(l => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
+                color: 'rgba(255,255,255,0.85)',
+                fontSize: 16,
+                textDecoration: 'none',
+                fontFamily: 'var(--font-dm-sans, sans-serif)',
+                padding: '2px 0',
+              }}>
+                {l.label}
+              </a>
+            ))}
+          </div>
+          <div style={{ width: 1, alignSelf: 'stretch', background: 'rgba(255,255,255,0.08)', flexShrink: 0 }} />
+          <MiniChat />
         </div>
       )}
 
       <style>{`
+        @keyframes chatPop {
+          from { opacity: 0; transform: scale(0.85) translateY(4px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
         @media (min-width: 781px) {
           .logo-img { height: 48px !important; }
           .desktop-cta-btn { padding: 12px 20px !important; transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease !important; }
