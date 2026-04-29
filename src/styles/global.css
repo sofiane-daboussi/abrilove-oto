@@ -11,7 +11,7 @@ html { background: #660A43; min-height: 100%; }
 
 body {
   background:
-    radial-gradient(ellipse 80% 35% at 90% 10%, rgba(220, 60, 140, 0.6) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 35% at 90% 25%, rgba(220, 60, 140, 0.6) 0%, transparent 65%),
     radial-gradient(ellipse 70% 30% at 5% 80%, rgba(80, 0, 50, 0.7) 0%, transparent 65%),
     radial-gradient(ellipse 60% 25% at 45% 45%, rgba(180, 30, 110, 0.45) 0%, transparent 65%),
     linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%);
