@@ -84,12 +84,12 @@ export default function Footer() {
         }}>
           Rejoins plus de 10 000 personnes qui lisent notre newsletter hebdomadaire
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16, marginBottom: 36, lineHeight: 1.6 }}>
+        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16, marginBottom: 20, lineHeight: 1.6 }}>
           Apprends à trouver l'amour… et à ne pas tout gâcher.
         </p>
 
-        <div style={{ marginBottom: 36 }}>
-          <img src="/images/logo-header.png" alt="L'Abrilove" style={{ height: 52, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+        <div style={{ marginBottom: 20 }}>
+          <img src="/images/logo-header.png" alt="L'Abrilove" style={{ height: 72, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
         </div>
 
         {nlStatus === 'sent' ? (
