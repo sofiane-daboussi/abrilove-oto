@@ -17,7 +17,7 @@ export default function Header() {
     <>
       <header className="mobile-pill" style={{
         position: 'fixed',
-        top: 16,
+        top: 24,
         left: 16,
         right: 16,
         zIndex: 100,
@@ -79,6 +79,23 @@ export default function Header() {
           pointerEvents: 'auto',
         }}>
           Fais le quiz gratuit
+        </a>
+
+        {/* CTA mobile — visible entre logo et burger */}
+        <a href="/quiz-gratuit" className="mobile-cta" style={{
+          display: 'none',
+          background: '#fff',
+          color: '#660A43',
+          fontSize: 12,
+          fontWeight: 600,
+          textDecoration: 'none',
+          padding: '8px 14px',
+          borderRadius: 999,
+          fontFamily: 'var(--font-dm-sans, sans-serif)',
+          whiteSpace: 'nowrap',
+          pointerEvents: 'auto',
+        }}>
+          Quiz gratuit
         </a>
 
         {/* Burger mobile */}
@@ -153,12 +170,13 @@ export default function Header() {
           .desktop-nav { display: none !important; }
           .desktop-cta { display: none !important; }
           .burger { display: block !important; }
+          .mobile-cta { display: block !important; }
           .mobile-pill {
             background: rgba(80,5,50,0.88) !important;
             backdrop-filter: blur(16px) !important;
             border: 1px solid rgba(255,255,255,0.1) !important;
             border-radius: 999px !important;
-            padding: 0 16px !important;
+            padding: 0 12px !important;
             height: 48px !important;
           }
         }
