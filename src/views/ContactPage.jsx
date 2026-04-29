@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Header from './Header'
+import Footer from './Footer'
 
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/
@@ -181,6 +182,7 @@ export default function ContactPage() {
         </p>
 
       </div>
+      <Footer />
     </div>
   )
 }
