@@ -21,36 +21,28 @@ export default function Header() {
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 100,
-        width: 'calc(100% - 48px)',
+        width: 'calc(100% - 32px)',
         maxWidth: 860,
       }}>
         <div style={{
-          background: 'rgba(102,10,67,0.4)',
+          background: 'rgba(80,5,50,0.85)',
           backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(255,255,255,0.15)',
+          border: '1px solid rgba(255,255,255,0.12)',
           borderRadius: 999,
-          padding: '0 28px',
+          padding: '0 24px',
           height: 52,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
-          <a href="/" style={{
-            fontFamily: 'var(--font-playfair, serif)',
-            color: '#fff',
-            fontSize: 18,
-            fontWeight: 700,
-            textDecoration: 'none',
-            letterSpacing: '0.02em',
-            whiteSpace: 'nowrap',
-          }}>
-            Abrilove
+          <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <img src="/images/favicon-v2.png" alt="Abrilove" style={{ height: 32, width: 32, objectFit: 'contain' }} />
           </a>
 
-          <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
+          <nav style={{ display: 'flex', gap: 24, alignItems: 'center' }} className="desktop-nav">
             {LINKS.map(l => (
               <a key={l.href} href={l.href} style={{
-                color: l.href === '/contact' ? '#f0c0d8' : 'rgba(255,255,255,0.75)',
+                color: 'rgba(255,255,255,0.8)',
                 fontSize: 13,
                 textDecoration: 'none',
                 letterSpacing: '0.04em',
@@ -59,7 +51,7 @@ export default function Header() {
                 whiteSpace: 'nowrap',
               }}
               onMouseEnter={e => e.target.style.color = '#fff'}
-              onMouseLeave={e => e.target.style.color = l.href === '/contact' ? '#f0c0d8' : 'rgba(255,255,255,0.75)'}
+              onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,0.8)'}
               >
                 {l.label}
               </a>
@@ -85,12 +77,13 @@ export default function Header() {
           </button>
         </div>
 
+        {/* Menu mobile — fond sombre pour lisibilité */}
         {open && (
           <div style={{
             marginTop: 8,
-            background: 'rgba(255,241,231,0.97)',
+            background: 'rgba(50,2,30,0.97)',
             backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(102,10,67,0.15)',
+            border: '1px solid rgba(255,255,255,0.1)',
             borderRadius: 20,
             padding: '20px 28px',
             display: 'flex',
@@ -99,8 +92,8 @@ export default function Header() {
           }}>
             {LINKS.map(l => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
-                color: l.href === '/contact' ? '#f0c0d8' : 'rgba(255,255,255,0.75)',
-                fontSize: 15,
+                color: 'rgba(255,255,255,0.85)',
+                fontSize: 16,
                 textDecoration: 'none',
                 fontFamily: 'var(--font-dm-sans, sans-serif)',
               }}>

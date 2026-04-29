@@ -28,18 +28,18 @@ export default function ContactPage() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '120px 24px 60px',
+      padding: '80px 12px 40px',
       fontFamily: 'var(--font-dm-sans, sans-serif)',
     }}>
       <Header />
 
-      {/* Rectangle fff1e7 avec coins arrondis */}
       <div style={{
         background: '#fff1e7',
         borderRadius: 24,
-        padding: '48px 40px',
+        padding: '40px 32px',
         width: '100%',
-        maxWidth: 580,
+        maxWidth: 620,
+        marginTop: 8,
       }}>
 
         <p style={{
@@ -70,10 +70,10 @@ export default function ContactPage() {
           color: '#8a5060',
           textAlign: 'center',
           fontSize: 15,
-          marginBottom: 36,
+          marginBottom: 32,
           lineHeight: 1.6,
         }}>
-          Pour toute question sur nos e-books, un problème de commande,<br />
+          Pour toute question sur nos e-books, un problème de commande,
           ou simplement pour dire bonjour.
         </p>
 
@@ -131,8 +131,8 @@ export default function ContactPage() {
             </div>
 
             {status === 'error' && (
-              <p style={{ color: '#c0392b', fontSize: 13 }}>
-                Une erreur s'est produite. Écris-nous à <a href="mailto:contact@abrilove.fr" style={{ color: '#660A43' }}>contact@abrilove.fr</a>
+              <p style={{ color: '#c0392b', fontSize: 14 }}>
+                Une erreur s'est produite. Écris-nous à <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
               </p>
             )}
 
@@ -145,7 +145,7 @@ export default function ContactPage() {
                 border: 'none',
                 borderRadius: 8,
                 padding: '16px 32px',
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: 600,
                 cursor: status === 'sending' ? 'not-allowed' : 'pointer',
                 transition: 'background 0.2s',
@@ -158,8 +158,8 @@ export default function ContactPage() {
           </form>
         )}
 
-        <p style={{ color: '#8a5060', fontSize: 12, textAlign: 'center', marginTop: 32 }}>
-          Ou par email : <a href="mailto:contact@abrilove.fr" style={{ color: '#660A43' }}>contact@abrilove.fr</a>
+        <p style={{ color: '#8a5060', fontSize: 13, textAlign: 'center', marginTop: 28 }}>
+          Ou par email : <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
         </p>
 
       </div>
@@ -170,8 +170,8 @@ export default function ContactPage() {
 const labelStyle = {
   display: 'block',
   color: '#8a5060',
-  fontSize: 12,
-  letterSpacing: '0.1em',
+  fontSize: 13,
+  letterSpacing: '0.08em',
   textTransform: 'uppercase',
   marginBottom: 8,
 }
@@ -183,7 +183,7 @@ const inputStyle = {
   borderRadius: 8,
   padding: '14px 16px',
   color: '#2a0a1a',
-  fontSize: 15,
+  fontSize: 16,
   outline: 'none',
   transition: 'border-color 0.2s',
   boxSizing: 'border-box',
