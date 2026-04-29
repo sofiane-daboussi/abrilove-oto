@@ -69,7 +69,7 @@ export default function Footer() {
       {/* Newsletter */}
       <div style={{
         background: 'linear-gradient(135deg, #3d0228 0%, #5e063c 55%, #7a1050 100%)',
-        padding: 'clamp(56px, 8vw, 100px) 20px',
+        padding: 'clamp(36px, 5vw, 64px) 20px',
         textAlign: 'center',
         borderRadius: 20,
       }}>
@@ -84,11 +84,11 @@ export default function Footer() {
         }}>
           Rejoins plus de 10 000 personnes qui lisent notre newsletter hebdomadaire
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16, marginBottom: 20, lineHeight: 1.6 }}>
+        <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16, marginBottom: 12, lineHeight: 1.6 }}>
           Apprends à trouver l'amour… et à ne pas tout gâcher.
         </p>
 
-        <div style={{ marginBottom: 20 }}>
+        <div style={{ marginBottom: 12 }}>
           <img src="/images/logo-header.png" alt="L'Abrilove" style={{ height: 72, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
         </div>
 
