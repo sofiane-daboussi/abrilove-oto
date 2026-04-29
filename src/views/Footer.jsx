@@ -75,6 +75,7 @@ export default function Footer() {
         padding: 'clamp(24px, 5vw, 64px) 20px',
         textAlign: 'center',
         borderRadius: 20,
+        border: '1.5px solid rgba(255,255,255,0.2)',
       }}>
         <h2 style={{
           fontFamily: 'var(--font-playfair, serif)',

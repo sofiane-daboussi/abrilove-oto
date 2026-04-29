@@ -49,7 +49,7 @@ export default function ContactPage() {
       <style>{`
         .contact-input::placeholder { color: rgba(102,10,67,0.4); }
         .contact-input:focus { border-color: #660A43 !important; }
-        .contact-card { position: relative; overflow: hidden; margin-top: 72px !important; }
+        .contact-card { position: relative; overflow: hidden; margin-top: 90px !important; }
         .contact-card:before {
           content: '💗';
           position: absolute;
