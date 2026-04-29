@@ -17,14 +17,18 @@ export default function Header() {
     <>
       <header style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 16,
+        left: '50%',
+        transform: 'translateX(-50%)',
         zIndex: 100,
-        background: 'rgba(80,5,50,0.95)',
+        width: 'calc(100% - 32px)',
+        maxWidth: 980,
+        background: 'rgba(80,5,50,0.85)',
         backdropFilter: 'blur(16px)',
-        padding: '0 24px',
-        height: 64,
+        border: '1px solid rgba(255,255,255,0.1)',
+        borderRadius: 999,
+        padding: '0 20px',
+        height: 56,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -103,17 +107,18 @@ export default function Header() {
       {open && (
         <div style={{
           position: 'fixed',
-          top: 64,
-          left: 0,
-          right: 0,
+          top: 80,
+          left: 16,
+          right: 16,
           zIndex: 99,
           background: 'rgba(50,2,30,0.98)',
           backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          borderRadius: 20,
           padding: '20px 24px 28px',
           display: 'flex',
           flexDirection: 'column',
           gap: 18,
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}>
           {LINKS.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
