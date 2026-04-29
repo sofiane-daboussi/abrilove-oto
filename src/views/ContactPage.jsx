@@ -81,8 +81,8 @@ export default function ContactPage() {
         background: '#FFF4F7',
         borderRadius: 20,
         maxWidth: 680,
-        margin: '0 auto 80px',
-        padding: '70px 28px 48px',
+        margin: '-24px auto 80px',
+        padding: '90px 28px 48px',
       }}>
         <span style={{ position: 'absolute', top: '1rem', left: '15%', fontSize: '2rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite', zIndex: 0 }}>💗</span>
         <span style={{ position: 'absolute', top: '1.5rem', right: '15%', fontSize: '1.8rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 5s ease-in-out infinite reverse', zIndex: 0 }}>💕</span>
