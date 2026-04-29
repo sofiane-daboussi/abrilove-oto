@@ -27,6 +27,10 @@ export default function ContactPage() {
       padding: '84px 0 0',
       fontFamily: 'var(--font-dm-sans, sans-serif)',
     }}>
+      <style>{`
+        .contact-input::placeholder { color: rgba(102,10,67,0.4); }
+        .contact-input:focus { border-color: #660A43 !important; }
+      `}</style>
       <Header />
 
       <div style={{
@@ -84,7 +88,7 @@ export default function ContactPage() {
 
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <div style={{ flex: 1, minWidth: 200 }}>
-                <label style={labelStyle}>Prénom</label>
+                <label style={labelStyle}>Prénom <span style={{color:'#660A43'}}>*</span></label>
                 <input
                   type="text"
                   required
@@ -92,12 +96,11 @@ export default function ContactPage() {
                   value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                   style={inputStyle}
-                  onFocus={e => e.target.style.borderColor = '#660A43'}
-                  onBlur={e => e.target.style.borderColor = 'rgba(102,10,67,0.2)'}
+                  className="contact-input"
                 />
               </div>
               <div style={{ flex: 1, minWidth: 200 }}>
-                <label style={labelStyle}>Email</label>
+                <label style={labelStyle}>Email <span style={{color:'#660A43'}}>*</span></label>
                 <input
                   type="email"
                   required
@@ -105,14 +108,13 @@ export default function ContactPage() {
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   style={inputStyle}
-                  onFocus={e => e.target.style.borderColor = '#660A43'}
-                  onBlur={e => e.target.style.borderColor = 'rgba(102,10,67,0.2)'}
+                  className="contact-input"
                 />
               </div>
             </div>
 
             <div>
-              <label style={labelStyle}>Message</label>
+              <label style={labelStyle}>Message <span style={{color:'#660A43'}}>*</span></label>
               <textarea
                 required
                 rows={5}
@@ -120,8 +122,7 @@ export default function ContactPage() {
                 value={form.message}
                 onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                 style={{ ...inputStyle, resize: 'vertical', minHeight: 130 }}
-                onFocus={e => e.target.style.borderColor = '#660A43'}
-                onBlur={e => e.target.style.borderColor = 'rgba(102,10,67,0.2)'}
+                className="contact-input"
               />
             </div>
 
