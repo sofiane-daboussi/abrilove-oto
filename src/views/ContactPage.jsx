@@ -2,12 +2,34 @@
 import { useState } from 'react'
 import Header from './Header'
 
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/
+  if (!re.test(email)) return 'Email invalide'
+  const tld = email.split('.').pop().toLowerCase()
+  const common = ['fr','com','net','org','io','co','eu','be','ch','ca','uk','de','es','it']
+  if (tld.length >= 2 && !common.includes(tld)) return 'Vérifie l\'extension (ex: .com, .fr)'
+  return null
+}
+
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [errors, setErrors] = useState({})
   const [status, setStatus] = useState(null)
 
-  async function handleSubmit(e) {
-    e.preventDefault()
+  function validate() {
+    const e = {}
+    if (form.name.trim().length < 2) e.name = 'Prénom trop court'
+    const emailErr = validateEmail(form.email)
+    if (emailErr) e.email = emailErr
+    if (form.message.trim().length < 10) e.message = 'Message trop court'
+    return e
+  }
+
+  async function handleSubmit(ev) {
+    ev.preventDefault()
+    const e = validate()
+    if (Object.keys(e).length) { setErrors(e); return }
+    setErrors({})
     setStatus('sending')
     try {
       const res = await fetch('/api/contact', {
@@ -91,39 +113,39 @@ export default function ContactPage() {
                 <label style={labelStyle}>Prénom <span style={{color:'#660A43'}}>*</span></label>
                 <input
                   type="text"
-                  required
                   placeholder="Ton prénom"
                   value={form.name}
-                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  style={inputStyle}
+                  onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setErrors(er => ({...er, name: null})) }}
+                  style={{ ...inputStyle, borderColor: errors.name ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
                   className="contact-input"
                 />
+                {errors.name && <p style={errorStyle}>{errors.name}</p>}
               </div>
               <div style={{ flex: 1, minWidth: 200 }}>
                 <label style={labelStyle}>Email <span style={{color:'#660A43'}}>*</span></label>
                 <input
                   type="email"
-                  required
                   placeholder="ton@email.com"
                   value={form.email}
-                  onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  style={inputStyle}
+                  onChange={e => { setForm(f => ({ ...f, email: e.target.value })); setErrors(er => ({...er, email: null})) }}
+                  style={{ ...inputStyle, borderColor: errors.email ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
                   className="contact-input"
                 />
+                {errors.email && <p style={errorStyle}>{errors.email}</p>}
               </div>
             </div>
 
             <div>
               <label style={labelStyle}>Message <span style={{color:'#660A43'}}>*</span></label>
               <textarea
-                required
                 rows={5}
                 placeholder="Dis-nous tout…"
                 value={form.message}
-                onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                style={{ ...inputStyle, resize: 'vertical', minHeight: 130 }}
+                onChange={e => { setForm(f => ({ ...f, message: e.target.value })); setErrors(er => ({...er, message: null})) }}
+                style={{ ...inputStyle, resize: 'vertical', minHeight: 130, borderColor: errors.message ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
                 className="contact-input"
               />
+              {errors.message && <p style={errorStyle}>{errors.message}</p>}
             </div>
 
             {status === 'error' && (
@@ -161,6 +183,12 @@ export default function ContactPage() {
       </div>
     </div>
   )
+}
+
+const errorStyle = {
+  color: '#c0392b',
+  fontSize: 12,
+  marginTop: 4,
 }
 
 const labelStyle = {
