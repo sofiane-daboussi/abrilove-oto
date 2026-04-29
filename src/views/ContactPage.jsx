@@ -24,16 +24,23 @@ export default function ContactPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#fff1e7',
+      background: '#660A43',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
-      padding: '100px 24px 60px',
+      padding: '120px 24px 60px',
       fontFamily: 'var(--font-dm-sans, sans-serif)',
     }}>
       <Header />
-      <div style={{ maxWidth: 560, width: '100%' }}>
+
+      {/* Rectangle fff1e7 avec coins arrondis */}
+      <div style={{
+        background: '#fff1e7',
+        borderRadius: 24,
+        padding: '48px 40px',
+        width: '100%',
+        maxWidth: 580,
+      }}>
 
         <p style={{
           color: '#660A43',
@@ -49,7 +56,7 @@ export default function ContactPage() {
         <h1 style={{
           fontFamily: 'var(--font-playfair, serif)',
           color: '#1a0011',
-          fontSize: 'clamp(28px, 6vw, 44px)',
+          fontSize: 'clamp(26px, 5vw, 40px)',
           fontWeight: 700,
           textAlign: 'center',
           marginBottom: 12,
@@ -63,7 +70,7 @@ export default function ContactPage() {
           color: '#8a5060',
           textAlign: 'center',
           fontSize: 15,
-          marginBottom: 48,
+          marginBottom: 36,
           lineHeight: 1.6,
         }}>
           Pour toute question sur nos e-books, un problème de commande,<br />
@@ -71,27 +78,14 @@ export default function ContactPage() {
         </p>
 
         {status === 'sent' ? (
-          <div style={{
-            background: '#fff1e7',
-            borderRadius: 20,
-            padding: '40px 32px',
-            textAlign: 'center',
-          }}>
+          <div style={{ textAlign: 'center', padding: '32px 0' }}>
             <p style={{ color: '#660A43', fontSize: 20, fontFamily: 'var(--font-playfair, serif)', marginBottom: 8 }}>
               Message envoyé ✓
             </p>
-            <p style={{ color: '#8a5060', fontSize: 14 }}>
-              On te répond dans les 24h.
-            </p>
+            <p style={{ color: '#8a5060', fontSize: 14 }}>On te répond dans les 24h.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{
-            display: 'flex', flexDirection: 'column', gap: 20,
-            background: '#fff',
-            borderRadius: 20,
-            padding: '36px 32px',
-            boxShadow: '0 2px 20px rgba(102,10,67,0.08)',
-          }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <div style={{ flex: 1, minWidth: 200 }}>
@@ -137,8 +131,8 @@ export default function ContactPage() {
             </div>
 
             {status === 'error' && (
-              <p style={{ color: '#e07070', fontSize: 13 }}>
-                Une erreur s'est produite. Réessaie ou écris-nous directement à contact@abrilove.fr
+              <p style={{ color: '#c0392b', fontSize: 13 }}>
+                Une erreur s'est produite. Écris-nous à <a href="mailto:contact@abrilove.fr" style={{ color: '#660A43' }}>contact@abrilove.fr</a>
               </p>
             )}
 
@@ -164,8 +158,8 @@ export default function ContactPage() {
           </form>
         )}
 
-        <p style={{ color: '#8a5060', fontSize: 12, textAlign: 'center', marginTop: 40 }}>
-          Ou par email directement : <a href="mailto:contact@abrilove.fr" style={{ color: '#c97aaa' }}>contact@abrilove.fr</a>
+        <p style={{ color: '#8a5060', fontSize: 12, textAlign: 'center', marginTop: 32 }}>
+          Ou par email : <a href="mailto:contact@abrilove.fr" style={{ color: '#660A43' }}>contact@abrilove.fr</a>
         </p>
 
       </div>

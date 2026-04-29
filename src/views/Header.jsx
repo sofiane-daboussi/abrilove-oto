@@ -25,9 +25,9 @@ export default function Header() {
         maxWidth: 860,
       }}>
         <div style={{
-          background: 'rgba(255,241,231,0.9)',
+          background: 'rgba(102,10,67,0.4)',
           backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(102,10,67,0.15)',
+          border: '1px solid rgba(255,255,255,0.15)',
           borderRadius: 999,
           padding: '0 28px',
           height: 52,
@@ -37,7 +37,7 @@ export default function Header() {
         }}>
           <a href="/" style={{
             fontFamily: 'var(--font-playfair, serif)',
-            color: '#1a0011',
+            color: '#fff',
             fontSize: 18,
             fontWeight: 700,
             textDecoration: 'none',
@@ -50,7 +50,7 @@ export default function Header() {
           <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
             {LINKS.map(l => (
               <a key={l.href} href={l.href} style={{
-                color: l.href === '/contact' ? '#660A43' : '#8a5060',
+                color: l.href === '/contact' ? '#f0c0d8' : 'rgba(255,255,255,0.75)',
                 fontSize: 13,
                 textDecoration: 'none',
                 letterSpacing: '0.04em',
@@ -58,8 +58,8 @@ export default function Header() {
                 transition: 'color 0.2s',
                 whiteSpace: 'nowrap',
               }}
-              onMouseEnter={e => e.target.style.color = '#1a0011'}
-              onMouseLeave={e => e.target.style.color = l.href === '/contact' ? '#660A43' : '#8a5060'}
+              onMouseEnter={e => e.target.style.color = '#fff'}
+              onMouseLeave={e => e.target.style.color = l.href === '/contact' ? '#f0c0d8' : 'rgba(255,255,255,0.75)'}
               >
                 {l.label}
               </a>
@@ -74,7 +74,7 @@ export default function Header() {
               border: 'none',
               cursor: 'pointer',
               padding: 4,
-              color: '#1a0011',
+              color: '#fff',
               fontSize: 20,
               lineHeight: 1,
             }}
@@ -99,7 +99,7 @@ export default function Header() {
           }}>
             {LINKS.map(l => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
-                color: l.href === '/contact' ? '#660A43' : '#8a5060',
+                color: l.href === '/contact' ? '#f0c0d8' : 'rgba(255,255,255,0.75)',
                 fontSize: 15,
                 textDecoration: 'none',
                 fontFamily: 'var(--font-dm-sans, sans-serif)',
