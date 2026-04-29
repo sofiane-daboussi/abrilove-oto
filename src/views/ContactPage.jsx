@@ -173,8 +173,8 @@ const labelStyle = {
 
 const inputStyle = {
   width: '100%',
-  background: '#fff',
-  border: '1px solid rgba(102,10,67,0.2)',
+  background: 'transparent',
+  border: '1px solid rgba(102,10,67,0.3)',
   borderRadius: 8,
   padding: '14px 16px',
   color: '#2a0a1a',
