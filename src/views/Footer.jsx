@@ -286,7 +286,7 @@ export default function Footer() {
           .footer-cta { flex-direction: column !important; align-items: flex-start !important; }
         }
         @media (max-width: 480px) {
-          .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+          .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
         }
       `}</style>
     </footer>
