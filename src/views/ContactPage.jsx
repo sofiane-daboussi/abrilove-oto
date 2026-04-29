@@ -49,7 +49,7 @@ export default function ContactPage() {
       <style>{`
         .contact-input::placeholder { color: rgba(102,10,67,0.4); }
         .contact-input:focus { border-color: #660A43 !important; }
-        .contact-card { position: relative; overflow: hidden; padding-top: 80px !important; }
+        .contact-card { position: relative; overflow: hidden; }
         .contact-card:before {
           content: '💗';
           position: absolute;
@@ -75,7 +75,6 @@ export default function ContactPage() {
           50% { transform: translateY(-10px); }
         }
       `}</style>
-      <Header />
 
       <div className="card contact-card">
         <span style={{ position: 'absolute', top: '1rem', left: '15%', fontSize: '2rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite', zIndex: 0 }}>💗</span>
