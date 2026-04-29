@@ -36,7 +36,7 @@ export default function Header() {
           justifyContent: 'space-between',
         }}>
           <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-            <img src="/images/favicon-v2.png" alt="Abrilove" style={{ height: 32, width: 32, objectFit: 'contain' }} />
+            <img src="/images/logo-header.png" alt="Abrilove" style={{ height: 32, objectFit: 'contain' }} />
           </a>
 
           <nav style={{ display: 'flex', gap: 24, alignItems: 'center' }} className="desktop-nav">
