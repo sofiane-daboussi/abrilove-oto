@@ -77,6 +77,7 @@ export default function Header() {
           whiteSpace: 'nowrap',
           flexShrink: 0,
           pointerEvents: 'auto',
+          marginLeft: 16,
         }}>
           Fais notre quiz gratuit 🩷
         </a>
