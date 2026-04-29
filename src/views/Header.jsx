@@ -149,20 +149,6 @@ export default function Header() {
               {l.label}
             </a>
           ))}
-          <a href="/quiz-gratuit" onClick={() => setOpen(false)} style={{
-            background: '#fff',
-            color: '#660A43',
-            fontSize: 15,
-            fontWeight: 600,
-            textDecoration: 'none',
-            padding: '12px 20px',
-            borderRadius: 999,
-            textAlign: 'center',
-            fontFamily: 'var(--font-dm-sans, sans-serif)',
-            marginTop: 8,
-          }}>
-            Fais notre quiz gratuit 🩷
-          </a>
         </div>
       )}
 
