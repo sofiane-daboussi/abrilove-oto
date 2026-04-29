@@ -14,103 +14,112 @@ export default function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 100,
-      background: 'rgba(26,0,17,0.92)',
-      backdropFilter: 'blur(12px)',
-      borderBottom: '1px solid rgba(255,255,255,0.06)',
-      padding: '0 24px',
-    }}>
-      <div style={{
-        maxWidth: 1100,
-        margin: '0 auto',
-        height: 60,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
+    <>
+      <header style={{
+        position: 'fixed',
+        top: 16,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 100,
+        width: 'calc(100% - 48px)',
+        maxWidth: 860,
       }}>
-        <a href="/" style={{
-          fontFamily: 'var(--font-playfair, serif)',
-          color: '#fff',
-          fontSize: 20,
-          fontWeight: 700,
-          textDecoration: 'none',
-          letterSpacing: '0.02em',
-        }}>
-          Abrilove
-        </a>
-
-        {/* Desktop */}
-        <nav style={{ display: 'flex', gap: 32, alignItems: 'center' }} className="desktop-nav">
-          {LINKS.map(l => (
-            <a key={l.href} href={l.href} style={{
-              color: l.href === '/contact' ? '#e8a0c8' : '#b08090',
-              fontSize: 13,
-              textDecoration: 'none',
-              letterSpacing: '0.05em',
-              fontFamily: 'var(--font-dm-sans, sans-serif)',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={e => e.target.style.color = '#fff'}
-            onMouseLeave={e => e.target.style.color = l.href === '/contact' ? '#e8a0c8' : '#b08090'}
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Burger mobile */}
-        <button
-          onClick={() => setOpen(o => !o)}
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: 8,
-            color: '#fff',
-            fontSize: 22,
-          }}
-          className="burger"
-          aria-label="Menu"
-        >
-          {open ? '✕' : '☰'}
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {open && (
         <div style={{
-          background: '#1a0011',
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          padding: '16px 24px 24px',
+          background: 'rgba(26,0,17,0.88)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: 999,
+          padding: '0 28px',
+          height: 52,
           display: 'flex',
-          flexDirection: 'column',
-          gap: 20,
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}>
-          {LINKS.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
-              color: l.href === '/contact' ? '#e8a0c8' : '#b08090',
-              fontSize: 15,
-              textDecoration: 'none',
-              fontFamily: 'var(--font-dm-sans, sans-serif)',
-            }}>
-              {l.label}
-            </a>
-          ))}
+          <a href="/" style={{
+            fontFamily: 'var(--font-playfair, serif)',
+            color: '#fff',
+            fontSize: 18,
+            fontWeight: 700,
+            textDecoration: 'none',
+            letterSpacing: '0.02em',
+            whiteSpace: 'nowrap',
+          }}>
+            Abrilove
+          </a>
+
+          {/* Desktop */}
+          <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
+            {LINKS.map(l => (
+              <a key={l.href} href={l.href} style={{
+                color: l.href === '/contact' ? '#e8a0c8' : '#9a7080',
+                fontSize: 13,
+                textDecoration: 'none',
+                letterSpacing: '0.04em',
+                fontFamily: 'var(--font-dm-sans, sans-serif)',
+                transition: 'color 0.2s',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={e => e.target.style.color = '#fff'}
+              onMouseLeave={e => e.target.style.color = l.href === '/contact' ? '#e8a0c8' : '#9a7080'}
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Burger mobile */}
+          <button
+            onClick={() => setOpen(o => !o)}
+            style={{
+              display: 'none',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 4,
+              color: '#fff',
+              fontSize: 20,
+              lineHeight: 1,
+            }}
+            className="burger"
+            aria-label="Menu"
+          >
+            {open ? '✕' : '☰'}
+          </button>
         </div>
-      )}
+
+        {/* Mobile menu */}
+        {open && (
+          <div style={{
+            marginTop: 8,
+            background: 'rgba(26,0,17,0.96)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(255,255,255,0.08)',
+            borderRadius: 20,
+            padding: '20px 28px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 18,
+          }}>
+            {LINKS.map(l => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
+                color: l.href === '/contact' ? '#e8a0c8' : '#9a7080',
+                fontSize: 15,
+                textDecoration: 'none',
+                fontFamily: 'var(--font-dm-sans, sans-serif)',
+              }}>
+                {l.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
 
       <style>{`
-        @media (max-width: 680px) {
+        @media (max-width: 700px) {
           .desktop-nav { display: none !important; }
           .burger { display: block !important; }
         }
       `}</style>
-    </header>
+    </>
   )
 }
