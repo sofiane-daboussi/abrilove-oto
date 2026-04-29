@@ -30,7 +30,7 @@ export default function Header() {
 
         {/* Logo gauche */}
         <a href="/" style={{ textDecoration: 'none', pointerEvents: 'auto', flexShrink: 0 }}>
-          <img src="/images/logo-header.png" alt="Abrilove" style={{ height: 36, objectFit: 'contain' }} />
+          <img src="/images/logo-header.png" alt="Abrilove" className="logo-img" style={{ height: 36, objectFit: 'contain' }} />
         </a>
 
         {/* Nav pill centre */}
@@ -65,7 +65,7 @@ export default function Header() {
         </nav>
 
         {/* CTA droite */}
-        <a href="/quiz-gratuit" className="desktop-cta" style={{
+        <a href="/quiz-gratuit" className="desktop-cta desktop-cta-btn" style={{
           background: '#fff',
           color: '#660A43',
           fontSize: 12,
@@ -153,6 +153,10 @@ export default function Header() {
       )}
 
       <style>{`
+        @media (min-width: 781px) {
+          .logo-img { height: 48px !important; }
+          .desktop-cta-btn { padding: 12px 20px !important; }
+        }
         @media (max-width: 780px) {
           .desktop-nav { display: none !important; }
           .desktop-cta { display: none !important; }
