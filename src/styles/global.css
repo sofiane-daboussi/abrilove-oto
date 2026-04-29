@@ -7,13 +7,10 @@
   --brun2: #5C3D2A;
 }
 
-html {
-  background: linear-gradient(160deg, #660A43 0%, #7a1050 40%, #5a0838 100%);
-  min-height: 100%;
-}
+html { background: #5a0838; }
 
 body {
-  background: transparent;
+  background: linear-gradient(160deg, #660A43 0%, #7a1050 40%, #5a0838 100%);
   font-family: var(--font-dm-sans), sans-serif;
   color: var(--brun);
   min-height: 100vh;
