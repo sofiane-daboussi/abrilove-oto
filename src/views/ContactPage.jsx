@@ -85,7 +85,13 @@ export default function ContactPage() {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <form onSubmit={handleSubmit} style={{
+            display: 'flex', flexDirection: 'column', gap: 20,
+            background: '#fff',
+            borderRadius: 20,
+            padding: '36px 32px',
+            boxShadow: '0 2px 20px rgba(102,10,67,0.08)',
+          }}>
 
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <div style={{ flex: 1, minWidth: 200 }}>

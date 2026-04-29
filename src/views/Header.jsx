@@ -25,9 +25,9 @@ export default function Header() {
         maxWidth: 860,
       }}>
         <div style={{
-          background: 'transparent',
-          backdropFilter: 'none',
-          border: '1px solid rgba(255,255,255,0.15)',
+          background: 'rgba(255,241,231,0.9)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid rgba(102,10,67,0.15)',
           borderRadius: 999,
           padding: '0 28px',
           height: 52,
@@ -37,7 +37,7 @@ export default function Header() {
         }}>
           <a href="/" style={{
             fontFamily: 'var(--font-playfair, serif)',
-            color: '#fff',
+            color: '#1a0011',
             fontSize: 18,
             fontWeight: 700,
             textDecoration: 'none',
@@ -47,11 +47,10 @@ export default function Header() {
             Abrilove
           </a>
 
-          {/* Desktop */}
           <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
             {LINKS.map(l => (
               <a key={l.href} href={l.href} style={{
-                color: l.href === '/contact' ? '#e8a0c8' : '#9a7080',
+                color: l.href === '/contact' ? '#660A43' : '#8a5060',
                 fontSize: 13,
                 textDecoration: 'none',
                 letterSpacing: '0.04em',
@@ -59,15 +58,14 @@ export default function Header() {
                 transition: 'color 0.2s',
                 whiteSpace: 'nowrap',
               }}
-              onMouseEnter={e => e.target.style.color = '#fff'}
-              onMouseLeave={e => e.target.style.color = l.href === '/contact' ? '#e8a0c8' : '#9a7080'}
+              onMouseEnter={e => e.target.style.color = '#1a0011'}
+              onMouseLeave={e => e.target.style.color = l.href === '/contact' ? '#660A43' : '#8a5060'}
               >
                 {l.label}
               </a>
             ))}
           </nav>
 
-          {/* Burger mobile */}
           <button
             onClick={() => setOpen(o => !o)}
             style={{
@@ -76,7 +74,7 @@ export default function Header() {
               border: 'none',
               cursor: 'pointer',
               padding: 4,
-              color: '#fff',
+              color: '#1a0011',
               fontSize: 20,
               lineHeight: 1,
             }}
@@ -87,13 +85,12 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {open && (
           <div style={{
             marginTop: 8,
-            background: 'rgba(26,0,17,0.96)',
+            background: 'rgba(255,241,231,0.97)',
             backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            border: '1px solid rgba(102,10,67,0.15)',
             borderRadius: 20,
             padding: '20px 28px',
             display: 'flex',
@@ -102,7 +99,7 @@ export default function Header() {
           }}>
             {LINKS.map(l => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
-                color: l.href === '/contact' ? '#e8a0c8' : '#9a7080',
+                color: l.href === '/contact' ? '#660A43' : '#8a5060',
                 fontSize: 15,
                 textDecoration: 'none',
                 fontFamily: 'var(--font-dm-sans, sans-serif)',
