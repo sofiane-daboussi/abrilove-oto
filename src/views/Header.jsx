@@ -68,10 +68,10 @@ export default function Header() {
         <a href="/quiz-gratuit" className="desktop-cta" style={{
           background: '#fff',
           color: '#660A43',
-          fontSize: 13,
+          fontSize: 12,
           fontWeight: 600,
           textDecoration: 'none',
-          padding: '10px 20px',
+          padding: '7px 14px',
           borderRadius: 999,
           fontFamily: 'var(--font-dm-sans, sans-serif)',
           whiteSpace: 'nowrap',
