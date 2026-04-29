@@ -28,7 +28,7 @@ export default function ContactPage() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '80px 12px 40px',
+      padding: '80px 8px 40px',
       fontFamily: 'var(--font-dm-sans, sans-serif)',
     }}>
       <Header />
@@ -36,9 +36,9 @@ export default function ContactPage() {
       <div style={{
         background: '#fff1e7',
         borderRadius: 24,
-        padding: '40px 32px',
+        padding: '40px 28px',
         width: '100%',
-        maxWidth: 620,
+        maxWidth: 680,
         marginTop: 8,
       }}>
 
