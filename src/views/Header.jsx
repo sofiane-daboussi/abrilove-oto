@@ -78,7 +78,7 @@ export default function Header() {
           flexShrink: 0,
           pointerEvents: 'auto',
         }}>
-          Fais le quiz gratuit
+          Fais notre quiz gratuit 🩷
         </a>
 
         {/* CTA mobile — visible entre logo et burger */}
@@ -95,7 +95,7 @@ export default function Header() {
           whiteSpace: 'nowrap',
           pointerEvents: 'auto',
         }}>
-          Quiz gratuit
+          Quiz gratuit 🩷
         </a>
 
         {/* Burger mobile */}
@@ -160,7 +160,7 @@ export default function Header() {
             fontFamily: 'var(--font-dm-sans, sans-serif)',
             marginTop: 8,
           }}>
-            Fais le quiz gratuit
+            Fais notre quiz gratuit 🩷
           </a>
         </div>
       )}
