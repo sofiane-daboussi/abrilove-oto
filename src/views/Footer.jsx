@@ -277,16 +277,13 @@ export default function Footer() {
           grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
           gap: 40px;
         }
+        .footer-col-nav { order: 1; }
+        .footer-col-legal { order: 2; }
+        .footer-col-contact { order: 3; }
+        .footer-col-brand { order: 4; }
         @media (max-width: 780px) {
-          .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-          .footer-col-brand { order: 1; }
-          .footer-col-contact { order: 2; }
-          .footer-col-nav { order: 3; }
-          .footer-col-legal { order: 4; }
+          .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
           .footer-cta { flex-direction: column !important; align-items: flex-start !important; }
-        }
-        @media (max-width: 480px) {
-          .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
         }
       `}</style>
     </footer>
