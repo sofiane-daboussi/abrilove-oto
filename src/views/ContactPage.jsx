@@ -53,11 +53,36 @@ export default function ContactPage() {
       <style>{`
         .contact-input::placeholder { color: rgba(102,10,67,0.4); }
         .contact-input:focus { border-color: #660A43 !important; }
+        .contact-card { position: relative; overflow: hidden; }
+        .contact-card:before {
+          content: '💗';
+          position: absolute;
+          bottom: 1rem; left: 15%;
+          font-size: 2rem;
+          opacity: 0.1;
+          pointer-events: none;
+          animation: contact-float 6s ease-in-out infinite;
+          z-index: 0;
+        }
+        .contact-card:after {
+          content: '💕';
+          position: absolute;
+          bottom: 1.5rem; right: 15%;
+          font-size: 1.8rem;
+          opacity: 0.1;
+          pointer-events: none;
+          animation: contact-float 7s ease-in-out infinite reverse;
+          z-index: 0;
+        }
+        @keyframes contact-float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
       `}</style>
       <Header />
 
-      <div style={{
-        background: '#FFF1E7',
+      <div className="contact-card" style={{
+        background: '#FFF4F7',
         borderRadius: 20,
         maxWidth: 680,
         margin: '0 auto',
