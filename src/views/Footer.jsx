@@ -163,7 +163,7 @@ export default function Footer() {
       </div>
 
       {/* Colonnes */}
-      <div style={{ padding: 'clamp(40px, 6vw, 72px) 20px' }}>
+      <div style={{ padding: 'clamp(40px, 6vw, 72px) 20px', marginTop: 40 }}>
         <div className="footer-grid" style={{ maxWidth: 1100, margin: '0 auto' }}>
 
           <div className="footer-col-brand">
