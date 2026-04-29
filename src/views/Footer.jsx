@@ -64,7 +64,7 @@ export default function Footer() {
   }
 
   return (
-    <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', marginTop: 'clamp(48px, 8vw, 96px)' }}>
+    <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', marginTop: 'clamp(56px, 10vw, 140px)' }}>
 
       {/* Newsletter */}
       <div style={{
