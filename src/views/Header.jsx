@@ -30,15 +30,6 @@ export default function Header() {
 
   return (
     <>
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 'env(safe-area-inset-top)',
-        background: '#660A43',
-        zIndex: 101,
-      }} />
       <header className="mobile-pill" style={{
         position: 'fixed',
         top: 24,
@@ -190,7 +181,7 @@ export default function Header() {
           .desktop-cta-btn:hover { transform: scale(1.07) !important; box-shadow: 0 6px 24px rgba(0,0,0,0.18) !important; }
         }
         @media (max-width: 780px) {
-          .mobile-pill { top: max(12px, env(safe-area-inset-top)) !important; }
+          .mobile-pill { top: calc(env(safe-area-inset-top) + 12px) !important; }
           .desktop-nav { display: none !important; }
           .desktop-cta { display: none !important; }
           .burger { display: block !important; }
