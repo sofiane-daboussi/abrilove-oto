@@ -45,10 +45,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      fontFamily: 'var(--font-dm-sans, sans-serif)',
-    }}>
+    <>
       <style>{`
         .contact-input::placeholder { color: rgba(102,10,67,0.4); }
         .contact-input:focus { border-color: #660A43 !important; }
@@ -84,8 +81,8 @@ export default function ContactPage() {
         background: '#FFF4F7',
         borderRadius: 20,
         maxWidth: 680,
-        margin: '56px auto 80px',
-        padding: '36px 28px 48px',
+        margin: '0 auto 80px',
+        padding: '70px 28px 48px',
       }}>
         <span style={{ position: 'absolute', top: '1rem', left: '15%', fontSize: '2rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite', zIndex: 0 }}>💗</span>
         <span style={{ position: 'absolute', top: '1.5rem', right: '15%', fontSize: '1.8rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 5s ease-in-out infinite reverse', zIndex: 0 }}>💕</span>
@@ -209,7 +206,7 @@ export default function ContactPage() {
 
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 
