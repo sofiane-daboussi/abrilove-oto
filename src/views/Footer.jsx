@@ -161,12 +161,12 @@ export default function Footer() {
       </div>
 
       {/* Colonnes */}
-      <div style={{ background: '#fff', padding: 'clamp(40px, 6vw, 72px) 20px' }}>
+      <div style={{ background: '#130009', padding: 'clamp(40px, 6vw, 72px) 20px' }}>
         <div className="footer-grid" style={{ maxWidth: 1100, margin: '0 auto' }}>
 
           <div>
-            <img src="/images/logo-header.png" alt="Abrilove" style={{ height: 40, objectFit: 'contain', marginBottom: 12 }} />
-            <p style={{ color: '#8a5060', fontSize: 14, marginBottom: 20, lineHeight: 1.5 }}>L'amour, le vrai.</p>
+            <img src="/images/logo-header.png" alt="Abrilove" style={{ height: 40, objectFit: 'contain', marginBottom: 12, filter: 'brightness(0) invert(1)' }} />
+            <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 14, marginBottom: 20, lineHeight: 1.5 }}>L'amour, le vrai.</p>
             <div style={{ display: 'flex', gap: 10 }}>
               {[
                 { href: 'https://instagram.com/abrilove.fr', icon: <IgIcon /> },
@@ -188,7 +188,7 @@ export default function Footer() {
           <div>
             <p style={colTitleStyle}>Pages légales</p>
             {LEGAL_LINKS.map(l => (
-              <a key={l.href} href={l.href} style={{ ...linkStyle, ...(l.highlight ? { color: '#9b3090' } : {}) }}>
+              <a key={l.href} href={l.href} style={{ ...linkStyle, ...(l.highlight ? { color: '#d080b0' } : {}) }}>
                 {l.label}
               </a>
             ))}
@@ -204,19 +204,19 @@ export default function Footer() {
       </div>
 
       {/* CTA bar */}
-      <div style={{ background: '#fff', borderTop: '1px solid rgba(102,10,67,0.1)', padding: 'clamp(32px, 5vw, 56px) 20px' }}>
+      <div style={{ background: '#0d0006', borderTop: '1px solid rgba(255,255,255,0.07)', padding: 'clamp(32px, 5vw, 56px) 20px' }}>
         <div className="footer-cta" style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
           <div>
             <h3 style={{
               fontFamily: 'var(--font-playfair, serif)',
-              color: '#1a0011',
+              color: '#fff',
               fontSize: 'clamp(20px, 3vw, 30px)',
               fontWeight: 700,
               marginBottom: 8,
             }}>
               Tu veux discuter avec nous ?
             </h3>
-            <p style={{ color: '#8a5060', fontSize: 15, lineHeight: 1.5 }}>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, lineHeight: 1.5 }}>
               N'hésite pas à nous contacter et nous te répondrons avec plaisir.
             </p>
           </div>
@@ -240,8 +240,8 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div style={{ background: '#fff', borderTop: '1px solid rgba(0,0,0,0.06)', padding: '18px 20px' }}>
-        <p style={{ maxWidth: 1100, margin: '0 auto', color: '#8a5060', fontSize: 13 }}>
+      <div style={{ background: '#0d0006', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '18px 20px' }}>
+        <p style={{ maxWidth: 1100, margin: '0 auto', color: 'rgba(255,255,255,0.3)', fontSize: 13 }}>
           © Tous droits réservés – Abrilove, 2026.
         </p>
       </div>
@@ -255,13 +255,13 @@ export default function Footer() {
           width: 36px;
           height: 36px;
           border-radius: 50%;
-          background: rgba(102,10,67,0.08);
-          color: #660A43;
+          background: rgba(255,255,255,0.08);
+          color: rgba(255,255,255,0.75);
           text-decoration: none;
           transition: background 0.2s;
           flex-shrink: 0;
         }
-        .social-icon:hover { background: rgba(102,10,67,0.18); }
+        .social-icon:hover { background: rgba(255,255,255,0.15); }
         .footer-cta-btn { transition: opacity 0.2s, transform 0.2s; }
         .footer-cta-btn:hover { opacity: 0.88; transform: scale(1.02); }
         .footer-grid {
@@ -282,17 +282,17 @@ export default function Footer() {
 }
 
 const colTitleStyle = {
-  color: '#660A43',
+  color: 'rgba(255,255,255,0.4)',
   fontWeight: 700,
-  fontSize: 13,
-  letterSpacing: '0.06em',
+  fontSize: 11,
+  letterSpacing: '0.1em',
   textTransform: 'uppercase',
   marginBottom: 16,
 }
 
 const linkStyle = {
   display: 'block',
-  color: '#4a2030',
+  color: 'rgba(255,255,255,0.7)',
   fontSize: 14,
   textDecoration: 'none',
   marginBottom: 12,
