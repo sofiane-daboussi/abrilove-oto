@@ -69,7 +69,7 @@ export default function Footer() {
       {/* Newsletter */}
       <div style={{
         background: 'linear-gradient(135deg, #3d0228 0%, #5e063c 55%, #7a1050 100%)',
-        padding: 'clamp(36px, 5vw, 64px) 20px',
+        padding: 'clamp(24px, 5vw, 64px) 20px',
         textAlign: 'center',
         borderRadius: 20,
       }}>
