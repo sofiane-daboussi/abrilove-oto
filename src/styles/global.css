@@ -10,7 +10,7 @@
 html { background: #660A43; }
 
 body {
-  background: linear-gradient(160deg, #660A43 0%, #7a1050 40%, #5a0838 100%);
+  background: linear-gradient(160deg, #660A43 0%, #7a1050 50%, #660A43 100%);
   font-family: var(--font-dm-sans), sans-serif;
   color: var(--brun);
   min-height: 100vh;
