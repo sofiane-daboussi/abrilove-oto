@@ -1,7 +1,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --rose: #660A43;
-  --creme: #FFF1E7;
+  --creme: #FFF4F7;
   --creme2: #F5E8DA;
   --brun: #1E120A;
   --brun2: #5C3D2A;
