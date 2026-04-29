@@ -75,6 +75,7 @@ export default function ContactPage() {
           50% { transform: translateY(-10px); }
         }
       `}</style>
+      <Header />
 
       <div className="card contact-card">
         <span style={{ position: 'absolute', top: '1rem', left: '15%', fontSize: '2rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite', zIndex: 0 }}>💗</span>
