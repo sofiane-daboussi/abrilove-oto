@@ -71,6 +71,7 @@ export default function Footer() {
         background: 'linear-gradient(135deg, #3d0228 0%, #5e063c 55%, #7a1050 100%)',
         padding: 'clamp(56px, 8vw, 100px) 20px',
         textAlign: 'center',
+        borderRadius: 20,
       }}>
         <h2 style={{
           fontFamily: 'var(--font-playfair, serif)',
@@ -162,7 +163,7 @@ export default function Footer() {
       </div>
 
       {/* Colonnes */}
-      <div style={{ background: '#130009', padding: 'clamp(40px, 6vw, 72px) 20px' }}>
+      <div style={{ padding: 'clamp(40px, 6vw, 72px) 20px' }}>
         <div className="footer-grid" style={{ maxWidth: 1100, margin: '0 auto' }}>
 
           <div>
@@ -205,7 +206,7 @@ export default function Footer() {
       </div>
 
       {/* CTA bar */}
-      <div style={{ background: '#0d0006', borderTop: '1px solid rgba(255,255,255,0.07)', padding: 'clamp(32px, 5vw, 56px) 20px' }}>
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', padding: 'clamp(32px, 5vw, 56px) 20px' }}>
         <div className="footer-cta" style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24 }}>
           <div>
             <h3 style={{
@@ -241,7 +242,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div style={{ background: '#0d0006', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '18px 20px' }}>
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '18px 20px' }}>
         <p style={{ maxWidth: 1100, margin: '0 auto', color: 'rgba(255,255,255,0.3)', fontSize: 13 }}>
           © Tous droits réservés – Abrilove, 2026.
         </p>
@@ -252,7 +253,7 @@ export default function Footer() {
         .nl-input::placeholder { color: rgba(255,255,255,0.45); }
         @media (max-width: 540px) {
           .nl-form-row { flex-direction: column !important; border-radius: 12px !important; overflow: visible !important; border: none !important; gap: 10px; }
-          .nl-input { border-radius: 12px !important; border: 1.5px solid rgba(255,255,255,0.25) !important; }
+          .nl-input { border-radius: 12px !important; border: 1.5px solid rgba(255,255,255,0.25) !important; text-align: center !important; }
           .nl-btn { border-radius: 12px !important; width: 100%; }
         }
         .social-icon {
