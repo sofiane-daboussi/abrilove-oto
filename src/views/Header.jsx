@@ -12,17 +12,24 @@ const LINKS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
+    let last = window.scrollY
+    const onScroll = () => {
+      const curr = window.scrollY
+      if (curr < 60) { setVisible(true) }
+      else if (curr > last) { setVisible(false) }
+      else { setVisible(true) }
+      last = curr
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
     <>
-      <header className={`mobile-pill${scrolled ? ' scrolled' : ''}`} style={{
+      <header className="mobile-pill" style={{
         position: 'fixed',
         top: 24,
         left: 16,
@@ -32,7 +39,10 @@ export default function Header() {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 20px',
+        borderRadius: 999,
         pointerEvents: 'none',
+        transform: visible ? 'translateY(0)' : 'translateY(-120%)',
+        transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
       }}>
 
         {/* Logo gauche */}
@@ -47,13 +57,10 @@ export default function Header() {
           transform: 'translateX(-50%)',
           display: 'flex',
           alignItems: 'center',
-          background: scrolled
-            ? 'linear-gradient(135deg, rgba(80,5,50,0.45) 0%, rgba(130,15,80,0.45) 50%, rgba(80,5,50,0.45) 100%)'
-            : 'linear-gradient(135deg, rgba(80,5,50,0.9) 0%, rgba(130,15,80,0.9) 50%, rgba(80,5,50,0.9) 100%)',
+          background: 'linear-gradient(135deg, rgba(80,5,50,0.9) 0%, rgba(130,15,80,0.9) 50%, rgba(80,5,50,0.9) 100%)',
           backdropFilter: 'blur(20px)',
-          border: `1px solid rgba(255,255,255,${scrolled ? '0.07' : '0.15'})`,
+          border: '1px solid rgba(255,255,255,0.15)',
           borderRadius: 999,
-          transition: 'background 0.4s ease, border-color 0.4s ease',
           padding: '6px 8px',
           gap: 2,
           pointerEvents: 'auto',
@@ -182,14 +189,8 @@ export default function Header() {
             background: linear-gradient(135deg, rgba(80,5,50,0.9) 0%, rgba(130,15,80,0.9) 50%, rgba(80,5,50,0.9) 100%) !important;
             backdrop-filter: blur(20px) !important;
             border: 1px solid rgba(255,255,255,0.15) !important;
-            transition: background 0.4s ease, border-color 0.4s ease !important;
-          }
-          .mobile-pill.scrolled {
-            background: linear-gradient(135deg, rgba(80,5,50,0.35) 0%, rgba(130,15,80,0.35) 50%, rgba(80,5,50,0.35) 100%) !important;
-            border-color: rgba(255,255,255,0.06) !important;
             border-radius: 999px !important;
-            padding: 0 12px !important;
-            height: 48px !important;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
           }
         }
       `}</style>
