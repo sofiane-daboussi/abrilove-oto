@@ -43,8 +43,6 @@ const OPTS = [
 ]
 
 const CSS = `
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 .qz-body {
   font-family: 'Crimson Pro', serif;
   background: #fff;

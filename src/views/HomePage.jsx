@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, memo } from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import QuizPage from './QuizPage'
 
 const CDN = 'https://cdn.prod.website-files.com/686bb5337ed61a425660e143/'
 const AVATAR = CDN + '69b163fc41e69155b8609953_Copie%20de%20Copie%20de%20Copie%20de%20Copie%20de%20Blue%20and%20Pink%20Soft%20Magazine%20Cover%20Mockup%20Instagram%20Post%20(6).avif'
@@ -290,8 +291,13 @@ export default function HomePage() {
       </section>
 
       {/* ── QUIZ TEASER ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 55%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+      <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+          <div style={{ position: 'absolute', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(190,25,105,0.6) 0%, transparent 65%)', top: '-10%', right: '-10%', filter: 'blur(50px)', animation: 'blob1 6s ease-in-out infinite' }} />
+          <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(160,15,85,0.55) 0%, transparent 65%)', bottom: '-10%', left: '-10%', filter: 'blur(45px)', animation: 'blob2 8s ease-in-out infinite' }} />
+          <div style={{ position: 'absolute', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(210,40,120,0.5) 0%, transparent 65%)', top: '50%', left: '30%', filter: 'blur(50px)', animation: 'blob3 7s ease-in-out infinite' }} />
+        </div>
+        <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
               <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Quiz gratuit</p>
@@ -302,27 +308,9 @@ export default function HomePage() {
                 Parfois, le vrai problème n'est pas seulement la situation que tu vis aujourd'hui. C'est le schéma derrière. Celui qui te fait douter, t'attacher trop vite, sur-analyser, ou répéter les mêmes histoires.<br /><br />
                 Fais le <strong>test gratuit</strong> et découvre ton profil amoureux, pour mieux comprendre ce que tu vis, en profondeur.
               </p>
-              <a href="/quiz-gratuit" className="hp-btn-light">Faire le quiz gratuit</a>
             </div>
-            <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-              <div style={{ background: '#FFF4F7', borderRadius: 24, padding: '32px 28px', boxShadow: '0 20px 60px rgba(0,0,0,0.35)', maxWidth: 380, width: '100%' }}>
-                <div style={{ height: 6, background: 'rgba(102,10,67,0.12)', borderRadius: 999, marginBottom: 28 }}>
-                  <div style={{ height: '100%', width: '30%', background: '#660A43', borderRadius: 999 }} />
-                </div>
-                <p style={{ fontSize: 11, color: '#660A43', fontWeight: 700, letterSpacing: '0.05em', marginBottom: 16 }}>QUESTION 1/16</p>
-                <p style={{ color: '#660A43', fontWeight: 500, fontSize: 15, lineHeight: 1.55, marginBottom: 22 }}>
-                  Quand quelqu'un me plaît, j'ai tendance à répondre très vite à ses messages et à m'inquiéter s'il met longtemps à répondre.
-                </p>
-                {['Pas du tout moi', 'Un peu moi', 'Tellement moi'].map(opt => (
-                  <div key={opt} style={{ background: 'white', border: '2px solid #E8D5DE', borderRadius: 50, padding: '11px 16px 11px 44px', fontSize: 14, color: '#2C2C2C', marginBottom: 9, position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', width: 18, height: 18, borderRadius: '50%', border: '2px solid #C4A3B3', display: 'inline-block' }} />
-                    {opt}
-                  </div>
-                ))}
-                <a href="/quiz-gratuit" style={{ display: 'block', background: '#660A43', color: '#fff', textAlign: 'center', padding: 14, borderRadius: 50, fontSize: 15, fontWeight: 700, textDecoration: 'none', marginTop: 8, boxShadow: '0 6px 20px rgba(102,10,67,0.4)' }}>
-                  Commencer le quiz →
-                </a>
-              </div>
+            <div style={{ flex: 1 }}>
+              <QuizPage />
             </div>
           </div>
         </div>
