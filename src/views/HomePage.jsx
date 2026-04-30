@@ -211,6 +211,7 @@ export default function HomePage() {
         }
         .hp-quiz-embed .qz-wrap { padding: 0 !important; max-width: 100% !important; }
         .hp-quiz-embed .qz-progress-bar { display: none !important; }
+        .hp-quiz-embed .qz-resume-overlay { background: rgba(20,0,10,0.75) !important; }
         .hp-quiz-section p strong, .hp-quiz-section p em { color: #FFF1E7 !important; }
       `}</style>
 

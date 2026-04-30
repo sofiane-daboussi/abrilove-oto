@@ -442,11 +442,17 @@ export default function QuizPage() {
     setAnswers(savedData.answers)
     setCurrentQ(savedData.currentQ)
     setShowResume(false)
+    setTimeout(() => {
+      document.querySelector('.qz-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 100)
   }
 
   function resumeRestart() {
     try { localStorage.removeItem('abrilove_quiz_progress') } catch {}
     setShowResume(false)
+    setTimeout(() => {
+      document.querySelector('.qz-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 100)
   }
 
   async function submitQuiz() {
