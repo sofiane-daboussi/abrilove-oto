@@ -76,7 +76,13 @@ export default function Footer() {
         textAlign: 'center',
         borderRadius: 20,
         border: '1.5px solid rgba(255,255,255,0.85)',
+        position: 'relative',
       }}>
+        <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, pointerEvents: 'none', zIndex: 1 }}>
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80, borderRadius: '20px 20px 0 0' }}>
+            <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#660A43" />
+          </svg>
+        </div>
         <h2 style={{
           fontFamily: 'var(--font-playfair, serif)',
           color: '#fff',
