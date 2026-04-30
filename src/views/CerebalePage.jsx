@@ -145,7 +145,7 @@ export default function CerebalePage() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
         const elements = stripe.elements({
           mode: 'payment', amount: 1700, currency: 'eur',
-          appearance: { theme: 'flat', variables: { colorPrimary: '#660A43', colorBackground: '#FFF4F7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px', colorIcon: '#660A43', tabIconSelectedColor: '#660A43', gridRowSpacing: '12px' } }
+          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF4F7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
         })
         elementsRef.current = elements
         const paymentEl = elements.create('payment', {
