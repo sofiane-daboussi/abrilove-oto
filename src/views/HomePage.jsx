@@ -284,7 +284,7 @@ export default function HomePage() {
       </section>
 
       {/* ── L'ABRI IA ── */}
-      <section id="abria" style={{ padding: 'clamp(60px,8vw,120px) clamp(20px,5vw,80px)' }}>
+      <section id="abria" style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(20px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
