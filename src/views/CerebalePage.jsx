@@ -145,7 +145,7 @@ export default function CerebalePage() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
         const elements = stripe.elements({
           mode: 'payment', amount: 1700, currency: 'eur',
-          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#F2E0EC', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
+          appearance: { theme: 'flat', variables: { colorPrimary: '#660A43', colorBackground: '#FFF4F7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px', colorIcon: '#660A43', tabIconSelectedColor: '#660A43', gridRowSpacing: '12px' } }
         })
         elementsRef.current = elements
         const paymentEl = elements.create('payment', {
@@ -701,7 +701,7 @@ export default function CerebalePage() {
         </div>
 
         {/* PAIEMENT */}
-        <div className="payment-block fade-section" ref={paiementRef} id="paiement" style={{ background: 'transparent', border: '1.5px solid rgba(102,10,67,0.15)', borderRadius: '16px' }}>
+        <div className="payment-block fade-section" ref={paiementRef} id="paiement" style={{ background: 'transparent', border: '2px solid rgba(102,10,67,0.4)', borderRadius: '16px' }}>
           <span className="offer-label">✦ Offre réservée · résultats du quiz</span>
           <div className="payment-book-row">
             <div className="payment-book-details">
