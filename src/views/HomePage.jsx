@@ -1030,7 +1030,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Footer />
+      <div style={{ margin: '0 16px' }}>
+        <Footer />
+      </div>
     </div>
   )
 }
