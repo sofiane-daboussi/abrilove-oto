@@ -750,7 +750,7 @@ export default function HomePage() {
           .hp-ia-img { display: none !important; }
         }
         @media (max-width:680px) {
-          .bento-grid-wrap { padding: 0 !important; max-width: 100% !important; }
+          .bento-grid-wrap { margin-left: -10px; margin-right: -10px; }
         }
         .hp-quiz-embed .qz-wrap { padding: 0 !important; max-width: 100% !important; }
         .hp-quiz-embed .qz-progress-bar { display: none !important; }
