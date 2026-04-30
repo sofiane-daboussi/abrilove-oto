@@ -67,22 +67,23 @@ export default function Footer() {
   }
 
   return (
-    <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', marginTop: 'clamp(72px, 10vw, 140px)' }}>
+    <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', marginTop: 0, position: 'relative', background: 'linear-gradient(180deg, #500532 0%, #820F50 50%, #500532 100%)' }}>
+      <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
+          <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
+        </svg>
+      </div>
 
       {/* Newsletter */}
+      <div style={{ padding: '80px 16px 0' }}>
       <div style={{
         background: 'linear-gradient(135deg, #3d0228 0%, #5e063c 55%, #7a1050 100%)',
         padding: 'clamp(24px, 5vw, 64px) 20px',
         textAlign: 'center',
         borderRadius: 20,
         border: '1.5px solid rgba(255,255,255,0.85)',
-        position: 'relative',
       }}>
-        <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, pointerEvents: 'none', zIndex: 1 }}>
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80, borderRadius: '20px 20px 0 0' }}>
-            <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#660A43" />
-          </svg>
-        </div>
+
         <h2 style={{
           fontFamily: 'var(--font-playfair, serif)',
           color: '#fff',
@@ -175,6 +176,7 @@ export default function Footer() {
             )}
           </form>
         )}
+      </div>
       </div>
 
       {/* Colonnes */}
