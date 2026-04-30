@@ -48,15 +48,15 @@ function IPhoneChat() {
 
     const timers = []
 
-    function get(id) { return msgs.querySelector('#'+id) }
+    function get(id) { return document.getElementById(id) }
 
     function reset() {
       IDS.forEach(id => {
         const el = get(id)
         if (!el) return
         el.style.display = 'none'
-        const b = el.querySelector('.iphone-bubble')
-        const t = el.querySelector('.iphone-typing')
+        const b = el.querySelector('.bubble')
+        const t = el.querySelector('.typing')
         if (b) b.classList.remove('show')
         if (t) t.classList.remove('show')
       })
@@ -72,7 +72,7 @@ function IPhoneChat() {
             const el = get(s.hide)
             if (el) {
               el.style.display = 'none'
-              const t = el.querySelector('.iphone-typing')
+              const t = el.querySelector('.typing')
               if (t) t.classList.remove('show')
             }
           }
@@ -82,8 +82,8 @@ function IPhoneChat() {
               el.style.display = 'flex'
               el.style.flexDirection = 'column'
               setTimeout(() => {
-                const b = el.querySelector('.iphone-bubble')
-                const t = el.querySelector('.iphone-typing')
+                const b = el.querySelector('.bubble')
+                const t = el.querySelector('.typing')
                 if (b) b.classList.add('show')
                 if (t) t.classList.add('show')
                 msgs.scrollTop = 9999
@@ -99,7 +99,7 @@ function IPhoneChat() {
   }, [])
 
   return (
-    <div style={{ width:260, background:'#FFF1E7', borderRadius:44, border:'11px solid #1a0812', boxShadow:'0 0 0 1px #3a1020,0 30px 70px rgba(0,0,0,0.4)', overflow:'hidden', margin:'0 auto', fontFamily:'-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif' }}>
+    <div className="iphone" style={{ width:260, background:'#FFF1E7', borderRadius:44, border:'11px solid #1a0812', boxShadow:'0 0 0 1px #3a1020,0 30px 70px rgba(0,0,0,0.4)', overflow:'hidden', margin:'0 auto', fontFamily:'-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif' }}>
       {/* status bar */}
       <div style={{ background:'#FFF1E7', display:'flex', alignItems:'center', justifyContent:'space-between', padding:'10px 22px 8px', fontSize:13, fontWeight:700, color:'#2a0a1a', position:'relative' }}>
         <span>9:41</span>
@@ -120,24 +120,24 @@ function IPhoneChat() {
       {/* messages */}
       <div ref={msgsRef} style={{ padding:12, display:'flex', flexDirection:'column', gap:7, minHeight:340, background:'#FFF1E7', overflow:'hidden' }}>
         <div id="abri-m1" style={{ display:'none', flexDirection:'column', alignItems:'flex-end' }}>
-          <div className="iphone-bubble iphone-bubble-u">Il me laisse en vu depuis 2 jours… 😞</div>
+          <div className="bubble bubble-u">Il me laisse en vu depuis 2 jours… 😞</div>
         </div>
         <div id="abri-t1" style={{ display:'none', flexDirection:'column' }}>
-          <div className="iphone-typing"><span/><span/><span/></div>
+          <div className="typing"><span/><span/><span/></div>
         </div>
         <div id="abri-m2" style={{ display:'none', flexDirection:'column', alignItems:'flex-start' }}>
-          <div className="iphone-sender">Sofi & Oli 💛</div>
-          <div className="iphone-bubble iphone-bubble-a">C'est nouveau chez lui ou il l'a déjà fait avant ?</div>
+          <div className="sender">Sofi & Oli 💛</div>
+          <div className="bubble bubble-a">C'est nouveau chez lui ou il l'a déjà fait avant ?</div>
         </div>
         <div id="abri-m3" style={{ display:'none', flexDirection:'column', alignItems:'flex-end' }}>
-          <div className="iphone-bubble iphone-bubble-u">Jamais… 😔</div>
+          <div className="bubble bubble-u">Jamais… 😔</div>
         </div>
         <div id="abri-t2" style={{ display:'none', flexDirection:'column' }}>
-          <div className="iphone-typing"><span/><span/><span/></div>
+          <div className="typing"><span/><span/><span/></div>
         </div>
         <div id="abri-m4" style={{ display:'none', flexDirection:'column', alignItems:'flex-start' }}>
-          <div className="iphone-sender">Sofi & Oli 💛</div>
-          <div className="iphone-bubble iphone-bubble-a">Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div>
+          <div className="sender">Sofi & Oli 💛</div>
+          <div className="bubble bubble-a">Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div>
         </div>
       </div>
       {/* input bar */}
@@ -188,16 +188,16 @@ export default function HomePage() {
     <>
       <style>{`
         @keyframes abri-dot { 0%,60%,100% { opacity:0.2; transform:scale(0.8); } 30% { opacity:1; transform:scale(1); } }
-        .iphone-bubble { max-width:80%; padding:9px 13px; border-radius:18px; font-size:12.5px; line-height:1.45; opacity:0; transform:translateY(6px); transition:opacity 0.4s,transform 0.4s; }
-        .iphone-bubble.show { opacity:1; transform:translateY(0); }
-        .iphone-bubble-u { background:#660A43; color:#fff; align-self:flex-end; border-radius:18px 18px 4px 18px; }
-        .iphone-bubble-a { background:rgba(102,10,67,0.1); color:#2a0a1a; align-self:flex-start; border-radius:18px 18px 18px 4px; }
-        .iphone-sender { font-size:9.5px; font-weight:700; color:#660A43; margin-bottom:3px; padding-left:2px; }
-        .iphone-typing { display:flex; gap:4px; padding:10px 14px; background:rgba(102,10,67,0.1); border-radius:18px 18px 18px 4px; width:fit-content; opacity:0; transition:opacity 0.3s; }
-        .iphone-typing.show { opacity:1; }
-        .iphone-typing span { width:6px; height:6px; border-radius:50%; background:#660A43; opacity:0.35; animation:abri-dot 1.2s infinite; display:inline-block; }
-        .iphone-typing span:nth-child(2) { animation-delay:0.2s; }
-        .iphone-typing span:nth-child(3) { animation-delay:0.4s; }
+        .iphone .bubble { max-width:80%; padding:9px 13px; border-radius:18px; font-size:12.5px; line-height:1.45; opacity:0; transform:translateY(6px); transition:opacity 0.4s,transform 0.4s; }
+        .iphone .bubble.show { opacity:1; transform:translateY(0); }
+        .iphone .bubble-u { background:#660A43; color:#fff; align-self:flex-end; border-radius:18px 18px 4px 18px; }
+        .iphone .bubble-a { background:rgba(102,10,67,0.1); color:#2a0a1a; align-self:flex-start; border-radius:18px 18px 18px 4px; }
+        .iphone .sender { font-size:9.5px; font-weight:700; color:#660A43; margin-bottom:3px; padding-left:2px; }
+        .iphone .typing { display:flex; gap:4px; padding:10px 14px; background:rgba(102,10,67,0.1); border-radius:18px 18px 18px 4px; width:fit-content; opacity:0; transition:opacity 0.3s; }
+        .iphone .typing.show { opacity:1; }
+        .iphone .typing span { width:6px; height:6px; border-radius:50%; background:#660A43; opacity:0.35; animation:abri-dot 1.2s infinite; display:inline-block; }
+        .iphone .typing span:nth-child(2) { animation-delay:0.2s; }
+        .iphone .typing span:nth-child(3) { animation-delay:0.4s; }
         @keyframes abri-pop { from { opacity:0; transform:scale(0.85); } to { opacity:1; transform:scale(1); } }
         @keyframes abri-bounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(6px); } }
         @keyframes temo-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
