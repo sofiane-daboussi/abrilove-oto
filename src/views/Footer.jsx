@@ -70,7 +70,7 @@ export default function Footer({ topArc = false }) {
     <footer style={{
       fontFamily: 'var(--font-dm-sans, sans-serif)',
       marginTop: topArc ? 0 : 'clamp(72px, 10vw, 140px)',
-      background: '#660A43',
+      ...(topArc && { background: '#660A43' }),
       position: 'relative',
     }}>
       {topArc && (
