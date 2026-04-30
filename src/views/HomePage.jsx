@@ -185,7 +185,7 @@ export default function HomePage() {
   }
 
   return (
-    <>
+    <div style={{ margin: '-24px -16px' }}>
       <style>{`
         @keyframes abri-dot { 0%,60%,100% { opacity:0.2; transform:scale(0.8); } 30% { opacity:1; transform:scale(1); } }
         .iphone .bubble { max-width:80%; padding:9px 13px; border-radius:18px; font-size:12.5px; line-height:1.45; opacity:0; transform:translateY(6px); transition:opacity 0.4s,transform 0.4s; }
@@ -566,6 +566,6 @@ export default function HomePage() {
       </section>
 
       <Footer />
-    </>
+    </div>
   )
 }
