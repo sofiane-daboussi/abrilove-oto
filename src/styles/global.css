@@ -10,6 +10,7 @@
 html { background: #660A43; min-height: 100%; overflow-x: hidden; }
 
 body {
+  overflow-x: hidden;
   background:
     radial-gradient(ellipse 80% 35% at 90% 50%, rgba(220, 60, 140, 0.6) 0%, transparent 65%),
     radial-gradient(ellipse 70% 30% at 5% 80%, rgba(80, 0, 50, 0.7) 0%, transparent 65%),
