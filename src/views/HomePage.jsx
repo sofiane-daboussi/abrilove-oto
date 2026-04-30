@@ -323,7 +323,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TU ÉCRIS ── */}
-      <section style={{ padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
