@@ -446,8 +446,8 @@ function StepsSection() {
         </svg>
       </div>
       <div style={{ textAlign: 'center', marginBottom: 60 }}>
-        <p style={{ fontSize: 'clamp(16px,2.5vw,22px)', fontWeight: 300, color: 'rgba(255,255,255,.8)', marginBottom: 6 }}>Comment on t'aide</p>
-        <p style={{ fontFamily: 'var(--font-playfair,serif)', fontStyle: 'italic', fontSize: 'clamp(32px,5vw,58px)', color: '#E8637A', fontWeight: 500, lineHeight: 1.1 }}>concrètement</p>
+        <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Comment on t'aide</p>
+        <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2 }}>concrètement</h2>
       </div>
 
       <svg className="steps-svg-d" viewBox="0 0 900 600" style={{ display: 'block', width: '100%', maxWidth: 900, margin: '0 auto' }}>
@@ -523,7 +523,7 @@ function StepsSection() {
       </div>
 
       <div style={{ textAlign: 'center', marginTop: 50 }}>
-        <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="steps-btn">
+        <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="hp-btn-light">
           Pose ta première question →
         </a>
       </div>
@@ -633,10 +633,8 @@ export default function HomePage() {
         .hp-quiz-embed .qz-progress-bar { display: none !important; }
         .hp-quiz-embed .qz-resume-overlay { background: rgba(20,0,10,0.75) !important; }
         .hp-quiz-section p strong, .hp-quiz-section p em { color: #FFF1E7 !important; }
-        .fo-text h3 { font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#E8637A; margin-bottom:8px; }
-        .fo-text p { font-size:14px; line-height:1.7; color:rgba(255,255,255,.85); font-weight:300; }
-        .steps-btn { display:inline-flex; align-items:center; gap:10px; background:#E8637A; color:#fff; font-size:14px; font-weight:500; letter-spacing:.07em; padding:18px 44px; border-radius:50px; text-decoration:none; box-shadow:0 8px 28px rgba(232,99,122,.5); transition:background .2s,transform .2s; }
-        .steps-btn:hover { background:#c94d63; transform:translateY(-2px); }
+        .fo-text h3 { font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,241,231,0.55); margin-bottom:8px; }
+        .fo-text p { font-size:14px; line-height:1.7; color:rgba(255,241,231,0.9); font-weight:300; }
         @media (max-width:640px) { .steps-svg-d { display:none !important; } }
         @media (min-width:641px) { .steps-svg-m { display:none !important; } }
       `}</style>
