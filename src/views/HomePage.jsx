@@ -447,7 +447,7 @@ function StepsSection() {
       </div>
       <div style={{ textAlign: 'center', marginBottom: 60 }}>
         <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Comment on t'aide</p>
-        <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2 }}>concrètement</h2>
+        <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(32px,5vw,58px)', fontWeight: 700, lineHeight: 1.1 }}>concrètement</h2>
       </div>
 
       <svg className="steps-svg-d" viewBox="0 0 900 600" style={{ display: 'block', width: '100%', maxWidth: 900, margin: '0 auto' }}>
