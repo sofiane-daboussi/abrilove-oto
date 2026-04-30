@@ -145,7 +145,7 @@ export default function CerebalePage() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
         const elements = stripe.elements({
           mode: 'payment', amount: 1700, currency: 'eur',
-          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FDEDF3', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
+          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#F2E0EC', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
         })
         elementsRef.current = elements
         const paymentEl = elements.create('payment', {
@@ -373,12 +373,15 @@ export default function CerebalePage() {
     <>
       <style>{`
         .quiz-card { background: #F2E0EC !important; }
+        .quiz-card.checked { background: #DEB8CC !important; border-color: #660A43 !important; }
         .obj-front { background: #F2E0EC !important; }
         .book-pg-back { background: linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 40%, #fdf8fa 100%) !important; }
         .book-pg-stack-1 { background: linear-gradient(to bottom, #f2dce9, #ebd3e0) !important; }
         .book-pg-stack-2 { background: linear-gradient(to bottom, #ebd3e0, #e0c8d5) !important; }
         .book-pg-stack-3 { background: linear-gradient(to bottom, #e0c8d5, #d5bdca) !important; }
         .book-pg-stack-4 { background: linear-gradient(to bottom, #d5bdca, #c9b2bf) !important; }
+        .stripe-skeleton-bar { background: #F2E0EC !important; }
+        .stripe-skeleton-bar::after { background: linear-gradient(90deg, transparent 0%, #f5e8f2 50%, transparent 100%) !important; }
       `}</style>
       <div className="card">
         <span className="profil-tag">Résultat du quiz · Ton profil</span>
@@ -775,7 +778,7 @@ export default function CerebalePage() {
               <p style={{ marginBottom: '20px' }}>Ton cerveau tourne en boucle. Tu veux analyser encore avant de décider. Tu te demandes si c'est vraiment fait pour toi.</p>
               <p style={{ marginBottom: '24px' }}>Pose ta question, tu reçois une réponse en quelques secondes, maintenant, peu importe l'heure. Des milliers d'heures de coaching en relations amoureuses, disponibles pour toi instantanément.</p>
               <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FDEDF3', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
+                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#F2E0EC', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
                 <a href="https://ia.abrilove.fr" target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box', textAlign: 'center' }}>Poser ma question maintenant →</a>
               </div>
               <p style={{ fontSize: '11px', color: 'var(--brun2)', opacity: 0.6, marginTop: '8px', textAlign: 'center' }}>Sans carte bancaire</p>
