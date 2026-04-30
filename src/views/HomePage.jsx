@@ -211,12 +211,12 @@ export default function HomePage() {
 
       {/* ── HERO ── */}
       <section style={{ minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(32px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, rgb(80,5,50) 0%, rgb(130,15,80) 50%, rgb(80,5,50) 100%)' }}>
-        <div style={{ position:'absolute', inset:0, pointerEvents:'none' }}>
-          <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(220,60,140,0.35) 0%, transparent 70%)', top:'-10%', right:'-5%', filter:'blur(70px)', animation:'blob1 9s ease-in-out infinite' }} />
-          <div style={{ position:'absolute', width:380, height:380, borderRadius:'50%', background:'radial-gradient(circle, rgba(102,10,67,0.45) 0%, transparent 70%)', bottom:'5%', left:'-5%', filter:'blur(60px)', animation:'blob2 11s ease-in-out infinite' }} />
-          <div style={{ position:'absolute', width:300, height:300, borderRadius:'50%', background:'radial-gradient(circle, rgba(180,30,110,0.3) 0%, transparent 70%)', top:'40%', left:'35%', filter:'blur(80px)', animation:'blob3 13s ease-in-out infinite' }} />
+        <div style={{ position:'absolute', inset:0, pointerEvents:'none', zIndex:0 }}>
+          <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(255,100,180,0.55) 0%, transparent 65%)', top:'-15%', right:'-5%', filter:'blur(50px)', animation:'blob1 9s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:400, height:400, borderRadius:'50%', background:'radial-gradient(circle, rgba(220,40,130,0.5) 0%, transparent 65%)', bottom:'0%', left:'-8%', filter:'blur(45px)', animation:'blob2 11s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:320, height:320, borderRadius:'50%', background:'radial-gradient(circle, rgba(255,160,210,0.4) 0%, transparent 65%)', top:'35%', left:'30%', filter:'blur(55px)', animation:'blob3 13s ease-in-out infinite' }} />
         </div>
-        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="hp-hero-cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(255,241,231,0.12)', border: '1px solid rgba(255,241,231,0.22)', backdropFilter: 'blur(10px)', padding: '7px 18px 7px 7px', borderRadius: 100, marginBottom: 28, animation: 'abri-pop 0.4s 0.3s cubic-bezier(0.34,1.56,0.64,1) both' }}>
