@@ -535,10 +535,31 @@ function StepsSection() {
 }
 
 function BentoSection() {
+  useEffect(() => {
+    const grid = document.querySelector('.bento-grid')
+    if (!grid) return
+    const cards = Array.from(grid.querySelectorAll('.bento-c'))
+    cards.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(24px)' })
+    const obs = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      cards.forEach((card, i) => {
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.5s ease, transform 0.5s ease'
+          card.style.opacity = '1'
+          card.style.transform = 'translateY(0)'
+          setTimeout(() => { card.style.transition = '' }, 520)
+        }, i * 130)
+      })
+      obs.disconnect()
+    }, { threshold: 0.15 })
+    obs.observe(grid)
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) 0' }}>
-      <div data-fade>
-        <div style={{ padding: '0 clamp(32px,5vw,80px)', maxWidth: 1080, margin: '0 auto', marginBottom: 60 }}>
+      <div>
+        <div data-fade style={{ padding: '0 clamp(32px,5vw,80px)', maxWidth: 1080, margin: '0 auto', marginBottom: 60 }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', fontSize: 'clamp(24px,3.5vw,40px)', color: '#660A43', lineHeight: 1.2, fontWeight: 700 }}>
             Tout ce dont tu as besoin pour <em>avancer</em>
           </h2>
