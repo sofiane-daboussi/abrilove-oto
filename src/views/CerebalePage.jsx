@@ -468,10 +468,10 @@ export default function CerebalePage() {
           <div className="book-wrap">
             <div className="book-spine" />
             <div className="book-pages">
-              <div className="book-pg-stack book-pg-stack-4" />
-              <div className="book-pg-stack book-pg-stack-3" />
-              <div className="book-pg-stack book-pg-stack-2" />
-              <div className="book-pg-stack book-pg-stack-1" />
+              <div className="book-pg-stack book-pg-stack-4" style={{ background: 'linear-gradient(to bottom, #d5bdca, #c9b2bf)' }} />
+              <div className="book-pg-stack book-pg-stack-3" style={{ background: 'linear-gradient(to bottom, #e0c8d5, #d5bdca)' }} />
+              <div className="book-pg-stack book-pg-stack-2" style={{ background: 'linear-gradient(to bottom, #ebd3e0, #e0c8d5)' }} />
+              <div className="book-pg-stack book-pg-stack-1" style={{ background: 'linear-gradient(to bottom, #f2dce9, #ebd3e0)' }} />
 
               <div
                 className="book-pg-back"
