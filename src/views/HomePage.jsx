@@ -931,7 +931,7 @@ export default function HomePage() {
       <ToggleSection />
 
       {/* ── SOFI & OLI ── */}
-      <section style={{ background: '#FFF4F7', padding: 'clamp(20px,3vw,48px) clamp(32px,5vw,80px) clamp(60px,8vw,120px)' }}>
+      <section style={{ background: 'linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 50%, #fdf8fa 100%)', padding: 'clamp(20px,3vw,48px) clamp(32px,5vw,80px) clamp(60px,8vw,120px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
