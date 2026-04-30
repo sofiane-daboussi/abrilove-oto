@@ -146,7 +146,7 @@ export default function AccroPage() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
         const elements = stripe.elements({
           mode: 'payment', amount: 1700, currency: 'eur',
-          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FDEDF3', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
+          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF4F7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' }, rules: { '.Tab--selected': { backgroundColor: 'rgba(102,10,67,0.08)', boxShadow: 'none' }, '.Tab': { backgroundColor: 'transparent' } } }
         })
         elementsRef.current = elements
         const paymentEl = elements.create('payment', {
@@ -373,6 +373,18 @@ export default function AccroPage() {
 
   return (
     <>
+      <style>{`
+        .quiz-card { background: #F2E0EC !important; }
+        .quiz-card.checked { background: #DEB8CC !important; border-color: #660A43 !important; }
+        .obj-front { background: #F2E0EC !important; }
+        .book-pg-back { background: linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 40%, #fdf8fa 100%) !important; }
+        .book-pg-stack-1 { background: linear-gradient(to bottom, #f2dce9, #ebd3e0) !important; }
+        .book-pg-stack-2 { background: linear-gradient(to bottom, #ebd3e0, #e0c8d5) !important; }
+        .book-pg-stack-3 { background: linear-gradient(to bottom, #e0c8d5, #d5bdca) !important; }
+        .book-pg-stack-4 { background: linear-gradient(to bottom, #d5bdca, #c9b2bf) !important; }
+        .stripe-skeleton-bar { background: #E8C8DA !important; }
+        .stripe-skeleton-bar::after { background: linear-gradient(90deg, transparent 0%, #F2E0EC 50%, transparent 100%) !important; }
+      `}</style>
       <div className="card">
         <span className="profil-tag">Résultat du quiz · Ton profil</span>
 
@@ -458,10 +470,10 @@ export default function AccroPage() {
           <div className="book-wrap">
             <div className="book-spine" />
             <div className="book-pages">
-              <div className="book-pg-stack book-pg-stack-4" />
-              <div className="book-pg-stack book-pg-stack-3" />
-              <div className="book-pg-stack book-pg-stack-2" />
-              <div className="book-pg-stack book-pg-stack-1" />
+              <div className="book-pg-stack book-pg-stack-4" style={{ background: 'linear-gradient(to bottom, #d5bdca, #c9b2bf)' }} />
+              <div className="book-pg-stack book-pg-stack-3" style={{ background: 'linear-gradient(to bottom, #e0c8d5, #d5bdca)' }} />
+              <div className="book-pg-stack book-pg-stack-2" style={{ background: 'linear-gradient(to bottom, #ebd3e0, #e0c8d5)' }} />
+              <div className="book-pg-stack book-pg-stack-1" style={{ background: 'linear-gradient(to bottom, #f2dce9, #ebd3e0)' }} />
 
               {/* Page derrière — Pour toi si */}
               <div
@@ -549,7 +561,7 @@ export default function AccroPage() {
                     Par contre, c'est pour toi si… →
                   </button>
                 </div>
-                <div className="book-face-back">
+                <div className="book-face-back" style={{ background: 'linear-gradient(135deg, #f5e5f0 0%, #edd8e8 50%, #f8edf5 100%)' }}>
                   <div className="book-face-back-content">
                     <p className="book-testimonial-text">"Premier livre qui m'explique vraiment pourquoi je m'accroche. J'ai pleuré au chapitre 3 mais c'était libérateur."</p>
                     <p className="book-testimonial-author">Inès, 29 ans</p>
@@ -694,7 +706,7 @@ export default function AccroPage() {
         </div>
 
         {/* PAIEMENT */}
-        <div className="payment-block fade-section" ref={paiementRef} id="paiement">
+        <div className="payment-block fade-section" ref={paiementRef} id="paiement" style={{ background: 'transparent', border: '2px solid rgba(102,10,67,0.4)', borderRadius: '16px' }}>
           <span className="offer-label">✦ Offre réservée · résultats du quiz</span>
           <div className="payment-book-row">
             <div className="payment-book-details">
@@ -772,7 +784,7 @@ export default function AccroPage() {
               <p style={{ marginBottom: '20px' }}>Tu analyses ses messages depuis des heures. Tu sais pas si tu dois lui écrire. Tu te demandes si tu t'accroches trop ou si c'est lui le problème.</p>
               <p style={{ marginBottom: '24px' }}>Pose ta question, tu reçois une réponse en quelques secondes, maintenant, peu importe l'heure. Des milliers d'heures de coaching en relations amoureuses, disponibles pour toi instantanément.</p>
               <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FDEDF3', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
+                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#F2E0EC', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
                 <a href="https://ia.abrilove.fr" target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box', textAlign: 'center' }}>Poser ma question maintenant →</a>
               </div>
               <p style={{ fontSize: '11px', color: 'var(--brun2)', opacity: 0.6, marginTop: '8px', textAlign: 'center' }}>Sans carte bancaire</p>
@@ -850,7 +862,7 @@ export default function AccroPage() {
               <p style={{ fontSize: '13px', color: '#5C3D2A', lineHeight: 1.6, margin: 0 }}>Un message qui te tracasse, un schéma qui revient, une situation avec un homme que tu n'arrives pas à décoder, <strong style={{ color: '#660A43' }}>l'Abri</strong> est là maintenant 🩷</p>
             </div>
             <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-              <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FDEDF3', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 messages offerts</div>
+              <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#F2E0EC', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 messages offerts</div>
               <a href="https://ia.abrilove.fr" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box' }}>Commencer gratuitement →</a>
             </div>
             <div style={{ marginTop: '12px' }}>
