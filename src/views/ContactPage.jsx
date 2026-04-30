@@ -77,7 +77,7 @@ export default function ContactPage() {
       `}</style>
       <Header />
 
-      <div className="card contact-card">
+      <div className="card contact-card" style={{ marginBottom: 0 }}>
         <span style={{ position: 'absolute', top: '1rem', left: '15%', fontSize: '2rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite', zIndex: 0 }}>💗</span>
         <span style={{ position: 'absolute', top: '1.5rem', right: '15%', fontSize: '1.8rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 5s ease-in-out infinite reverse', zIndex: 0 }}>💕</span>
 
@@ -199,7 +199,10 @@ export default function ContactPage() {
         </p>
 
       </div>
-      <Footer />
+      <div style={{ margin: '0 -16px -24px' }}>
+        <div style={{ background: '#FFF4F7', height: 80 }} />
+        <Footer />
+      </div>
     </>
   )
 }
