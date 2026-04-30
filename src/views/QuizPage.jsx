@@ -517,7 +517,7 @@ export default function QuizPage() {
 
           <img
             className="qz-logo"
-            src="https://cdn.prod.website-files.com/686bb5337ed61a425660e143/687b71cde5d37753622814c6_Copie%20de%20Copie%20de%20Copie%20de%20Copie%20de%20Sans%20titre%20(1200%20x%20400%20px).avif"
+            src="/images/logo-abrilove.avif"
             alt="Abrilove"
           />
 

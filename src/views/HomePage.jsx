@@ -4,16 +4,15 @@ import Header from './Header'
 import Footer from './Footer'
 import QuizPage from './QuizPage'
 
-const CDN = 'https://cdn.prod.website-files.com/686bb5337ed61a425660e143/'
-const AVATAR = CDN + '69b163fc41e69155b8609953_Copie%20de%20Copie%20de%20Copie%20de%20Copie%20de%20Blue%20and%20Pink%20Soft%20Magazine%20Cover%20Mockup%20Instagram%20Post%20(6).avif'
+const AVATAR = '/images/hero-avatar.avif'
 
 const TEMOS = [
-  CDN + '69c93a37252d0845b7b2bcc1_IMG_6220%202.avif',
-  CDN + '69c93a3769798da779bb0c10_IMG_6219%202.avif',
-  CDN + '69c93a37e456de4b675de535_IMG_6218%202.avif',
-  CDN + '69c93a37375041e6155fbb8f_IMG_6222%202.avif',
-  CDN + '69c93a377f56af097778211d_IMG_6226%202.avif',
-  CDN + '69c93a376d47a82585ab791f_IMG_6225%202.avif',
+  '/images/temo-1.avif',
+  '/images/temo-2.avif',
+  '/images/temo-3.avif',
+  '/images/temo-4.avif',
+  '/images/temo-5.avif',
+  '/images/temo-6.avif',
 ]
 
 const FAQ_DATA = [
@@ -494,7 +493,7 @@ export default function HomePage() {
               <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="hp-btn-dark">Commence maintenant</a>
             </div>
             <div style={{ flex: 1 }}>
-              <img src={CDN + '6871303080cb5f08fd2aa12c_686be6c50804c0b3914f26a7_Afficher%20les%20photos%20re%CC%81centes-min.avif'} alt="Sofi et Oli" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
+              <img src="/images/sofi-oli.avif" alt="Sofi et Oli" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
           </div>
         </div>
@@ -531,7 +530,7 @@ export default function HomePage() {
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
-              <img src={CDN + '68fe2322bcf5fbdf17659627_IMG_6555.avif'} alt="abrilove" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
+              <img src="/images/tu-ecris.avif" alt="abrilove" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
             <div style={{ flex: 1 }}>
               <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>C'est maintenant.</p>
@@ -648,7 +647,7 @@ export default function HomePage() {
               <p style={{ color: '#5a3040', fontSize: 15, lineHeight: 1.85, marginBottom: 24 }}>
                 Chaque jour, nous accompagnons des femmes dans leurs relations, leurs doutes, leurs schémas et ce qu'elles traversent intérieurement. Au fil de milliers d'heures de coaching, de conversations et de situations réelles, nous avons appris à voir ce qui se joue vraiment derrière les mots, les silences et les comportements.
               </p>
-              <img src={CDN + '68bd80cf0e5485bb6da24cbb_Copie%20de%20Copie%20de%20Sans%20titre%20(2).avif'} alt="Sofi et Oli" style={{ width: '100%', borderRadius: 16, objectFit: 'cover', maxHeight: 280 }} />
+              <img src="/images/section-img-2.avif" alt="Sofi et Oli" style={{ width: '100%', borderRadius: 16, objectFit: 'cover', maxHeight: 280 }} />
             </div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
               {[
@@ -718,7 +717,7 @@ export default function HomePage() {
               </div>
             </div>
             <div style={{ flex: 0.7, display: 'flex', justifyContent: 'center' }}>
-              <img src={CDN + '68bd7d75ba682fdd7841f717_Copie%20de%20Copie%20de%20Sans%20titre%20(1).jpg'} alt="Ebook gratuit Abrilove" style={{ width: '100%', maxWidth: 300, borderRadius: 20, objectFit: 'cover', boxShadow: '0 20px 60px rgba(102,10,67,0.2)' }} />
+              <img src="/images/section-img-1.jpg" alt="Ebook gratuit Abrilove" style={{ width: '100%', maxWidth: 300, borderRadius: 20, objectFit: 'cover', boxShadow: '0 20px 60px rgba(102,10,67,0.2)' }} />
             </div>
           </div>
         </div>
