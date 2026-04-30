@@ -635,12 +635,12 @@ function ToggleSection() {
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
-    <div style={{ borderBottom: '1px solid rgba(102,10,67,0.12)' }}>
+    <div style={{ borderBottom: '1px solid rgba(255,241,231,0.15)' }}>
       <button onClick={() => setOpen(o => !o)} style={{ width: '100%', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0', textAlign: 'left', gap: 16 }}>
-        <span style={{ fontFamily: 'var(--font-playfair, serif)', color: '#1a0011', fontSize: 'clamp(15px, 2vw, 17px)', fontWeight: 600, lineHeight: 1.35 }}>{q}</span>
-        <span style={{ color: '#660A43', fontSize: 22, lineHeight: 1, flexShrink: 0, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'inline-block' }}>+</span>
+        <span style={{ fontFamily: 'var(--font-playfair, serif)', color: '#FFF1E7', fontSize: 'clamp(15px, 2vw, 17px)', fontWeight: 600, lineHeight: 1.35 }}>{q}</span>
+        <span style={{ color: 'rgba(255,241,231,0.6)', fontSize: 22, lineHeight: 1, flexShrink: 0, transform: open ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s', display: 'inline-block' }}>+</span>
       </button>
-      {open && <p style={{ color: '#5a3040', fontSize: 15, lineHeight: 1.7, paddingBottom: 20, margin: 0 }}>{a}</p>}
+      {open && <p style={{ color: 'rgba(255,241,231,0.8)', fontSize: 15, lineHeight: 1.7, paddingBottom: 20, margin: 0 }}>{a}</p>}
     </div>
   )
 }
@@ -951,17 +951,27 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ padding: 'clamp(60px,8vw,100px) clamp(32px,5vw,80px)' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto' }}>
-          <p style={{ color: '#660A43', fontSize: 13, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 12 }}>Tu te poses peut-être ces questions…</p>
-          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, textAlign: 'center', marginBottom: 48 }}>Questions fréquentes</h2>
+      <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: '80px clamp(32px,5vw,80px) calc(clamp(60px,8vw,100px) + 80px)', position: 'relative' }}>
+        <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
+            <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
+          </svg>
+        </div>
+        <div style={{ position: 'absolute', bottom: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
+            <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
+          </svg>
+        </div>
+        <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 16 }}>Tu te poses peut-être ces questions…</p>
+          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, textAlign: 'center', marginBottom: 48 }}>Questions fréquentes</h2>
           {FAQ_DATA.map(item => <FaqItem key={item.q} q={item.q} a={item.a} />)}
           <div style={{ textAlign: 'center', marginTop: 48 }}>
-            <p style={{ color: '#5a3040', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
+            <p style={{ color: 'rgba(255,241,231,0.75)', fontSize: 16, marginBottom: 24, lineHeight: 1.6 }}>
               Tu n'as plus besoin de tourner en boucle. Pose ta situation maintenant et y voir plus clair, tout de suite.
             </p>
-            <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="hp-btn-dark">Je pose ma situation (gratuit)</a>
-            <p style={{ color: 'rgba(102,10,67,0.45)', fontSize: 13, marginTop: 16, fontStyle: 'italic' }}>Le regard de Sofi & Oli, disponible à tout moment.</p>
+            <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="hp-btn-light">Je pose ma situation (gratuit)</a>
+            <p style={{ color: 'rgba(255,241,231,0.35)', fontSize: 13, marginTop: 16, fontStyle: 'italic' }}>Le regard de Sofi & Oli, disponible à tout moment.</p>
           </div>
         </div>
       </section>
