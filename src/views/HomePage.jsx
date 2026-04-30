@@ -29,6 +29,100 @@ const FAQ_DATA = [
   { q: 'Est-ce que ça va vraiment m\'aider ?', a: 'L\'objectif : t\'offrir un regard plus juste pour prendre de meilleures décisions. C\'est à toi d\'essayer.' },
 ]
 
+const HEART_SVG = (
+  <svg viewBox="0 0 160 148" fill="none">
+    <path d="M80 136 C80 136 8 90 8 44 C8 22 24 8 44 8 C58 8 70 16 80 28 C90 16 102 8 116 8 C136 8 152 22 152 44 C152 90 80 136 80 136Z" fill="rgba(102,10,67,0.08)" stroke="#660A43" strokeOpacity="0.2" strokeWidth="1.5"/>
+  </svg>
+)
+
+function HeartsSection() {
+  const ref = useRef(null)
+  const n1 = useRef(null)
+  const n2 = useRef(null)
+  const n3 = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    function count(spanRef, target, duration) {
+      const span = spanRef.current
+      if (!span) return
+      const step = target / (duration / 16)
+      let val = 0
+      const t = setInterval(() => {
+        val += step
+        if (val >= target) { val = target; clearInterval(t) }
+        span.textContent = Math.floor(val).toLocaleString('fr-FR')
+      }, 16)
+    }
+
+    function start() {
+      el.querySelectorAll('.abri-heart-item').forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 200)
+      })
+      count(n1, 11400, 2000)
+      setTimeout(() => count(n2, 89300, 2200), 200)
+      setTimeout(() => count(n3, 100, 1800), 400)
+    }
+
+    let done = false
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !done) { done = true; start() }
+    }, { threshold: 0.2 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  return (
+    <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) clamp(32px,5vw,80px)' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 60 }} className="hp-2cols">
+        <div style={{ flex: 1 }}>
+          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
+            Ce que tu vis a du sens.
+          </h2>
+          <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.8vw,18px)', lineHeight: 1.85, marginBottom: 36 }}>
+            Que tu sois perdue, attachée, en train de douter, ou simplement fatiguée de revivre les mêmes situations… Il y a toujours quelque chose derrière. Des dynamiques. Des schémas. Des choses que tu ressens… sans forcément réussir à les expliquer.<br /><br />
+            Et plus tu comprends ce qui se joue vraiment, plus tu reprends le contrôle.
+          </p>
+          <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="hp-btn-dark">Comprendre ma situation →</a>
+        </div>
+        <div style={{ flex: 1 }}>
+          <div className="abri-hearts" ref={ref}>
+            <div className="abri-heart-item">
+              <div className="abri-heart-svg-wrap" style={{ animationDelay: '0s' }}>
+                {HEART_SVG}
+                <div className="abri-heart-text">
+                  <div className="abri-heart-num"><span ref={n1}>0</span></div>
+                </div>
+              </div>
+              <div className="abri-heart-label">femmes<br />accompagnées</div>
+            </div>
+            <div className="abri-heart-item">
+              <div className="abri-heart-svg-wrap" style={{ animationDelay: '0.3s' }}>
+                {HEART_SVG}
+                <div className="abri-heart-text">
+                  <div className="abri-heart-num"><span ref={n2}>0</span></div>
+                </div>
+              </div>
+              <div className="abri-heart-label">questions<br />répondues</div>
+            </div>
+            <div className="abri-heart-item">
+              <div className="abri-heart-svg-wrap" style={{ animationDelay: '0.6s' }}>
+                {HEART_SVG}
+                <div className="abri-heart-text">
+                  <div className="abri-heart-num"><span ref={n3}>0</span><span style={{ fontSize: 22, color: '#660A43' }}>%</span></div>
+                </div>
+              </div>
+              <div className="abri-heart-label">nous<br />recommandent</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function TemuSection() {
   const trackRef = useRef(null)
   const wrapRef = useRef(null)
@@ -272,6 +366,23 @@ export default function HomePage() {
         @keyframes blob1 { 0%,100% { transform:translate(0,0) scale(1); } 33% { transform:translate(80px,-60px) scale(1.15); } 66% { transform:translate(-50px,40px) scale(0.88); } }
         @keyframes blob2 { 0%,100% { transform:translate(0,0) scale(1); } 33% { transform:translate(-70px,50px) scale(1.12); } 66% { transform:translate(60px,-40px) scale(0.9); } }
         @keyframes blob3 { 0%,100% { transform:translate(0,0) scale(1); } 50% { transform:translate(60px,-70px) scale(1.1); } }
+        .abri-hearts { display:flex; gap:52px; align-items:flex-start; justify-content:center; flex-wrap:wrap; }
+        .abri-heart-item { display:flex; flex-direction:column; align-items:center; gap:20px; opacity:0; transform:translateY(16px); transition:opacity 0.7s,transform 0.7s; }
+        .abri-heart-item.visible { opacity:1; transform:translateY(0); }
+        .abri-heart-svg-wrap { position:relative; width:160px; height:148px; animation:abri-hpulse 2.4s ease-in-out infinite; }
+        @keyframes abri-hpulse { 0%,100% { transform:scale(1); } 15% { transform:scale(1.09); } 30% { transform:scale(1); } 45% { transform:scale(1.05); } 60% { transform:scale(1); } }
+        .abri-heart-svg-wrap svg { position:absolute; inset:0; width:100%; height:100%; }
+        .abri-heart-text { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding-bottom:12px; }
+        .abri-heart-num { word-break:break-all; font-family:'Playfair Display',Georgia,serif; font-size:28px; font-weight:700; color:#660A43; line-height:1; letter-spacing:-1px; }
+        .abri-heart-suf { font-size:14px; color:rgba(102,10,67,0.35); }
+        .abri-heart-label { font-size:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:rgba(102,10,67,0.45); text-align:center; line-height:1.7; }
+        @media(max-width:600px) {
+          .abri-hearts { gap:8px; flex-wrap:nowrap; }
+          .abri-heart-svg-wrap { width:100px; height:93px; }
+          .abri-heart-num { font-size:22px; }
+          .abri-heart-suf { font-size:10px; }
+          .abri-heart-label { font-size:8px; letter-spacing:1px; }
+        }
         .abri-track-wrap { overflow:hidden; mask-image:linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%); -webkit-mask-image:linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%); user-select:none; -webkit-user-select:none; }
         .abri-track { display:flex; gap:20px; width:max-content; will-change:transform; }
         .abri-screen-card { flex-shrink:0; border-radius:18px; overflow:hidden; height:340px; opacity:0.92; transition:opacity 0.3s; }
@@ -441,18 +552,7 @@ export default function HomePage() {
       <TemuSection />
 
       {/* ── CE QUE TU VIS ── */}
-      <section style={{ background: 'linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 50%, #fdf8fa 100%)', padding: 'clamp(60px,8vw,100px) clamp(32px,5vw,80px)', textAlign: 'center' }}>
-        <div style={{ maxWidth: 760, margin: '0 auto' }}>
-          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
-            Ce que tu vis a du sens.
-          </h2>
-          <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.8vw,18px)', lineHeight: 1.85, marginBottom: 36 }}>
-            Que tu sois perdue, attachée, en train de douter, ou simplement fatiguée de revivre les mêmes situations… Il y a toujours quelque chose derrière. Des dynamiques. Des schémas. Des choses que tu ressens… sans forcément réussir à les expliquer.<br /><br />
-            Et plus tu comprends ce qui se joue vraiment, plus tu reprends le contrôle.
-          </p>
-          <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="hp-btn-dark">Comprendre ma situation →</a>
-        </div>
-      </section>
+      <HeartsSection />
 
       {/* ── COMMENT ON T'AIDE ── */}
       <section style={{ padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
