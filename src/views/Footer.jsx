@@ -70,6 +70,7 @@ export default function Footer() {
     <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', marginTop: 'clamp(72px, 10vw, 140px)' }}>
 
       {/* Newsletter */}
+      <div style={{ padding: '0 clamp(12px,2.5vw,36px)' }}>
       <div style={{
         background: 'linear-gradient(135deg, #3d0228 0%, #5e063c 55%, #7a1050 100%)',
         padding: 'clamp(24px, 5vw, 64px) 20px',
@@ -169,6 +170,7 @@ export default function Footer() {
             )}
           </form>
         )}
+      </div>
       </div>
 
       {/* Colonnes */}

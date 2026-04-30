@@ -204,7 +204,7 @@ var oto_worker_clean_default = {
         const res = await fetch("https://api.brevo.com/v3/contacts", {
           method: "POST",
           headers: { "accept": "application/json", "content-type": "application/json", "api-key": env.BREVO_API_KEY },
-          body: JSON.stringify({ email, listIds: [24], updateEnabled: true })
+          body: JSON.stringify({ email, listIds: [21], updateEnabled: true })
         });
         const ok = res.status >= 200 && res.status < 300;
         return new Response(JSON.stringify({ ok }), {

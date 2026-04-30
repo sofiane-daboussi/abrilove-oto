@@ -74,10 +74,10 @@ function HeartsSection() {
   }, [])
 
   return (
-    <section style={{ background: '#FFF4F7', padding: 'clamp(20px,3vw,48px) clamp(32px,5vw,80px) clamp(60px,8vw,100px)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 60 }} className="hp-2cols">
+    <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) clamp(32px,5vw,80px)' }}>
+      <div data-fade style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 60 }} className="hp-2cols">
         <div style={{ flex: 1 }}>
-          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
+          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
             Ce que tu vis a du sens.
           </h2>
           <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.8vw,18px)', lineHeight: 1.85, marginBottom: 36 }}>
@@ -199,7 +199,7 @@ function TemuSection() {
             <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
           </svg>
         </div>
-      <div className="temo-title-wrap" style={{ maxWidth: 1200, margin: '0 auto', paddingBottom: 20, paddingLeft: 20, paddingRight: 20 }}>
+      <div data-fade className="temo-title-wrap" style={{ maxWidth: 1200, margin: '0 auto', paddingBottom: 20, paddingLeft: 20, paddingRight: 20 }}>
         <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3vw,36px)', fontWeight: 700, textAlign: 'center', marginBottom: 20 }}>
           Elles ont osé écrire.{' '}
           <span style={{ display: 'inline' }} className="temo-break">Voilà ce qui s'est passé.</span>
@@ -244,7 +244,7 @@ function StatCounter({ target, suffix = '', label, color = '#FFF1E7', labelColor
   const formatted = count >= 1000 ? Math.floor(count / 1000) + ' ' + String(count % 1000).padStart(3, '0') : String(count)
   return (
     <div ref={ref}>
-      <div style={{ fontFamily: 'var(--font-playfair,serif)', fontSize: 'clamp(26px,3.5vw,40px)', fontWeight: 700, color, lineHeight: 1 }}>{formatted}{suffix}</div>
+      <div style={{ fontFamily: 'var(--font-playfair,serif)', fontSize: 'clamp(22px,2.5vw,34px)', fontWeight: 700, color, lineHeight: 1 }}>{formatted}{suffix}</div>
       <div style={{ fontSize: 12, color: labelColor, letterSpacing: '0.05em', marginTop: 4 }}>{label}</div>
     </div>
   )
@@ -535,7 +535,7 @@ function StepsSection() {
 function BentoSection() {
   return (
     <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) 0' }}>
-      <div style={{ padding: '0 clamp(16px,3vw,32px)', maxWidth: 1080, margin: '0 auto' }}>
+      <div data-fade style={{ padding: '0 clamp(16px,3vw,32px)', maxWidth: 1080, margin: '0 auto' }}>
         <h2 style={{ fontFamily: 'var(--font-playfair,serif)', fontSize: 'clamp(24px,3.5vw,40px)', color: '#660A43', lineHeight: 1.2, marginBottom: 60, fontWeight: 700 }}>
           Tout ce dont tu as besoin pour <em>avancer</em>
         </h2>
@@ -604,7 +604,7 @@ function ToggleSection() {
           <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
         </svg>
       </div>
-      <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div data-fade style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div className={`abri-section${active ? ' active' : ''}`} style={{ marginTop: 0 }}>
           <div className="abri-left">
             <h2>Maintenant, tu as deux choix :</h2>
@@ -649,9 +649,21 @@ export default function HomePage() {
   const [guideEmail, setGuideEmail] = useState('')
   const [guideStatus, setGuideStatus] = useState(null)
 
+  useEffect(() => {
+    const els = document.querySelectorAll('[data-fade]')
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('fade-in'); obs.unobserve(entry.target) }
+      })
+    }, { threshold: 0.1 })
+    els.forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   async function handleGuide(e) {
     e.preventDefault()
-    if (!guideEmail) return
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!guideEmail || !emailRegex.test(guideEmail)) return
     setGuideStatus('sending')
     try {
       const res = await fetch('/api/newsletter', {
@@ -705,10 +717,12 @@ export default function HomePage() {
         .abri-track { display:flex; gap:20px; width:max-content; will-change:transform; }
         .abri-screen-card { flex-shrink:0; border-radius:18px; overflow:hidden; height:340px; opacity:0.92; transition:opacity 0.3s; }
         .abri-screen-card img { height:100%; width:auto; display:block; -webkit-touch-callout:none; pointer-events:none; user-select:none; -webkit-user-select:none; }
-        .hp-btn-light { display:inline-flex; align-items:center; background:#FFF1E7; color:#660A43; text-decoration:none; padding:16px 28px; border-radius:999px; font-weight:700; font-size:15px; transition:transform 0.2s,box-shadow 0.2s; box-shadow:0 8px 24px rgba(0,0,0,0.25); font-family:var(--font-dm-sans,sans-serif); }
-        .hp-btn-light:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.3); }
-        .hp-btn-dark { display:inline-flex; align-items:center; background:#660A43; color:#fff; text-decoration:none; padding:14px 28px; border-radius:999px; font-weight:700; font-size:15px; transition:transform 0.2s,box-shadow 0.2s; box-shadow:0 6px 20px rgba(102,10,67,0.4); font-family:var(--font-dm-sans,sans-serif); }
-        .hp-btn-dark:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(102,10,67,0.5); }
+        .hp-btn-light { display:inline-flex; align-items:center; background:#FFF1E7; color:#660A43; text-decoration:none; padding:16px 28px; border-radius:999px; font-weight:700; font-size:15px; transition:transform 0.2s,box-shadow 0.2s; box-shadow:0 8px 24px rgba(0,0,0,0.25); font-family:var(--font-dm-sans,sans-serif); animation:pulse 2.5s ease-in-out infinite; will-change:transform; }
+        .hp-btn-light:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.3); animation:none; }
+        .hp-btn-dark { display:inline-flex; align-items:center; background:#660A43; color:#fff; text-decoration:none; padding:14px 28px; border-radius:999px; font-weight:700; font-size:15px; transition:transform 0.2s,box-shadow 0.2s; box-shadow:0 6px 20px rgba(102,10,67,0.4); font-family:var(--font-dm-sans,sans-serif); animation:pulse 2.5s ease-in-out infinite; will-change:transform; }
+        .hp-btn-dark:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(102,10,67,0.5); animation:none; }
+        [data-fade] { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease,transform 0.65s ease; }
+        [data-fade].fade-in { opacity:1; transform:translateY(0); }
         .hp-bento-card { background:rgba(255,241,231,0.06); border:1px solid rgba(255,241,231,0.12); border-radius:20px; padding:28px; transition:background 0.2s; }
         .hp-bento-card:hover { background:rgba(255,241,231,0.1); }
         .hp-bento-link { color:rgba(255,241,231,0.7); font-size:14px; text-decoration:none; display:inline-flex; align-items:center; gap:4px; margin-top:16px; transition:color 0.15s; }
@@ -816,7 +830,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
             <a
               href="#abria"
               onClick={e => { e.preventDefault(); document.getElementById('abria')?.scrollIntoView({ behavior: 'smooth' }) }}
@@ -837,11 +851,11 @@ export default function HomePage() {
       </section>
 
       {/* ── L'ABRI IA ── */}
-      <section id="abria" style={{ background: '#FFF4F7', padding: 'clamp(20px,3vw,48px) clamp(32px,5vw,80px) clamp(60px,8vw,120px)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+      <section id="abria" style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
+        <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
-              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
+              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
                 Ce n'est pas une IA comme les autres.
               </h2>
               <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
@@ -869,7 +883,7 @@ export default function HomePage() {
           <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(160,15,85,0.55) 0%, transparent 65%)', bottom: '-10%', left: '-10%', filter: 'blur(45px)', animation: 'blob2 8s ease-in-out infinite' }} />
           <div style={{ position: 'absolute', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(210,40,120,0.5) 0%, transparent 65%)', top: '50%', left: '30%', filter: 'blur(50px)', animation: 'blob3 7s ease-in-out infinite' }} />
         </div>
-        <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div data-fade style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div className="hp-2cols hp-quiz-cols" style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
             <div style={{ flex: 1 }} className="hp-quiz-text">
               <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Quiz gratuit</p>
@@ -894,15 +908,15 @@ export default function HomePage() {
       </section>
 
       {/* ── TU ÉCRIS ── */}
-      <section style={{ background: '#FFF4F7', padding: 'clamp(20px,3vw,48px) clamp(32px,5vw,80px) clamp(60px,8vw,120px)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
+        <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
               <img src="/images/tu-ecris.avif" alt="abrilove" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
             <div style={{ flex: 1 }}>
               <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>C'est maintenant.</p>
-              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
+              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
                 Tu écris. On te répond.<br /><em style={{ color: '#660A43' }}>Comme en coaching.</em>
               </h2>
               <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
@@ -931,14 +945,14 @@ export default function HomePage() {
       <ToggleSection />
 
       {/* ── SOFI & OLI ── */}
-      <section style={{ background: '#FFF4F7', padding: 'clamp(20px,3vw,48px) clamp(32px,5vw,80px) clamp(60px,8vw,120px)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
+        <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
               <img src="/images/section-img-2.avif" alt="Sofi et Oli" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
             <div style={{ flex: 1 }}>
-              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
+              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
                 Hey, nous sommes <em style={{ color: '#660A43' }}>Sofi & Oli</em>
               </h2>
               <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
@@ -962,7 +976,7 @@ export default function HomePage() {
             <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
           </svg>
         </div>
-        <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div data-fade style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 16 }}>Tu te poses peut-être ces questions…</p>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, textAlign: 'center', marginBottom: 48 }}>Questions fréquentes</h2>
           {FAQ_DATA.map(item => <FaqItem key={item.q} q={item.q} a={item.a} />)}
@@ -978,10 +992,10 @@ export default function HomePage() {
 
       {/* ── GUIDE GRATUIT ── */}
       <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) clamp(32px,5vw,80px)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
-              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(24px,3vw,36px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3vw,36px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 16 }}>
                 Tu préfères commencer <em style={{ color: '#660A43' }}>tranquillement ?</em>
               </h2>
               <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 28 }}>
