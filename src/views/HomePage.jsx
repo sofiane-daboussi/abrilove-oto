@@ -96,7 +96,7 @@ function TemuSection() {
 
   return (
     <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'clamp(40px,6vw,80px) 0', position: 'relative' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto', paddingBottom: 20, paddingLeft: 20, paddingRight: 20 }}>
+      <div className="temo-title-wrap" style={{ maxWidth: 1200, margin: '0 auto', paddingBottom: 20, paddingLeft: 20, paddingRight: 20 }}>
         <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3vw,36px)', fontWeight: 700, textAlign: 'center', marginBottom: 20 }}>
           Elles ont osé écrire.{' '}
           <span style={{ display: 'inline' }} className="temo-break">Voilà ce qui s'est passé.</span>
@@ -295,6 +295,8 @@ export default function HomePage() {
           .hp-hero-stats > div > div:first-child { font-size:20px !important; }
           .hp-hero-stats > div > div:last-child { font-size:10px !important; }
           .temo-break { display: block !important; }
+          .temo-title-wrap { padding-bottom: 8px !important; }
+          .temo-title-wrap h2 { margin-bottom: 8px !important; }
           .hp-quiz-text { flex: 0 0 auto !important; }
           .hp-quiz-cols { gap: 32px !important; }
           .hp-quiz-embed { margin-left: -10px; margin-right: -10px; }
