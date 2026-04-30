@@ -445,7 +445,8 @@ function StepsSection() {
           <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
         </svg>
       </div>
-      <div data-fade style={{ textAlign: 'center', marginBottom: 60 }}>
+      <div data-fade>
+      <div style={{ textAlign: 'center', marginBottom: 60 }}>
         <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2 }}>
           Comment on t'aide <em>concrètement</em>
         </h2>
@@ -527,6 +528,7 @@ function StepsSection() {
         <a href="https://ia.abrilove.fr" target="_blank" rel="noopener noreferrer" className="hp-btn-light">
           Pose ta première question →
         </a>
+      </div>
       </div>
     </section>
   )
