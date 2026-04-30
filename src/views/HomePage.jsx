@@ -532,6 +532,64 @@ function StepsSection() {
   )
 }
 
+function BentoSection() {
+  return (
+    <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) 0' }}>
+      <div style={{ padding: '0 clamp(16px,3vw,32px)', maxWidth: 1080, margin: '0 auto' }}>
+        <h2 style={{ fontFamily: 'var(--font-playfair,serif)', fontSize: 'clamp(24px,3.5vw,40px)', color: '#660A43', lineHeight: 1.2, marginBottom: 60, fontWeight: 700 }}>
+          Tout ce dont tu as besoin pour <em>avancer</em>
+        </h2>
+        <div className="bento-grid">
+
+          <div className="bento-c bento-coaching" onClick={() => { window.location.href = 'https://abrilove.fr/coaching' }}>
+            <div className="bento-card-inner">
+              <div>
+                <span className="bento-icon bento-icon-lg">🤝</span>
+                <span className="bento-label" style={{ color: 'rgba(255,255,255,.4)' }}>Coaching individuel</span>
+                <h3 className="bento-title" style={{ fontSize: 'clamp(26px,3vw,36px)', color: '#fff', marginBottom: 14 }}>Coaching 1-1<br/>avec Sofi</h3>
+                <p className="bento-desc" style={{ color: 'rgba(255,255,255,.65)', maxWidth: 300 }}>On analyse ta situation ensemble, on décrypte les comportements qui te bloquent, et je te donne des stratégies concrètes, pas des platitudes.</p>
+              </div>
+              <a href="https://abrilove.fr/coaching" className="bento-cta" style={{ color: '#E8637A' }} onClick={e => e.stopPropagation()}>Prendre rendez-vous →</a>
+            </div>
+          </div>
+
+          <div className="bento-c bento-ebooks" onClick={() => { window.location.href = 'https://abrilove.fr/amour' }}>
+            <div>
+              <span className="bento-icon">📖</span>
+              <span className="bento-label" style={{ color: '#E8637A' }}>Ressources</span>
+              <h3 className="bento-title" style={{ fontSize: 19, color: '#1A1118', marginBottom: 8 }}>E-books</h3>
+              <p className="bento-desc" style={{ color: '#7A6070', fontSize: 13 }}>Applications de rencontre, ghosting, love bombing, confiance en soi, énergie féminine... Découvre toutes nos ressources écrites.</p>
+            </div>
+            <a href="https://abrilove.fr/amour" className="bento-cta" style={{ color: '#E8637A' }} onClick={e => e.stopPropagation()}>Découvrir →</a>
+          </div>
+
+          <div className="bento-c bento-ateliers" onClick={() => { window.location.href = 'https://abrilove.fr/amour' }}>
+            <div>
+              <span className="bento-icon">🎯</span>
+              <span className="bento-label" style={{ color: '#E8637A' }}>Ressources</span>
+              <h3 className="bento-title" style={{ fontSize: 19, color: '#1A1118', marginBottom: 8 }}>Cours & Ateliers</h3>
+              <p className="bento-desc" style={{ color: '#7A6070', fontSize: 13 }}>Des cours et sessions live et en replay pour reprendre confiance et avancer.</p>
+            </div>
+            <a href="https://abrilove.fr/amour" className="bento-cta" style={{ color: '#E8637A' }} onClick={e => e.stopPropagation()}>Voir les cours →</a>
+          </div>
+
+          <div className="bento-c bento-ia" onClick={() => { window.location.href = 'https://ia.abrilove.fr/' }}>
+            <div className="bento-ia-blob" />
+            <div>
+              <span className="bento-icon">💬</span>
+              <span className="bento-label" style={{ color: 'rgba(255,255,255,.6)' }}>IA disponible 24h/24</span>
+              <h3 className="bento-title" style={{ fontSize: 22, color: '#fff', marginBottom: 10 }}>L'Abr(IA)</h3>
+              <p className="bento-desc" style={{ color: 'rgba(255,255,255,.85)', fontSize: 13 }}>On répond à tes questions à toute heure, sans jugement.</p>
+              <a href="https://ia.abrilove.fr/" className="bento-cta" style={{ color: '#fff' }} onClick={e => e.stopPropagation()}>Essayer gratuitement →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false)
   return (
@@ -638,6 +696,36 @@ export default function HomePage() {
         .fo-text p { font-size:14px; line-height:1.7; color:rgba(255,241,231,0.9); font-weight:300; }
         @media (max-width:640px) { .steps-svg-d { display:none !important; } }
         @media (min-width:641px) { .steps-svg-m { display:none !important; } }
+        .bento-grid { display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-rows:260px 280px; gap:14px; }
+        .bento-coaching { grid-column:1; grid-row:1/3; }
+        .bento-ebooks { grid-column:2; grid-row:1; }
+        .bento-ateliers { grid-column:3; grid-row:1; }
+        .bento-ia { grid-column:2/4; grid-row:2; }
+        .bento-c { border-radius:20px; padding:28px 26px; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; transition:transform .28s cubic-bezier(.34,1.4,.64,1); }
+        .bento-c:hover { transform:scale(1.02); }
+        .bento-coaching { background:#1A1118 url('/images/coaching-bg.jpg') center/cover no-repeat; padding:36px 34px; }
+        .bento-coaching::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.5); border-radius:20px; z-index:1; }
+        .bento-card-inner { position:relative; z-index:2; display:flex; flex-direction:column; justify-content:space-between; height:100%; }
+        .bento-ia { background:#E8637A url('/images/ia-bg.png') center/cover no-repeat; }
+        .bento-ia::before { content:''; position:absolute; inset:0; background:rgba(0,0,0,0.62); border-radius:20px; z-index:1; }
+        .bento-ia > * { position:relative; z-index:2; }
+        .bento-ia-blob { position:absolute; border-radius:50%; width:180px; height:180px; background:radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 65%); right:-30px; top:-30px; pointer-events:none; }
+        .bento-ebooks { background:#FFF1E7; }
+        .bento-ateliers { background:#FDE8EC; }
+        .bento-icon { font-size:32px; line-height:1; margin-bottom:16px; display:block; }
+        .bento-icon-lg { font-size:40px; }
+        .bento-label { font-size:9px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; display:block; margin-bottom:8px; }
+        .bento-title { font-family:var(--font-playfair,serif); line-height:1.15; font-weight:700; }
+        .bento-desc { font-size:13.5px; line-height:1.65; font-weight:300; }
+        .bento-cta { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; text-decoration:none; margin-top:20px; transition:gap .2s; width:fit-content; }
+        .bento-c:hover .bento-cta { gap:12px; }
+        @media (max-width:680px) {
+          .bento-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+          .bento-coaching { grid-column:1/3; grid-row:1; min-height:280px; }
+          .bento-ateliers { grid-column:1; grid-row:2; }
+          .bento-ebooks { grid-column:2; grid-row:2; }
+          .bento-ia { grid-column:1/3; grid-row:3; }
+        }
       `}</style>
 
       <Header />
@@ -795,31 +883,7 @@ export default function HomePage() {
       <StepsSection />
 
       {/* ── BENTO OFFRES ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 55%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, textAlign: 'center', marginBottom: 12 }}>
-            Tout ce dont tu as besoin pour <em>avancer</em>
-          </h2>
-          <p style={{ color: 'rgba(255,241,231,0.55)', textAlign: 'center', fontSize: 16, marginBottom: 48 }}>Des ressources pensées pour toi, à chaque étape.</p>
-          <div className="hp-bento-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20 }}>
-            {[
-              { badge: 'IA disponible 24h/24', title: "L'Abr(IA)", desc: "On répond à tes questions à toute heure, sans jugement.", href: 'https://ia.abrilove.fr', cta: 'Essayer gratuitement →', featured: true },
-              { badge: 'Coaching individuel', title: 'Coaching 1-1 avec Sofi', desc: "On analyse ta situation ensemble, on décrypte les comportements qui te bloquent, et je te donne des stratégies concrètes.", href: '/coaching', cta: 'Prendre rendez-vous →' },
-              { badge: 'Ressources', title: 'E-books', desc: "Applications de rencontre, ghosting, love bombing, confiance en soi, énergie féminine... Toutes nos ressources.", href: '/amour', cta: 'Découvrir →' },
-              { badge: 'En live ou en replay', title: 'Cours & Ateliers', desc: "Des sessions live et en replay pour reprendre confiance et avancer.", href: '/amour', cta: 'Voir les cours →' },
-            ].map(c => (
-              <div key={c.title} className="hp-bento-card" style={c.featured ? { background: 'rgba(255,241,231,0.1)', border: '1px solid rgba(255,241,231,0.22)' } : {}}>
-                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,241,231,0.45)', display: 'block', marginBottom: 12 }}>{c.badge}</span>
-                <h3 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 20, fontWeight: 700, marginBottom: 10 }}>{c.title}</h3>
-                <p style={{ color: 'rgba(255,241,231,0.65)', fontSize: 14, lineHeight: 1.7, margin: 0 }}>{c.desc}</p>
-                <a href={c.href} className="hp-bento-link" {...(c.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
-                  {c.cta}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <BentoSection />
 
       {/* ── DEUX CHOIX ── */}
       <section style={{ padding: 'clamp(40px,6vw,80px) clamp(32px,5vw,80px)' }}>
