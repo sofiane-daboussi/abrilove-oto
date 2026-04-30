@@ -145,7 +145,7 @@ export default function LouvePage() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
         const elements = stripe.elements({
           mode: 'payment', amount: 1700, currency: 'eur',
-          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF1E7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
+          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF4F7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
         })
         elementsRef.current = elements
         const paymentEl = elements.create('payment', {
@@ -766,7 +766,7 @@ export default function LouvePage() {
               <p style={{ marginBottom: '20px' }}>Tu hésites. Tu gardes tes distances même face à une décision. Tu veux être sûre avant de t'engager.</p>
               <p style={{ marginBottom: '24px' }}>Pose ta question, tu reçois une réponse en quelques secondes, maintenant, peu importe l'heure. Des milliers d'heures de coaching en relations amoureuses, disponibles pour toi instantanément.</p>
               <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF1E7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
+                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF4F7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
                 <a href="https://ia.abrilove.fr" target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box', textAlign: 'center' }}>Poser ma question maintenant →</a>
               </div>
               <p style={{ fontSize: '11px', color: 'var(--brun2)', opacity: 0.6, marginTop: '8px', textAlign: 'center' }}>Sans carte bancaire</p>

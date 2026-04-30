@@ -146,7 +146,7 @@ export default function AccroPage() {
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
         const elements = stripe.elements({
           mode: 'payment', amount: 1700, currency: 'eur',
-          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF1E7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
+          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF4F7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' } }
         })
         elementsRef.current = elements
         const paymentEl = elements.create('payment', {
@@ -772,7 +772,7 @@ export default function AccroPage() {
               <p style={{ marginBottom: '20px' }}>Tu analyses ses messages depuis des heures. Tu sais pas si tu dois lui écrire. Tu te demandes si tu t'accroches trop ou si c'est lui le problème.</p>
               <p style={{ marginBottom: '24px' }}>Pose ta question, tu reçois une réponse en quelques secondes, maintenant, peu importe l'heure. Des milliers d'heures de coaching en relations amoureuses, disponibles pour toi instantanément.</p>
               <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF1E7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
+                <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF4F7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 premiers messages offerts</div>
                 <a href="https://ia.abrilove.fr" target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box', textAlign: 'center' }}>Poser ma question maintenant →</a>
               </div>
               <p style={{ fontSize: '11px', color: 'var(--brun2)', opacity: 0.6, marginTop: '8px', textAlign: 'center' }}>Sans carte bancaire</p>
@@ -840,7 +840,7 @@ export default function AccroPage() {
       {/* POPUP */}
       {showPopup && (
         <div className="popup-overlay">
-          <div style={{ background: '#FFF1E7', borderRadius: '20px', padding: '28px 24px', maxWidth: '360px', width: '100%', textAlign: 'center', fontFamily: 'sans-serif' }}>
+          <div style={{ background: '#FFF4F7', borderRadius: '20px', padding: '28px 24px', maxWidth: '360px', width: '100%', textAlign: 'center', fontFamily: 'sans-serif' }}>
             <div style={{ fontSize: '32px', marginBottom: '12px' }}>🎉</div>
             <h2 style={{ fontFamily: "var(--font-playfair), serif", fontSize: '20px', fontWeight: 700, color: '#660A43', margin: '0 0 6px' }}>Ton e-book est en route !</h2>
             <p style={{ fontSize: '13px', color: '#5C3D2A', margin: '0 0 20px', lineHeight: 1.5 }}>Vérifie ta boîte mail, pense à checker tes spams.</p>
@@ -850,7 +850,7 @@ export default function AccroPage() {
               <p style={{ fontSize: '13px', color: '#5C3D2A', lineHeight: 1.6, margin: 0 }}>Un message qui te tracasse, un schéma qui revient, une situation avec un homme que tu n'arrives pas à décoder, <strong style={{ color: '#660A43' }}>l'Abri</strong> est là maintenant 🩷</p>
             </div>
             <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-              <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF1E7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 messages offerts</div>
+              <div style={{ position: 'absolute', top: '-12px', right: '12px', background: '#FFF4F7', color: '#660A43', fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', whiteSpace: 'nowrap', border: '1.5px solid #660A43' }}>7 messages offerts</div>
               <a href="https://ia.abrilove.fr" style={{ display: 'block', width: '100%', padding: '14px', background: '#660A43', color: 'white', borderRadius: '12px', fontFamily: "var(--font-dm-sans), sans-serif", fontSize: '15px', fontWeight: 600, textDecoration: 'none', boxSizing: 'border-box' }}>Commencer gratuitement →</a>
             </div>
             <div style={{ marginTop: '12px' }}>
