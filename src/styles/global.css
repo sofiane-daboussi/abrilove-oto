@@ -7,7 +7,7 @@
   --brun2: #5C3D2A;
 }
 
-html { background: #660A43; min-height: 100%; }
+html { background: #660A43; min-height: 100%; overflow-x: hidden; }
 
 body {
   background:

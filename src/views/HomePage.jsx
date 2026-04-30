@@ -61,84 +61,55 @@ function StatCounter({ target, suffix = '', label, color = '#FFF1E7', labelColor
 }
 
 const IPhoneChat = memo(function IPhoneChat() {
+  const [shown, setShown] = useState([])
+  const [anim, setAnim] = useState([])
+  const [typings, setTypings] = useState([])
   const msgsRef = useRef(null)
 
   useEffect(() => {
-    const msgs = msgsRef.current
-    if (!msgs) return
-
-    const IDS = ['abri-m1','abri-m2','abri-m3','abri-m4','abri-t1','abri-t2']
-    const steps = [
-      {show:'abri-m1', delay:600},
-      {show:'abri-t1', delay:2000},
-      {hide:'abri-t1', show:'abri-m2', delay:4500},
-      {show:'abri-m3', delay:7000},
-      {show:'abri-t2', delay:8800},
-      {hide:'abri-t2', show:'abri-m4', delay:12000},
-      {restart:true, delay:17000},
-    ]
-
     const timers = []
 
-    function get(id) { return document.getElementById(id) }
+    function show(id) {
+      setShown(s => [...s, id])
+      timers.push(setTimeout(() => {
+        setAnim(a => [...a, id])
+        if (msgsRef.current) msgsRef.current.scrollTop = 9999
+      }, 30))
+    }
+    function showT(id) { setTypings(t => [...t, id]) }
+    function hideT(id) { setTypings(t => t.filter(x => x !== id)) }
 
     function reset() {
-      IDS.forEach(id => {
-        const el = get(id)
-        if (!el) return
-        el.style.display = 'none'
-        const b = el.querySelector('.bubble')
-        const t = el.querySelector('.typing')
-        if (b) b.classList.remove('show')
-        if (t) t.classList.remove('show')
-      })
-      msgs.scrollTop = 0
+      setShown([]); setAnim([]); setTypings([])
+      if (msgsRef.current) msgsRef.current.scrollTop = 0
       timers.push(setTimeout(run, 800))
     }
 
     function run() {
-      steps.forEach(s => {
-        timers.push(setTimeout(() => {
-          if (s.restart) { reset(); return }
-          if (s.hide) {
-            const el = get(s.hide)
-            if (el) {
-              el.style.display = 'none'
-              const t = el.querySelector('.typing')
-              if (t) t.classList.remove('show')
-            }
-          }
-          if (s.show) {
-            const el = get(s.show)
-            if (el) {
-              el.style.display = 'flex'
-              el.style.flexDirection = 'column'
-              setTimeout(() => {
-                const b = el.querySelector('.bubble')
-                const t = el.querySelector('.typing')
-                if (b) b.classList.add('show')
-                if (t) t.classList.add('show')
-                msgs.scrollTop = 9999
-              }, 30)
-            }
-          }
-        }, s.delay))
-      })
+      timers.push(setTimeout(() => show('m1'), 600))
+      timers.push(setTimeout(() => showT('t1'), 2000))
+      timers.push(setTimeout(() => { hideT('t1'); show('m2') }, 4500))
+      timers.push(setTimeout(() => show('m3'), 7000))
+      timers.push(setTimeout(() => showT('t2'), 8800))
+      timers.push(setTimeout(() => { hideT('t2'); show('m4') }, 12000))
+      timers.push(setTimeout(reset, 17000))
     }
 
     run()
     return () => timers.forEach(clearTimeout)
   }, [])
 
+  const s = (id) => shown.includes(id)
+  const a = (id) => anim.includes(id)
+  const t = (id) => typings.includes(id)
+
   return (
     <div className="iphone" style={{ width:260, background:'#FFF1E7', borderRadius:44, border:'11px solid #1a0812', boxShadow:'0 0 0 1px #3a1020,0 30px 70px rgba(0,0,0,0.4)', overflow:'hidden', margin:'0 auto', fontFamily:'-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif' }}>
-      {/* status bar */}
       <div style={{ background:'#FFF1E7', display:'flex', alignItems:'center', justifyContent:'space-between', padding:'10px 22px 8px', fontSize:13, fontWeight:700, color:'#2a0a1a', position:'relative' }}>
         <span>9:41</span>
         <div style={{ position:'absolute', top:6, left:'50%', transform:'translateX(-50%)', width:95, height:30, background:'#1a0812', borderRadius:20 }} />
         <span>●●●</span>
       </div>
-      {/* chat header */}
       <div style={{ display:'flex', alignItems:'center', gap:8, padding:'4px 14px 10px', borderBottom:'1px solid rgba(102,10,67,0.1)' }}>
         <span style={{ color:'#660A43', fontSize:22, fontWeight:300 }}>‹</span>
         <div style={{ width:34, height:34, borderRadius:'50%', overflow:'hidden', flexShrink:0 }}>
@@ -149,30 +120,14 @@ const IPhoneChat = memo(function IPhoneChat() {
           <div style={{ fontSize:10, color:'#4caf50', fontWeight:500 }}>● En ligne</div>
         </div>
       </div>
-      {/* messages */}
       <div ref={msgsRef} style={{ padding:12, display:'flex', flexDirection:'column', gap:7, minHeight:340, background:'#FFF1E7', overflow:'hidden' }}>
-        <div id="abri-m1" style={{ display:'none', flexDirection:'column', alignItems:'flex-end' }}>
-          <div className="bubble bubble-u">Il me laisse en vu depuis 2 jours… 😞</div>
-        </div>
-        <div id="abri-t1" style={{ display:'none', flexDirection:'column' }}>
-          <div className="typing"><span/><span/><span/></div>
-        </div>
-        <div id="abri-m2" style={{ display:'none', flexDirection:'column', alignItems:'flex-start' }}>
-          <div className="sender">Sofi & Oli 💛</div>
-          <div className="bubble bubble-a">C'est nouveau chez lui ou il l'a déjà fait avant ?</div>
-        </div>
-        <div id="abri-m3" style={{ display:'none', flexDirection:'column', alignItems:'flex-end' }}>
-          <div className="bubble bubble-u">Jamais… 😔</div>
-        </div>
-        <div id="abri-t2" style={{ display:'none', flexDirection:'column' }}>
-          <div className="typing"><span/><span/><span/></div>
-        </div>
-        <div id="abri-m4" style={{ display:'none', flexDirection:'column', alignItems:'flex-start' }}>
-          <div className="sender">Sofi & Oli 💛</div>
-          <div className="bubble bubble-a">Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div>
-        </div>
+        {s('m1') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end' }}><div className={`bubble bubble-u${a('m1')?' show':''}`}>Il me laisse en vu depuis 2 jours… 😞</div></div>}
+        {t('t1') && <div style={{ display:'flex', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>}
+        {s('m2') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className={`bubble bubble-a${a('m2')?' show':''}`}>C'est nouveau chez lui ou il l'a déjà fait avant ?</div></div>}
+        {s('m3') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end' }}><div className={`bubble bubble-u${a('m3')?' show':''}`}>Jamais… 😔</div></div>}
+        {t('t2') && <div style={{ display:'flex', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>}
+        {s('m4') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className={`bubble bubble-a${a('m4')?' show':''}`}>Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div></div>}
       </div>
-      {/* input bar */}
       <div style={{ display:'flex', alignItems:'center', gap:8, padding:'8px 12px 18px', background:'#FFF1E7', borderTop:'1px solid rgba(102,10,67,0.08)' }}>
         <div style={{ flex:1, background:'rgba(102,10,67,0.07)', borderRadius:20, padding:'9px 13px', fontSize:12, color:'rgba(42,10,26,0.35)' }}>Écris ta situation…</div>
         <div style={{ width:30, height:30, background:'#660A43', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
@@ -248,7 +203,9 @@ export default function HomePage() {
           .hp-steps { grid-template-columns:1fr !important; }
           .hp-bento-2 { grid-template-columns:1fr !important; }
           .hp-about { flex-direction:column !important; }
-          .hp-hero-stats { gap:24px !important; flex-wrap:wrap; }
+          .hp-hero-stats { gap:16px !important; flex-wrap:nowrap !important; }
+          .hp-hero-stats > div > div:first-child { font-size:20px !important; }
+          .hp-hero-stats > div > div:last-child { font-size:10px !important; }
         }
       `}</style>
 
