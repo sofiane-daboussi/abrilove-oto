@@ -540,19 +540,18 @@ function BentoSection() {
     if (!grid) return
     const cards = Array.from(grid.querySelectorAll('.bento-c'))
     cards.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(24px)' })
-    const obs = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return
-      cards.forEach((card, i) => {
-        setTimeout(() => {
-          card.style.transition = 'opacity 0.5s ease, transform 0.5s ease'
-          card.style.opacity = '1'
-          card.style.transform = 'translateY(0)'
-          setTimeout(() => { card.style.transition = '' }, 520)
-        }, i * 220)
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        const card = entry.target
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease'
+        card.style.opacity = '1'
+        card.style.transform = 'translateY(0)'
+        setTimeout(() => { card.style.transition = '' }, 520)
+        obs.unobserve(card)
       })
-      obs.disconnect()
-    }, { threshold: 0.15 })
-    obs.observe(grid)
+    }, { threshold: 0.2 })
+    cards.forEach(c => obs.observe(c))
     return () => obs.disconnect()
   }, [])
 
