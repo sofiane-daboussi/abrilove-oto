@@ -49,158 +49,138 @@ export default function ContactPage() {
       <style>{`
         .contact-input::placeholder { color: rgba(102,10,67,0.4); }
         .contact-input:focus { border-color: #660A43 !important; }
-        .contact-card { position: relative; overflow: hidden; margin-top: 120px !important; }
-        .contact-card:before {
-          content: '💗';
-          position: absolute;
-          bottom: 1rem; left: 15%;
-          font-size: 2rem;
-          opacity: 0.1;
-          pointer-events: none;
-          animation: contact-float 6s ease-in-out infinite;
-          z-index: 0;
-        }
-        .contact-card:after {
-          content: '💕';
-          position: absolute;
-          bottom: 1.5rem; right: 15%;
-          font-size: 1.8rem;
-          opacity: 0.1;
-          pointer-events: none;
-          animation: contact-float 7s ease-in-out infinite reverse;
-          z-index: 0;
-        }
         @keyframes contact-float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
         }
       `}</style>
-      <Header />
+      <div style={{ margin: '-24px -16px' }}>
+        <Header />
+        <section style={{ background: '#FFF4F7', padding: '120px clamp(16px,5vw,80px) 80px', position: 'relative', overflow: 'hidden' }}>
+          <span style={{ position: 'absolute', bottom: '1rem', left: '15%', fontSize: '2rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 6s ease-in-out infinite' }}>💗</span>
+          <span style={{ position: 'absolute', bottom: '1.5rem', right: '15%', fontSize: '1.8rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 7s ease-in-out infinite reverse' }}>💕</span>
+          <span style={{ position: 'absolute', top: '8rem', left: '15%', fontSize: '2rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite' }}>💗</span>
+          <span style={{ position: 'absolute', top: '8rem', right: '15%', fontSize: '1.8rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 5s ease-in-out infinite reverse' }}>💕</span>
 
-      <div className="card contact-card" style={{ marginBottom: 0 }}>
-        <span style={{ position: 'absolute', top: '1rem', left: '15%', fontSize: '2rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite', zIndex: 0 }}>💗</span>
-        <span style={{ position: 'absolute', top: '1.5rem', right: '15%', fontSize: '1.8rem', opacity: 0.1, pointerEvents: 'none', animation: 'contact-float 5s ease-in-out infinite reverse', zIndex: 0 }}>💕</span>
-
-        <p style={{
-          color: '#660A43',
-          fontSize: 13,
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase',
-          marginBottom: 16,
-          textAlign: 'center',
-        }}>
-          Contact
-        </p>
-
-        <h1 style={{
-          fontFamily: 'var(--font-playfair, serif)',
-          color: '#1a0011',
-          fontSize: 'clamp(26px, 5vw, 40px)',
-          fontWeight: 700,
-          textAlign: 'center',
-          marginBottom: 12,
-          lineHeight: 1.2,
-        }}>
-          Une question ?<br />
-          <em style={{ color: '#660A43', fontStyle: 'italic' }}>On te répond.</em>
-        </h1>
-
-        <p style={{
-          color: '#8a5060',
-          textAlign: 'center',
-          fontSize: 15,
-          marginBottom: 32,
-          lineHeight: 1.6,
-        }}>
-          Pour toute question sur nos e-books, un problème de commande,
-          ou simplement pour dire bonjour.
-        </p>
-
-        {status === 'sent' ? (
-          <div style={{ textAlign: 'center', padding: '32px 0' }}>
-            <p style={{ color: '#660A43', fontSize: 20, fontFamily: 'var(--font-playfair, serif)', marginBottom: 8 }}>
-              Message envoyé ✓
+          <div style={{ maxWidth: 680, margin: '0 auto' }}>
+            <p style={{
+              color: '#660A43',
+              fontSize: 13,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              marginBottom: 16,
+              textAlign: 'center',
+            }}>
+              Contact
             </p>
-            <p style={{ color: '#8a5060', fontSize: 14 }}>On te répond dans les 24h.</p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
-            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-              <div style={{ flex: 1, minWidth: 200 }}>
-                <label style={labelStyle}>Prénom <span style={{color:'#660A43'}}>*</span></label>
-                <input
-                  type="text"
-                  placeholder="Ton prénom"
-                  value={form.name}
-                  onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setErrors(er => ({...er, name: null})) }}
-                  style={{ ...inputStyle, borderColor: errors.name ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
-                  className="contact-input"
-                />
-                {errors.name && <p style={errorStyle}>{errors.name}</p>}
+            <h1 style={{
+              fontFamily: 'var(--font-playfair, serif)',
+              color: '#1a0011',
+              fontSize: 'clamp(26px, 5vw, 40px)',
+              fontWeight: 700,
+              textAlign: 'center',
+              marginBottom: 12,
+              lineHeight: 1.2,
+            }}>
+              Une question ?<br />
+              <em style={{ color: '#660A43', fontStyle: 'italic' }}>On te répond.</em>
+            </h1>
+
+            <p style={{
+              color: '#8a5060',
+              textAlign: 'center',
+              fontSize: 15,
+              marginBottom: 32,
+              lineHeight: 1.6,
+            }}>
+              Pour toute question sur nos e-books, un problème de commande,
+              ou simplement pour dire bonjour.
+            </p>
+
+            {status === 'sent' ? (
+              <div style={{ textAlign: 'center', padding: '32px 0' }}>
+                <p style={{ color: '#660A43', fontSize: 20, fontFamily: 'var(--font-playfair, serif)', marginBottom: 8 }}>
+                  Message envoyé ✓
+                </p>
+                <p style={{ color: '#8a5060', fontSize: 14 }}>On te répond dans les 24h.</p>
               </div>
-              <div style={{ flex: 1, minWidth: 200 }}>
-                <label style={labelStyle}>Email <span style={{color:'#660A43'}}>*</span></label>
-                <input
-                  type="email"
-                  placeholder="ton@email.com"
-                  value={form.email}
-                  onChange={e => { setForm(f => ({ ...f, email: e.target.value })); setErrors(er => ({...er, email: null})) }}
-                  style={{ ...inputStyle, borderColor: errors.email ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
-                  className="contact-input"
-                />
-                {errors.email && <p style={errorStyle}>{errors.email}</p>}
-              </div>
-            </div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
-            <div>
-              <label style={labelStyle}>Message <span style={{color:'#660A43'}}>*</span></label>
-              <textarea
-                rows={5}
-                placeholder="Dis-nous tout…"
-                value={form.message}
-                onChange={e => { setForm(f => ({ ...f, message: e.target.value })); setErrors(er => ({...er, message: null})) }}
-                style={{ ...inputStyle, resize: 'vertical', minHeight: 130, borderColor: errors.message ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
-                className="contact-input"
-              />
-              {errors.message && <p style={errorStyle}>{errors.message}</p>}
-            </div>
+                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  <div style={{ flex: 1, minWidth: 200 }}>
+                    <label style={labelStyle}>Prénom <span style={{color:'#660A43'}}>*</span></label>
+                    <input
+                      type="text"
+                      placeholder="Ton prénom"
+                      value={form.name}
+                      onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setErrors(er => ({...er, name: null})) }}
+                      style={{ ...inputStyle, borderColor: errors.name ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
+                      className="contact-input"
+                    />
+                    {errors.name && <p style={errorStyle}>{errors.name}</p>}
+                  </div>
+                  <div style={{ flex: 1, minWidth: 200 }}>
+                    <label style={labelStyle}>Email <span style={{color:'#660A43'}}>*</span></label>
+                    <input
+                      type="email"
+                      placeholder="ton@email.com"
+                      value={form.email}
+                      onChange={e => { setForm(f => ({ ...f, email: e.target.value })); setErrors(er => ({...er, email: null})) }}
+                      style={{ ...inputStyle, borderColor: errors.email ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
+                      className="contact-input"
+                    />
+                    {errors.email && <p style={errorStyle}>{errors.email}</p>}
+                  </div>
+                </div>
 
-            {status === 'error' && (
-              <p style={{ color: '#c0392b', fontSize: 14 }}>
-                Une erreur s'est produite. Écris-nous à <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
-              </p>
+                <div>
+                  <label style={labelStyle}>Message <span style={{color:'#660A43'}}>*</span></label>
+                  <textarea
+                    rows={5}
+                    placeholder="Dis-nous tout…"
+                    value={form.message}
+                    onChange={e => { setForm(f => ({ ...f, message: e.target.value })); setErrors(er => ({...er, message: null})) }}
+                    style={{ ...inputStyle, resize: 'vertical', minHeight: 130, borderColor: errors.message ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
+                    className="contact-input"
+                  />
+                  {errors.message && <p style={errorStyle}>{errors.message}</p>}
+                </div>
+
+                {status === 'error' && (
+                  <p style={{ color: '#c0392b', fontSize: 14 }}>
+                    Une erreur s'est produite. Écris-nous à <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === 'sending'}
+                  style={{
+                    background: status === 'sending' ? '#4a0830' : '#660A43',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: 8,
+                    padding: '16px 32px',
+                    fontSize: 16,
+                    fontWeight: 600,
+                    cursor: status === 'sending' ? 'not-allowed' : 'pointer',
+                    transition: 'background 0.2s',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {status === 'sending' ? 'Envoi…' : 'Envoyer le message'}
+                </button>
+
+              </form>
             )}
 
-            <button
-              type="submit"
-              disabled={status === 'sending'}
-              style={{
-                background: status === 'sending' ? '#4a0830' : '#660A43',
-                color: '#fff',
-                border: 'none',
-                borderRadius: 8,
-                padding: '16px 32px',
-                fontSize: 16,
-                fontWeight: 600,
-                cursor: status === 'sending' ? 'not-allowed' : 'pointer',
-                transition: 'background 0.2s',
-                letterSpacing: '0.05em',
-              }}
-            >
-              {status === 'sending' ? 'Envoi…' : 'Envoyer le message'}
-            </button>
-
-          </form>
-        )}
-
-        <p style={{ color: '#8a5060', fontSize: 13, textAlign: 'center', marginTop: 28 }}>
-          Ou par email : <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
-        </p>
-
-      </div>
-      <div style={{ margin: '0 -16px -24px' }}>
-        <div style={{ background: '#FFF4F7', height: 80 }} />
+            <p style={{ color: '#8a5060', fontSize: 13, textAlign: 'center', marginTop: 28 }}>
+              Ou par email : <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
+            </p>
+          </div>
+        </section>
         <Footer />
       </div>
     </>
