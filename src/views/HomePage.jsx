@@ -995,10 +995,10 @@ export default function HomePage() {
         <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
-              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3vw,36px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
                 Tu préfères commencer <em style={{ color: '#660A43' }}>tranquillement ?</em>
               </h2>
-              <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 28 }}>
+              <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
                 Tu ne sais pas toujours comment interpréter une situation, ou tu veux simplement y voir plus clair sans te précipiter ? Ce <strong>guide gratuit</strong> te donne des repères simples pour mieux comprendre ce que tu vis.
               </p>
               {guideStatus === 'sent' ? (
@@ -1023,8 +1023,8 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <div style={{ flex: 0.7, display: 'flex', justifyContent: 'center' }}>
-              <img src="/images/section-img-1.jpg" alt="Ebook gratuit Abrilove" style={{ width: '100%', maxWidth: 300, borderRadius: 20, objectFit: 'cover', boxShadow: '0 20px 60px rgba(102,10,67,0.2)' }} />
+            <div style={{ flex: 1 }}>
+              <img src="/images/section-img-1.jpg" alt="Ebook gratuit Abrilove" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
           </div>
         </div>
