@@ -931,7 +931,7 @@ export default function HomePage() {
       <ToggleSection />
 
       {/* ── SOFI & OLI + PRODUITS ── */}
-      <section style={{ padding: 'clamp(40px,6vw,80px) clamp(32px,5vw,80px)' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(20px,3vw,48px) clamp(32px,5vw,80px) clamp(60px,8vw,120px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-about" style={{ display: 'flex', gap: 24 }}>
             <div style={{ flex: 1.3, background: 'linear-gradient(135deg, #fdf5f8, #f5e5f0)', borderRadius: 24, padding: '36px 32px' }}>
