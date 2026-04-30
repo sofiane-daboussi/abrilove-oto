@@ -223,7 +223,7 @@ export default function HomePage() {
       <Header />
 
       {/* ── HERO ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 55%, #660A43 100%)', minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(20px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center' }}>
+      <section style={{ minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(20px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
           <div className="hp-hero-cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
