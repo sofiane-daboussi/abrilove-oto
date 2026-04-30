@@ -206,6 +206,8 @@ export default function HomePage() {
           .hp-hero-stats > div > div:first-child { font-size:20px !important; }
           .hp-hero-stats > div > div:last-child { font-size:10px !important; }
         }
+        .hp-quiz-embed .qz-wrap { padding: 0 !important; max-width: 100% !important; }
+        .hp-quiz-section p strong, .hp-quiz-section p em { color: #FFF1E7 !important; }
       `}</style>
 
       <Header />
@@ -291,25 +293,25 @@ export default function HomePage() {
       </section>
 
       {/* ── QUIZ TEASER ── */}
-      <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)', position: 'relative', overflow: 'hidden' }}>
+      <section className="hp-quiz-section" style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
           <div style={{ position: 'absolute', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(190,25,105,0.6) 0%, transparent 65%)', top: '-10%', right: '-10%', filter: 'blur(50px)', animation: 'blob1 6s ease-in-out infinite' }} />
           <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(160,15,85,0.55) 0%, transparent 65%)', bottom: '-10%', left: '-10%', filter: 'blur(45px)', animation: 'blob2 8s ease-in-out infinite' }} />
           <div style={{ position: 'absolute', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(210,40,120,0.5) 0%, transparent 65%)', top: '50%', left: '30%', filter: 'blur(50px)', animation: 'blob3 7s ease-in-out infinite' }} />
         </div>
         <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
+          <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
             <div style={{ flex: 1 }}>
               <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Quiz gratuit</p>
               <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
                 Tu veux aller plus loin qu'une simple réponse ?
               </h2>
-              <p style={{ color: 'rgba(255,241,231,0.75)', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
+              <p style={{ color: 'rgba(255,241,231,0.9)', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 0 }}>
                 Parfois, le vrai problème n'est pas seulement la situation que tu vis aujourd'hui. C'est le schéma derrière. Celui qui te fait douter, t'attacher trop vite, sur-analyser, ou répéter les mêmes histoires.<br /><br />
                 Fais le <strong>test gratuit</strong> et découvre ton profil amoureux, pour mieux comprendre ce que tu vis, en profondeur.
               </p>
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1 }} className="hp-quiz-embed">
               <QuizPage />
             </div>
           </div>
