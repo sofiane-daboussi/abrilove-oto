@@ -112,9 +112,9 @@ export default function AccroPage() {
 
   // Timer
   useEffect(() => {
-    const stored = localStorage.getItem('oto_accro_end')
+    let stored; try { stored = localStorage.getItem('oto_accro_end') } catch {}
     let endTime = stored ? parseInt(stored) : Date.now() + 30 * 60 * 1000
-    if (!stored) localStorage.setItem('oto_accro_end', endTime)
+    if (!stored) try { localStorage.setItem('oto_accro_end', endTime) } catch {}
     function tick() {
       const remaining = endTime - Date.now()
       if (remaining <= 0) { setTimerText('00:00'); return }

@@ -383,16 +383,18 @@ export default function QuizPage() {
   const [savedData, setSavedData] = useState(null)
 
   useEffect(() => {
-    const saved = localStorage.getItem('abrilove_quiz_progress')
-    if (!saved) return
-    const data = JSON.parse(saved)
-    const hoursDiff = (Date.now() - new Date(data.timestamp).getTime()) / (1000 * 60 * 60)
-    if (hoursDiff < 24 && data.currentQ < 17) {
-      setSavedData(data)
-      setShowResume(true)
-    } else {
-      localStorage.removeItem('abrilove_quiz_progress')
-    }
+    try {
+      const saved = localStorage.getItem('abrilove_quiz_progress')
+      if (!saved) return
+      const data = JSON.parse(saved)
+      const hoursDiff = (Date.now() - new Date(data.timestamp).getTime()) / (1000 * 60 * 60)
+      if (hoursDiff < 24 && data.currentQ < 17) {
+        setSavedData(data)
+        setShowResume(true)
+      } else {
+        try { localStorage.removeItem('abrilove_quiz_progress') } catch {}
+      }
+    } catch {}
   }, [])
 
   useEffect(() => {
@@ -423,9 +425,11 @@ export default function QuizPage() {
   }, [currentQ, answers, email, loading])
 
   function saveProgress(newAnswers, q) {
-    localStorage.setItem('abrilove_quiz_progress', JSON.stringify({
-      answers: newAnswers, currentQ: q, timestamp: new Date().toISOString()
-    }))
+    try {
+      localStorage.setItem('abrilove_quiz_progress', JSON.stringify({
+        answers: newAnswers, currentQ: q, timestamp: new Date().toISOString()
+      }))
+    } catch {}
   }
 
   function selectOption(qNum, value) {
@@ -443,13 +447,13 @@ export default function QuizPage() {
   }
 
   function resumeRestart() {
-    localStorage.removeItem('abrilove_quiz_progress')
+    try { localStorage.removeItem('abrilove_quiz_progress') } catch {}
     setShowResume(false)
   }
 
   async function submitQuiz() {
     setLoading(true)
-    localStorage.removeItem('abrilove_quiz_progress')
+    try { localStorage.removeItem('abrilove_quiz_progress') } catch {}
 
     const scores = { accro: 0, reveuse: 0, cerebrale: 0, louve: 0 }
     for (const profile in PROFILE_QUESTIONS) {

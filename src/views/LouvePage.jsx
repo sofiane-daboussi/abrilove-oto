@@ -111,9 +111,9 @@ export default function LouvePage() {
 
   // Timer
   useEffect(() => {
-    const stored = localStorage.getItem('oto_louve_end')
+    let stored; try { stored = localStorage.getItem('oto_louve_end') } catch {}
     let endTime = stored ? parseInt(stored) : Date.now() + 30 * 60 * 1000
-    if (!stored) localStorage.setItem('oto_louve_end', endTime)
+    if (!stored) try { localStorage.setItem('oto_louve_end', endTime) } catch {}
     function tick() {
       const remaining = endTime - Date.now()
       if (remaining <= 0) { setTimerText('00:00'); return }
