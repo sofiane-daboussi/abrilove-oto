@@ -380,8 +380,10 @@ export default function CerebalePage() {
         .book-pg-stack-2 { background: linear-gradient(to bottom, #ebd3e0, #e0c8d5) !important; }
         .book-pg-stack-3 { background: linear-gradient(to bottom, #e0c8d5, #d5bdca) !important; }
         .book-pg-stack-4 { background: linear-gradient(to bottom, #d5bdca, #c9b2bf) !important; }
-        .stripe-skeleton-bar { background: #F2E0EC !important; }
-        .stripe-skeleton-bar::after { background: linear-gradient(90deg, transparent 0%, #f5e8f2 50%, transparent 100%) !important; }
+        .payment-block { background: #F2E0EC !important; }
+        .field-input { background: #FFF4F7 !important; border-color: rgba(102,10,67,0.2) !important; }
+        .stripe-skeleton-bar { background: #E8C8DA !important; }
+        .stripe-skeleton-bar::after { background: linear-gradient(90deg, transparent 0%, #F2E0EC 50%, transparent 100%) !important; }
       `}</style>
       <div className="card">
         <span className="profil-tag">Résultat du quiz · Ton profil</span>
@@ -473,6 +475,7 @@ export default function CerebalePage() {
 
               <div
                 className="book-pg-back"
+                style={{ background: 'linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 40%, #fdf8fa 100%)' }}
                 onTouchStart={e => {
                   if (!flipped) return
                   flipBackDragRef.current = { startX: e.touches[0].clientX, startY: e.touches[0].clientY, direction: null, triggered: false }
@@ -700,7 +703,7 @@ export default function CerebalePage() {
         </div>
 
         {/* PAIEMENT */}
-        <div className="payment-block fade-section" ref={paiementRef} id="paiement">
+        <div className="payment-block fade-section" ref={paiementRef} id="paiement" style={{ background: '#F2E0EC' }}>
           <span className="offer-label">✦ Offre réservée · résultats du quiz</span>
           <div className="payment-book-row">
             <div className="payment-book-details">
