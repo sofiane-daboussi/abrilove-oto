@@ -182,6 +182,9 @@ export default function HomePage() {
         .iphone .typing span:nth-child(3) { animation-delay:0.4s; }
         @keyframes abri-pop { from { opacity:0; transform:scale(0.85); } to { opacity:1; transform:scale(1); } }
         @keyframes abri-bounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(6px); } }
+        @keyframes blob1 { 0%,100% { transform:translate(0,0) scale(1); } 33% { transform:translate(40px,-30px) scale(1.1); } 66% { transform:translate(-20px,20px) scale(0.92); } }
+        @keyframes blob2 { 0%,100% { transform:translate(0,0) scale(1); } 33% { transform:translate(-30px,25px) scale(1.08); } 66% { transform:translate(20px,-15px) scale(0.95); } }
+        @keyframes blob3 { 0%,100% { transform:translate(0,0) scale(1); } 50% { transform:translate(25px,-30px) scale(1.06); } }
         @keyframes temo-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
         .hp-btn-light { display:inline-flex; align-items:center; background:#FFF1E7; color:#660A43; text-decoration:none; padding:16px 28px; border-radius:999px; font-weight:700; font-size:15px; transition:transform 0.2s,box-shadow 0.2s; box-shadow:0 8px 24px rgba(0,0,0,0.25); font-family:var(--font-dm-sans,sans-serif); }
         .hp-btn-light:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.3); }
@@ -207,7 +210,12 @@ export default function HomePage() {
       <Header />
 
       {/* ── HERO ── */}
-      <section style={{ minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(32px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center' }}>
+      <section style={{ minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(32px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position:'absolute', inset:0, pointerEvents:'none' }}>
+          <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(220,60,140,0.35) 0%, transparent 70%)', top:'-10%', right:'-5%', filter:'blur(70px)', animation:'blob1 9s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:380, height:380, borderRadius:'50%', background:'radial-gradient(circle, rgba(102,10,67,0.45) 0%, transparent 70%)', bottom:'5%', left:'-5%', filter:'blur(60px)', animation:'blob2 11s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:300, height:300, borderRadius:'50%', background:'radial-gradient(circle, rgba(180,30,110,0.3) 0%, transparent 70%)', top:'40%', left:'35%', filter:'blur(80px)', animation:'blob3 13s ease-in-out infinite' }} />
+        </div>
         <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
           <div className="hp-hero-cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
