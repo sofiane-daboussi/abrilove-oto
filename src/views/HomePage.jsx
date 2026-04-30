@@ -61,47 +61,42 @@ function StatCounter({ target, suffix = '', label, color = '#FFF1E7', labelColor
 }
 
 const IPhoneChat = memo(function IPhoneChat() {
-  const [shown, setShown] = useState([])
-  const [anim, setAnim] = useState([])
-  const [typings, setTypings] = useState([])
+  const [op, setOp] = useState({ m1:0, t1:0, m2:0, m3:0, t2:0, m4:0 })
   const msgsRef = useRef(null)
 
   useEffect(() => {
     const timers = []
 
-    function show(id) {
-      setShown(s => [...s, id])
-      timers.push(setTimeout(() => {
-        setAnim(a => [...a, id])
-        if (msgsRef.current) msgsRef.current.scrollTop = 9999
-      }, 100))
+    function show(key) {
+      setOp(prev => ({ ...prev, [key]: 1 }))
+      if (msgsRef.current) msgsRef.current.scrollTop = 9999
     }
-    function showT(id) { setTypings(t => [...t, id]) }
-    function hideT(id) { setTypings(t => t.filter(x => x !== id)) }
-
+    function hide(key) {
+      setOp(prev => ({ ...prev, [key]: 0 }))
+    }
     function reset() {
-      setShown([]); setAnim([]); setTypings([])
+      setOp({ m1:0, t1:0, m2:0, m3:0, t2:0, m4:0 })
       if (msgsRef.current) msgsRef.current.scrollTop = 0
       timers.push(setTimeout(run, 800))
     }
-
     function run() {
       timers.push(setTimeout(() => show('m1'), 600))
-      timers.push(setTimeout(() => showT('t1'), 2000))
-      timers.push(setTimeout(() => { hideT('t1'); show('m2') }, 4500))
+      timers.push(setTimeout(() => show('t1'), 2000))
+      timers.push(setTimeout(() => { hide('t1'); show('m2') }, 4500))
       timers.push(setTimeout(() => show('m3'), 7000))
-      timers.push(setTimeout(() => showT('t2'), 8800))
-      timers.push(setTimeout(() => { hideT('t2'); show('m4') }, 12000))
+      timers.push(setTimeout(() => show('t2'), 8800))
+      timers.push(setTimeout(() => { hide('t2'); show('m4') }, 12000))
       timers.push(setTimeout(reset, 17000))
     }
-
     run()
     return () => timers.forEach(clearTimeout)
   }, [])
 
-  const s = (id) => shown.includes(id)
-  const a = (id) => anim.includes(id)
-  const t = (id) => typings.includes(id)
+  const row = (key, align, children) => (
+    <div style={{ display:'flex', flexDirection:'column', alignItems:align, opacity:op[key], transform:op[key]?'translateY(0)':'translateY(8px)', transition:'opacity 0.4s,transform 0.4s', pointerEvents:'none' }}>
+      {children}
+    </div>
+  )
 
   return (
     <div className="iphone" style={{ width:260, background:'#FFF1E7', borderRadius:44, border:'11px solid #1a0812', boxShadow:'0 0 0 1px #3a1020,0 30px 70px rgba(0,0,0,0.4)', overflow:'hidden', margin:'0 auto', fontFamily:'-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif' }}>
@@ -121,12 +116,12 @@ const IPhoneChat = memo(function IPhoneChat() {
         </div>
       </div>
       <div ref={msgsRef} style={{ padding:12, display:'flex', flexDirection:'column', gap:7, minHeight:340, background:'#FFF1E7', overflow:'hidden' }}>
-        <div style={{ display:s('m1')?'flex':'none', flexDirection:'column', alignItems:'flex-end' }}><div className="bubble bubble-u" style={{ opacity:a('m1')?1:0, transform:a('m1')?'translateY(0)':'translateY(6px)', transition:'opacity 0.4s,transform 0.4s' }}>Il me laisse en vu depuis 2 jours… 😞</div></div>
-        <div style={{ display:t('t1')?'flex':'none', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>
-        <div style={{ display:s('m2')?'flex':'none', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className="bubble bubble-a" style={{ opacity:a('m2')?1:0, transform:a('m2')?'translateY(0)':'translateY(6px)', transition:'opacity 0.4s,transform 0.4s' }}>C'est nouveau chez lui ou il l'a déjà fait avant ?</div></div>
-        <div style={{ display:s('m3')?'flex':'none', flexDirection:'column', alignItems:'flex-end' }}><div className="bubble bubble-u" style={{ opacity:a('m3')?1:0, transform:a('m3')?'translateY(0)':'translateY(6px)', transition:'opacity 0.4s,transform 0.4s' }}>Jamais… 😔</div></div>
-        <div style={{ display:t('t2')?'flex':'none', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>
-        <div style={{ display:s('m4')?'flex':'none', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className="bubble bubble-a" style={{ opacity:a('m4')?1:0, transform:a('m4')?'translateY(0)':'translateY(6px)', transition:'opacity 0.4s,transform 0.4s' }}>Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div></div>
+        {row('m1','flex-end', <div style={{ maxWidth:'80%', padding:'9px 13px', borderRadius:'18px 18px 4px 18px', fontSize:12.5, lineHeight:1.45, background:'#660A43', color:'#fff' }}>Il me laisse en vu depuis 2 jours… 😞</div>)}
+        {row('t1','flex-start', <div style={{ display:'flex', gap:4, padding:'10px 14px', background:'rgba(102,10,67,0.1)', borderRadius:'18px 18px 18px 4px' }}><span style={{ width:6,height:6,borderRadius:'50%',background:'#660A43',opacity:0.35,animation:'abri-dot 1.2s infinite',display:'inline-block' }}/><span style={{ width:6,height:6,borderRadius:'50%',background:'#660A43',opacity:0.35,animation:'abri-dot 1.2s 0.2s infinite',display:'inline-block' }}/><span style={{ width:6,height:6,borderRadius:'50%',background:'#660A43',opacity:0.35,animation:'abri-dot 1.2s 0.4s infinite',display:'inline-block' }}/></div>)}
+        {row('m2','flex-start', <><div style={{ fontSize:9.5, fontWeight:700, color:'#660A43', marginBottom:3, paddingLeft:2 }}>Sofi & Oli 💛</div><div style={{ maxWidth:'80%', padding:'9px 13px', borderRadius:'18px 18px 18px 4px', fontSize:12.5, lineHeight:1.45, background:'rgba(102,10,67,0.1)', color:'#2a0a1a' }}>C'est nouveau chez lui ou il l'a déjà fait avant ?</div></>)}
+        {row('m3','flex-end', <div style={{ maxWidth:'80%', padding:'9px 13px', borderRadius:'18px 18px 4px 18px', fontSize:12.5, lineHeight:1.45, background:'#660A43', color:'#fff' }}>Jamais… 😔</div>)}
+        {row('t2','flex-start', <div style={{ display:'flex', gap:4, padding:'10px 14px', background:'rgba(102,10,67,0.1)', borderRadius:'18px 18px 18px 4px' }}><span style={{ width:6,height:6,borderRadius:'50%',background:'#660A43',opacity:0.35,animation:'abri-dot 1.2s infinite',display:'inline-block' }}/><span style={{ width:6,height:6,borderRadius:'50%',background:'#660A43',opacity:0.35,animation:'abri-dot 1.2s 0.2s infinite',display:'inline-block' }}/><span style={{ width:6,height:6,borderRadius:'50%',background:'#660A43',opacity:0.35,animation:'abri-dot 1.2s 0.4s infinite',display:'inline-block' }}/></div>)}
+        {row('m4','flex-start', <><div style={{ fontSize:9.5, fontWeight:700, color:'#660A43', marginBottom:3, paddingLeft:2 }}>Sofi & Oli 💛</div><div style={{ maxWidth:'80%', padding:'9px 13px', borderRadius:'18px 18px 18px 4px', fontSize:12.5, lineHeight:1.45, background:'rgba(102,10,67,0.1)', color:'#2a0a1a' }}>Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div></>)}
       </div>
       <div style={{ display:'flex', alignItems:'center', gap:8, padding:'8px 12px 18px', background:'#FFF1E7', borderTop:'1px solid rgba(102,10,67,0.08)' }}>
         <div style={{ flex:1, background:'rgba(102,10,67,0.07)', borderRadius:20, padding:'9px 13px', fontSize:12, color:'rgba(42,10,26,0.35)' }}>Écris ta situation…</div>
