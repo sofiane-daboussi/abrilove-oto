@@ -42,7 +42,7 @@ function TkIcon() {
   )
 }
 
-export default function Footer({ topArc = false }) {
+export default function Footer() {
   const [email, setEmail] = useState('')
   const [consent, setConsent] = useState(false)
   const [nlStatus, setNlStatus] = useState(null)
@@ -67,22 +67,9 @@ export default function Footer({ topArc = false }) {
   }
 
   return (
-    <footer style={{
-      fontFamily: 'var(--font-dm-sans, sans-serif)',
-      marginTop: topArc ? 0 : 'clamp(72px, 10vw, 140px)',
-      ...(topArc && { background: '#660A43' }),
-      position: 'relative',
-    }}>
-      {topArc && (
-        <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
-            <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
-          </svg>
-        </div>
-      )}
+    <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', marginTop: 'clamp(72px, 10vw, 140px)' }}>
 
       {/* Newsletter */}
-      <div className={topArc ? 'footer-nl-arc' : ''} style={{ paddingTop: topArc ? 80 : 0 }}>
       <div style={{
         background: 'linear-gradient(135deg, #3d0228 0%, #5e063c 55%, #7a1050 100%)',
         padding: 'clamp(24px, 5vw, 64px) 20px',
@@ -183,7 +170,6 @@ export default function Footer({ topArc = false }) {
           </form>
         )}
       </div>
-      </div>
 
       {/* Colonnes */}
       <div style={{ padding: 'clamp(40px, 6vw, 72px) 20px', marginTop: 40 }}>
@@ -274,9 +260,6 @@ export default function Footer({ topArc = false }) {
       <style>{`
         .nl-input { -webkit-appearance: none; appearance: none; background: rgba(255,255,255,0.1) !important; color: #fff !important; }
         .nl-input::placeholder { color: rgba(255,255,255,0.45); }
-        @media (max-width: 600px) {
-          .footer-nl-arc { padding-top: 100px !important; }
-        }
         @media (max-width: 540px) {
           .nl-form-row { flex-direction: column !important; border-radius: 12px !important; overflow: visible !important; border: none !important; gap: 10px; }
           .nl-input { border-radius: 12px !important; border: 1.5px solid rgba(255,255,255,0.25) !important; text-align: center !important; }
