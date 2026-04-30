@@ -188,7 +188,7 @@ function TemuSection() {
   const allImgs = [...TEMOS, ...TEMOS]
 
   return (
-    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: '80px 0 calc(clamp(40px,6vw,80px) + 80px)', position: 'relative' }}>
+    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(40px,6vw,80px) + 80px) 0', position: 'relative' }}>
         <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
             <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -434,7 +434,7 @@ function StepsSection() {
   }, [])
 
   return (
-    <section id="abri-steps-section" style={{ padding: '80px 20px calc(80px + 80px)', background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', position: 'relative' }}>
+    <section id="abri-steps-section" style={{ padding: 'calc(clamp(40px,6vw,80px) + 80px) 20px', background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', position: 'relative' }}>
       <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
           <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -593,7 +593,7 @@ function BentoSection() {
 function ToggleSection() {
   const [active, setActive] = useState(false)
   return (
-    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: '80px clamp(32px,5vw,80px) calc(clamp(40px,5vw,60px) + 80px)', position: 'relative' }}>
+    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(40px,5vw,60px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
       <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
           <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -872,7 +872,7 @@ export default function HomePage() {
       </section>
 
       {/* ── QUIZ TEASER ── */}
-      <section className="hp-quiz-section" style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: '80px clamp(32px,5vw,80px) calc(clamp(60px,8vw,120px) + 80px)', position: 'relative' }}>
+      <section className="hp-quiz-section" style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(60px,8vw,120px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
         <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
             <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -965,7 +965,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: '80px clamp(32px,5vw,80px) calc(clamp(60px,8vw,100px) + 80px)', position: 'relative' }}>
+      <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(60px,8vw,100px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
         <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
             <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
