@@ -74,7 +74,7 @@ const IPhoneChat = memo(function IPhoneChat() {
       timers.push(setTimeout(() => {
         setAnim(a => [...a, id])
         if (msgsRef.current) msgsRef.current.scrollTop = 9999
-      }, 30))
+      }, 100))
     }
     function showT(id) { setTypings(t => [...t, id]) }
     function hideT(id) { setTypings(t => t.filter(x => x !== id)) }
@@ -121,12 +121,12 @@ const IPhoneChat = memo(function IPhoneChat() {
         </div>
       </div>
       <div ref={msgsRef} style={{ padding:12, display:'flex', flexDirection:'column', gap:7, minHeight:340, background:'#FFF1E7', overflow:'hidden' }}>
-        {s('m1') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end' }}><div className={`bubble bubble-u${a('m1')?' show':''}`}>Il me laisse en vu depuis 2 jours… 😞</div></div>}
-        {t('t1') && <div style={{ display:'flex', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>}
-        {s('m2') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className={`bubble bubble-a${a('m2')?' show':''}`}>C'est nouveau chez lui ou il l'a déjà fait avant ?</div></div>}
-        {s('m3') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end' }}><div className={`bubble bubble-u${a('m3')?' show':''}`}>Jamais… 😔</div></div>}
-        {t('t2') && <div style={{ display:'flex', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>}
-        {s('m4') && <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className={`bubble bubble-a${a('m4')?' show':''}`}>Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div></div>}
+        <div style={{ display:s('m1')?'flex':'none', flexDirection:'column', alignItems:'flex-end' }}><div className={`bubble bubble-u${a('m1')?' show':''}`}>Il me laisse en vu depuis 2 jours… 😞</div></div>
+        <div style={{ display:t('t1')?'flex':'none', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>
+        <div style={{ display:s('m2')?'flex':'none', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className={`bubble bubble-a${a('m2')?' show':''}`}>C'est nouveau chez lui ou il l'a déjà fait avant ?</div></div>
+        <div style={{ display:s('m3')?'flex':'none', flexDirection:'column', alignItems:'flex-end' }}><div className={`bubble bubble-u${a('m3')?' show':''}`}>Jamais… 😔</div></div>
+        <div style={{ display:t('t2')?'flex':'none', flexDirection:'column' }}><div className="typing show"><span/><span/><span/></div></div>
+        <div style={{ display:s('m4')?'flex':'none', flexDirection:'column', alignItems:'flex-start' }}><div className="sender">Sofi & Oli 💛</div><div className={`bubble bubble-a${a('m4')?' show':''}`}>Les hommes se retirent rarement par indifférence. Voilà quoi faire 👇</div></div>
       </div>
       <div style={{ display:'flex', alignItems:'center', gap:8, padding:'8px 12px 18px', background:'#FFF1E7', borderTop:'1px solid rgba(102,10,67,0.08)' }}>
         <div style={{ flex:1, background:'rgba(102,10,67,0.07)', borderRadius:20, padding:'9px 13px', fontSize:12, color:'rgba(42,10,26,0.35)' }}>Écris ta situation…</div>
@@ -212,7 +212,7 @@ export default function HomePage() {
       <Header />
 
       {/* ── HERO ── */}
-      <section style={{ minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(20px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center' }}>
+      <section style={{ minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(24px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%' }}>
           <div className="hp-hero-cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
@@ -266,7 +266,7 @@ export default function HomePage() {
       </section>
 
       {/* ── L'ABRI IA ── */}
-      <section id="abria" style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(20px,5vw,80px)' }}>
+      <section id="abria" style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
@@ -287,7 +287,7 @@ export default function HomePage() {
       </section>
 
       {/* ── QUIZ TEASER ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 55%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(20px,5vw,80px)' }}>
+      <section style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 55%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
@@ -326,7 +326,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TU ÉCRIS ── */}
-      <section style={{ padding: 'clamp(60px,8vw,120px) clamp(20px,5vw,80px)' }}>
+      <section style={{ padding: 'clamp(60px,8vw,120px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
@@ -364,7 +364,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CE QUE TU VIS ── */}
-      <section style={{ background: 'linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 50%, #fdf8fa 100%)', padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,80px)', textAlign: 'center' }}>
+      <section style={{ background: 'linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 50%, #fdf8fa 100%)', padding: 'clamp(60px,8vw,100px) clamp(24px,5vw,80px)', textAlign: 'center' }}>
         <div style={{ maxWidth: 760, margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
             Ce que tu vis a du sens.
@@ -378,7 +378,7 @@ export default function HomePage() {
       </section>
 
       {/* ── COMMENT ON T'AIDE ── */}
-      <section style={{ padding: 'clamp(60px,8vw,120px) clamp(20px,5vw,80px)' }}>
+      <section style={{ padding: 'clamp(60px,8vw,120px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(24px,6vw,80px)', marginBottom: 72, flexWrap: 'wrap' }}>
             {[
@@ -416,7 +416,7 @@ export default function HomePage() {
       </section>
 
       {/* ── BENTO OFFRES ── */}
-      <section style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 55%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(20px,5vw,80px)' }}>
+      <section style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 55%, #660A43 100%)', padding: 'clamp(60px,8vw,120px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, textAlign: 'center', marginBottom: 12 }}>
             Tout ce dont tu as besoin pour <em>avancer</em>
@@ -443,7 +443,7 @@ export default function HomePage() {
       </section>
 
       {/* ── DEUX CHOIX ── */}
-      <section style={{ padding: 'clamp(40px,6vw,80px) clamp(20px,5vw,80px)' }}>
+      <section style={{ padding: 'clamp(40px,6vw,80px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ background: 'linear-gradient(135deg, #1a0011 0%, #3d0228 60%, #660A43 100%)', borderRadius: 24, padding: 'clamp(40px,6vw,80px) clamp(24px,5vw,80px)', textAlign: 'center' }}>
             <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
@@ -461,7 +461,7 @@ export default function HomePage() {
       </section>
 
       {/* ── SOFI & OLI + PRODUITS ── */}
-      <section style={{ padding: 'clamp(40px,6vw,80px) clamp(20px,5vw,80px)' }}>
+      <section style={{ padding: 'clamp(40px,6vw,80px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-about" style={{ display: 'flex', gap: 24 }}>
             <div style={{ flex: 1.3, background: 'linear-gradient(135deg, #fdf5f8, #f5e5f0)', borderRadius: 24, padding: '36px 32px' }}>
@@ -492,7 +492,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,80px)' }}>
+      <section style={{ padding: 'clamp(60px,8vw,100px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 800, margin: '0 auto' }}>
           <p style={{ color: '#660A43', fontSize: 13, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 12 }}>Tu te poses peut-être ces questions…</p>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#1a0011', fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, textAlign: 'center', marginBottom: 48 }}>Questions fréquentes</h2>
@@ -508,7 +508,7 @@ export default function HomePage() {
       </section>
 
       {/* ── GUIDE GRATUIT ── */}
-      <section style={{ background: 'linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 50%, #fdf8fa 100%)', padding: 'clamp(60px,8vw,100px) clamp(20px,5vw,80px)' }}>
+      <section style={{ background: 'linear-gradient(135deg, #fdf5f8 0%, #f5e5f0 50%, #fdf8fa 100%)', padding: 'clamp(60px,8vw,100px) clamp(24px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
