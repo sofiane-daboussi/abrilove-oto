@@ -265,6 +265,9 @@ export default function Footer() {
         </p>
       </div>
 
+      {/* Fade vers le fond html */}
+      <div style={{ height: 60, background: 'linear-gradient(to bottom, transparent, #660A43)', pointerEvents: 'none' }} />
+
       <style>{`
         .nl-input { -webkit-appearance: none; appearance: none; background: rgba(255,255,255,0.1) !important; color: #fff !important; }
         .nl-input::placeholder { color: rgba(255,255,255,0.45); }
