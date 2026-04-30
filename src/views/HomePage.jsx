@@ -74,7 +74,7 @@ function HeartsSection() {
   }, [])
 
   return (
-    <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) clamp(32px,5vw,80px)' }}>
+    <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
       <div data-fade style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 60 }} className="hp-2cols">
         <div style={{ flex: 1 }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(26px,3.5vw,42px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
@@ -188,7 +188,7 @@ function TemuSection() {
   const allImgs = [...TEMOS, ...TEMOS]
 
   return (
-    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(40px,6vw,80px) + 80px) 0', position: 'relative' }}>
+    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(24px,3vw,44px) + 80px) 0', position: 'relative' }}>
         <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
             <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -434,7 +434,7 @@ function StepsSection() {
   }, [])
 
   return (
-    <section id="abri-steps-section" style={{ padding: 'calc(clamp(40px,6vw,80px) + 80px) 20px', background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', position: 'relative' }}>
+    <section id="abri-steps-section" style={{ padding: 'calc(clamp(24px,3vw,44px) + 80px) 20px', background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', position: 'relative' }}>
       <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
           <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -534,7 +534,7 @@ function StepsSection() {
 
 function BentoSection() {
   return (
-    <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) 0' }}>
+    <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) 0' }}>
       <div data-fade style={{ padding: '0 clamp(16px,3vw,32px)', maxWidth: 1080, margin: '0 auto' }}>
         <h2 style={{ fontFamily: 'var(--font-playfair,serif)', fontSize: 'clamp(24px,3.5vw,40px)', color: '#660A43', lineHeight: 1.2, marginBottom: 60, fontWeight: 700 }}>
           Tout ce dont tu as besoin pour <em>avancer</em>
@@ -593,7 +593,7 @@ function BentoSection() {
 function ToggleSection() {
   const [active, setActive] = useState(false)
   return (
-    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(40px,5vw,60px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
+    <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(24px,3vw,44px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
       <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
           <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -851,7 +851,7 @@ export default function HomePage() {
       </section>
 
       {/* ── L'ABRI IA ── */}
-      <section id="abria" style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
+      <section id="abria" style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
         <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
@@ -872,7 +872,7 @@ export default function HomePage() {
       </section>
 
       {/* ── QUIZ TEASER ── */}
-      <section className="hp-quiz-section" style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(60px,8vw,120px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
+      <section className="hp-quiz-section" style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(24px,3vw,44px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
         <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
             <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -908,7 +908,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TU ÉCRIS ── */}
-      <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
         <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
@@ -945,7 +945,7 @@ export default function HomePage() {
       <ToggleSection />
 
       {/* ── SOFI & OLI ── */}
-      <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,120px) clamp(32px,5vw,80px)' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
         <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
@@ -965,7 +965,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(60px,8vw,100px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
+      <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'calc(clamp(24px,3vw,44px) + 80px) clamp(32px,5vw,80px)', position: 'relative' }}>
         <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
           <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
             <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
@@ -991,7 +991,7 @@ export default function HomePage() {
       </section>
 
       {/* ── GUIDE GRATUIT ── */}
-      <section style={{ background: '#FFF4F7', padding: 'clamp(60px,8vw,100px) clamp(32px,5vw,80px)' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
         <div data-fade style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div className="hp-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>

@@ -67,10 +67,15 @@ export default function Footer() {
   }
 
   return (
-    <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', marginTop: 'clamp(72px, 10vw, 140px)' }}>
+    <footer style={{ fontFamily: 'var(--font-dm-sans, sans-serif)', position: 'relative' }}>
+      <div style={{ position: 'absolute', top: -1, left: 0, width: '100%', lineHeight: 0, zIndex: 2, pointerEvents: 'none' }}>
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 80 }}>
+          <path d="M0,0 L0,45 Q720,22 1440,45 L1440,0 Z" fill="#FFF4F7" />
+        </svg>
+      </div>
 
       {/* Newsletter */}
-      <div style={{ padding: '0 clamp(12px,2.5vw,36px)' }}>
+      <div style={{ padding: '80px clamp(12px,2.5vw,36px) 0' }}>
       <div style={{
         background: 'linear-gradient(135deg, #3d0228 0%, #5e063c 55%, #7a1050 100%)',
         padding: 'clamp(24px, 5vw, 64px) 20px',
