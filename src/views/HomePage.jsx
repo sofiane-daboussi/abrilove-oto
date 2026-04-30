@@ -212,9 +212,9 @@ export default function HomePage() {
       {/* ── HERO ── */}
       <section style={{ minHeight: '100vh', padding: 'clamp(110px,12vw,170px) clamp(32px,5vw,80px) clamp(60px,8vw,100px)', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)' }}>
         <div style={{ position:'absolute', inset:0, pointerEvents:'none', zIndex:0 }}>
-          <div style={{ position:'absolute', width:550, height:550, borderRadius:'50%', background:'radial-gradient(circle, rgba(190,25,105,0.75) 0%, transparent 65%)', top:'-20%', right:'-10%', filter:'blur(40px)', animation:'blob1 6s ease-in-out infinite' }} />
-          <div style={{ position:'absolute', width:450, height:450, borderRadius:'50%', background:'radial-gradient(circle, rgba(160,15,85,0.7) 0%, transparent 65%)', bottom:'-10%', left:'-10%', filter:'blur(35px)', animation:'blob2 8s ease-in-out infinite' }} />
-          <div style={{ position:'absolute', width:350, height:350, borderRadius:'50%', background:'radial-gradient(circle, rgba(210,40,120,0.6) 0%, transparent 65%)', top:'30%', left:'25%', filter:'blur(45px)', animation:'blob3 7s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(190,25,105,0.6) 0%, transparent 65%)', top:'20%', right:'-10%', filter:'blur(50px)', animation:'blob1 6s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:400, height:400, borderRadius:'50%', background:'radial-gradient(circle, rgba(160,15,85,0.55) 0%, transparent 65%)', bottom:'0%', left:'-10%', filter:'blur(45px)', animation:'blob2 8s ease-in-out infinite' }} />
+          <div style={{ position:'absolute', width:320, height:320, borderRadius:'50%', background:'radial-gradient(circle, rgba(210,40,120,0.5) 0%, transparent 65%)', top:'50%', left:'20%', filter:'blur(50px)', animation:'blob3 7s ease-in-out infinite' }} />
         </div>
         <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="hp-hero-cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
