@@ -1,5 +1,6 @@
 'use client'
 import { useEffect } from 'react'
+import Script from 'next/script'
 import Header from './Header'
 import Footer from './Footer'
 
@@ -15,13 +16,6 @@ export default function CoachingPage() {
     return () => obs.disconnect()
   }, [])
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://server.fillout.com/embed/v1/'
-    script.async = true
-    document.body.appendChild(script)
-    return () => { document.body.removeChild(script) }
-  }, [])
 
   return (
     <div style={{ margin: '-24px -16px' }}>
@@ -256,9 +250,10 @@ export default function CoachingPage() {
             style={{ width: '100%', height: 500 }}
             data-fillout-id="wFDYhHfmwDus"
             data-fillout-embed-type="standard"
-            data-fillout-inherit-parameters
-            data-fillout-dynamic-resize
+            data-fillout-inherit-parameters=""
+            data-fillout-dynamic-resize=""
           />
+          <Script src="https://server.fillout.com/embed/v1/" strategy="afterInteractive" />
         </div>
       </section>
 
