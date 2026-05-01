@@ -619,7 +619,7 @@ export default function QuizPage() {
 
       </div>
 
-      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, textAlign: 'center', paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 8px)', paddingTop: 10, zIndex: 10, pointerEvents: 'none' }}>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, display: 'flex', justifyContent: 'center', paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 8px)', paddingTop: 10, zIndex: 10, pointerEvents: 'none' }}>
         <a href="/" className="qz-back-home" style={{ pointerEvents: 'auto' }}>← Retour à l'accueil</a>
       </div>
 
