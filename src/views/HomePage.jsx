@@ -6,7 +6,7 @@ import QuizPage from './QuizPage'
 
 const AVATAR = '/images/hero-avatar.avif'
 
-const HERO_WORDS = ['le ghosting.', 'le silence.', 'le doute.', "l'attachement anxieux.", "la peur d'aimer."]
+const HERO_WORDS = ['le ghosting.', 'le silence.', 'le doute.', "l'attachement anxieux.", "la peur d'aimer.", "l'amour non réciproque.", 'la tromperie.', 'le manque de confiance.', "l'amour qui fait mal."]
 
 const TEMOS = [
   '/images/temo-1.avif',
