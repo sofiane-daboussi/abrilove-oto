@@ -33,7 +33,7 @@ export default function SofiEtOliPage() {
           .sao-hero-cols { flex-direction: column !important; gap: 24px !important; }
           .sao-hero-imgs { width: 100% !important; flex: none !important; flex-direction: row !important; gap: 12px !important; }
           .sao-hero-imgs img { max-height: 220px !important; }
-          .sao-hero-section { padding-top: 90px !important; }
+          .sao-hero-section { padding-top: 115px !important; }
           .sao-2cols { flex-direction: column !important; }
           .sao-2cols-rev { flex-direction: column-reverse !important; }
           .sao-3cols { flex-direction: column !important; }
@@ -137,7 +137,7 @@ export default function SofiEtOliPage() {
                 Ce qui nous relie
               </h2>
               <p style={{ color: 'rgba(255,241,231,0.85)', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85 }}>
-                On vient de deux pays (🇫🇷 & 🇵🇱), on a des parcours très différents, mais une envie commune : <strong style={{ color: '#FFF1E7' }}>comprendre au lieu de juger.</strong><br /><br />
+                On vient de deux pays (🇫🇷 & 🇵🇱), on a des parcours très différents, mais une envie commune: <strong style={{ color: '#FFF1E7' }}>comprendre au lieu de juger.</strong><br /><br />
                 Aimer sans flou, sans jeux, sans performance.<br /><br />
                 Et partager tout ça avec celles et ceux qui veulent encore y croire, avec lucidité.
               </p>

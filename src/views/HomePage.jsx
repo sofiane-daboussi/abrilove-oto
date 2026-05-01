@@ -314,7 +314,7 @@ const IPhoneChat = memo(function IPhoneChat() {
           <img src={AVATAR} style={{ width:'100%', height:'100%', objectFit:'cover' }} alt="" />
         </div>
         <div style={{ flex:1 }}>
-          <div style={{ fontSize:12, fontWeight:700, color:'#2a0a1a' }}>Sofi & Oli — Abrilove</div>
+          <div style={{ fontSize:12, fontWeight:700, color:'#2a0a1a' }}>Sofi & Oli, Abrilove</div>
           <div style={{ fontSize:10, color:'#4caf50', fontWeight:500 }}>● En ligne</div>
         </div>
       </div>

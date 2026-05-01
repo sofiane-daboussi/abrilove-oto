@@ -207,7 +207,7 @@ export default function AbriMailPage() {
               </h2>
               <p style={{ color: 'rgba(255,241,231,0.85)', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
                 Parfois, tu as juste besoin d'un regard extérieur. D'une réponse qui met des mots justes sur ce que tu ressens, sans devoir passer par un appel.<br /><br />
-                L'Abri Mail, c'est une lecture écrite et personnalisée de ta situation amoureuse, rédigée par Sofi ou Oli — avec la lucidité et la douceur Abrilove.
+                L'Abri Mail, c'est une lecture écrite et personnalisée de ta situation amoureuse, rédigée par Sofi ou Oli, avec la lucidité et la douceur Abrilove.
               </p>
             </div>
           </div>
@@ -273,7 +273,7 @@ export default function AbriMailPage() {
             ))}
           </div>
           <p style={{ color: 'rgba(255,241,231,0.7)', fontSize: 15, lineHeight: 1.75, marginBottom: 36, fontStyle: 'italic' }}>
-            Pas de jugement, pas de phrases toutes faites — juste une lecture humaine, honnête et apaisante.
+            Pas de jugement, pas de phrases toutes faites, juste une lecture humaine, honnête et apaisante.
           </p>
           <a href="#paiement" onClick={e => { e.preventDefault(); document.getElementById('paiement')?.scrollIntoView({ behavior: 'smooth' }) }} className="coaching-cta coaching-cta-light">
             J'envoie mon message
