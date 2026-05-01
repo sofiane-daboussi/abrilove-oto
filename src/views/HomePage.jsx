@@ -854,7 +854,7 @@ export default function HomePage() {
                 <span style={{ fontSize: 13, fontWeight: 500, color: '#FFF1E7', letterSpacing: '0.2px' }}>Hey, c'est Sofi & Oli.</span>
               </div>
 
-              <h1 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(28px,5vw,62px)', fontWeight: 700, lineHeight: 1.25, marginBottom: 24 }}>
+              <h1 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(31px,5vw,62px)', fontWeight: 700, lineHeight: 1.25, marginBottom: 24 }}>
                 Tu mérites mieux que<br />
                 <em key={heroWordIdx} style={{ display: 'block', color: '#E8637A', fontStyle: 'italic', animation: 'hero-word-in 0.45s cubic-bezier(0.22,1,0.36,1) both' }}>
                   {HERO_WORDS[heroWordIdx]}
