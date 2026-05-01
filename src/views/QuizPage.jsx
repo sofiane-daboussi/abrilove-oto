@@ -530,6 +530,7 @@ export default function QuizPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Pro:wght@300;400;500;600&display=swap" />
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
       {showResume && (
         <div className="qz-resume-overlay">
@@ -618,8 +619,9 @@ export default function QuizPage() {
         </div>
       </div>
 
-      <div style={{ textAlign: 'center', padding: '16px 0 40px', position: 'relative', zIndex: 1 }}>
+      <div style={{ marginTop: 'auto', textAlign: 'center', padding: '16px 0 40px', position: 'relative', zIndex: 1 }}>
         <a href="/" className="qz-back-home">← Retour à l'accueil</a>
+      </div>
       </div>
 
       {loading && (
