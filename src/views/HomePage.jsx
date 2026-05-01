@@ -856,7 +856,7 @@ export default function HomePage() {
 
               <h1 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,5vw,62px)', fontWeight: 700, lineHeight: 1.25, marginBottom: 24 }}>
                 Tu mérites mieux que<br />
-                <em key={heroWordIdx} style={{ display: 'block', color: '#E8637A', fontStyle: 'italic', textShadow: '0 0 40px rgba(232,99,122,0.9), 0 2px 8px rgba(0,0,0,0.4)', animation: 'hero-word-in 0.45s cubic-bezier(0.22,1,0.36,1) both' }}>
+                <em key={heroWordIdx} style={{ display: 'block', color: '#E8637A', fontStyle: 'italic', animation: 'hero-word-in 0.45s cubic-bezier(0.22,1,0.36,1) both' }}>
                   {HERO_WORDS[heroWordIdx]}
                 </em>
               </h1>
