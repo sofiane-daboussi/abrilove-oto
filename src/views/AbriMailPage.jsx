@@ -104,18 +104,19 @@ export default function AbriMailPage() {
           </svg>
         </div>
         <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div data-fade className="abrimail-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
+          <div data-fade className="coaching-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
+              <img src="/images/abrimail-section.jpg" alt="L'Abri Mail" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>L'Abri Mail</p>
               <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
                 Tu veux comprendre sans devoir tout raconter à voix haute ?
               </h2>
-              <p style={{ color: 'rgba(255,241,231,0.85)', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85 }}>
+              <p style={{ color: 'rgba(255,241,231,0.85)', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
                 Parfois, tu as juste besoin d'un regard extérieur. D'une réponse qui met des mots justes sur ce que tu ressens, sans devoir passer par un appel.<br /><br />
                 L'Abri Mail, c'est une lecture écrite et personnalisée de ta situation amoureuse, rédigée par Sofi ou Oli — avec la lucidité et la douceur Abrilove.
               </p>
-            </div>
-            <div style={{ flex: 1 }}>
-              <img src="/images/abrimail-section.jpg" alt="L'Abri Mail" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
           </div>
         </div>
