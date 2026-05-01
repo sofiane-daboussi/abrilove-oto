@@ -45,9 +45,29 @@ const OPTS = [
 const CSS = `
 .qz-body {
   font-family: 'Crimson Pro', serif;
-  background: #fff;
+  background: linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%);
   min-height: 100vh;
 }
+.qz-blob {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(50px);
+}
+.qz-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,241,231,0.7);
+  text-decoration: none;
+  font-family: var(--font-dm-sans, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+.qz-back-home:hover { color: #FFF1E7; }
 
 .qz-progress-bar {
   position: fixed;
@@ -509,7 +529,11 @@ export default function QuizPage() {
         <div className="qz-progress-fill" style={{ width: progress + '%' }} />
       </div>
 
-      <div className="qz-wrap">
+      <div className="qz-blob" style={{ width: 400, height: 400, background: 'radial-gradient(circle, rgba(190,25,105,0.5) 0%, transparent 65%)', top: '-5%', right: '-5%' }} />
+      <div className="qz-blob" style={{ width: 350, height: 350, background: 'radial-gradient(circle, rgba(160,15,85,0.45) 0%, transparent 65%)', bottom: '5%', left: '-8%' }} />
+
+      <div className="qz-wrap" style={{ position: 'relative', zIndex: 1 }}>
+        <a href="/" className="qz-back-home">← Retour à l'accueil</a>
         <div className="qz-card">
           <div className="qz-card-progress">
             <div className="qz-card-progress-fill" style={{ width: progress + '%' }} />
