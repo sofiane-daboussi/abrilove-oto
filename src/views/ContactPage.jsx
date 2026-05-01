@@ -175,7 +175,7 @@ export default function ContactPage() {
         <section style={{ background: '#FFF4F7', padding: 'clamp(56px,6vw,96px) clamp(16px,5vw,80px)' }}>
           <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
             <p style={{ color: '#660A43', fontSize: 13, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>
-              IA disponible 24h/24
+              Ta situation mérite une vraie réponse.
             </p>
             <h2 style={{ fontFamily: 'var(--font-playfair, serif)', color: '#660A43', fontSize: 'clamp(22px,4vw,34px)', fontWeight: 700, marginBottom: 20, lineHeight: 1.25 }}>
               Ce n'est pas une IA comme les autres.
