@@ -530,7 +530,7 @@ export default function QuizPage() {
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Pro:wght@300;400;500;600&display=swap" />
-      <div style={{ minHeight: '100dvh', position: 'relative' }}>
+      <div>
 
       {showResume && (
         <div className="qz-resume-overlay">
