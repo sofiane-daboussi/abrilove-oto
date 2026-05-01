@@ -61,7 +61,7 @@ export default function ContactPage() {
         <Header />
 
         {/* ── HERO BORDEAUX ── */}
-        <section style={{ background: 'linear-gradient(180deg, #3a0525 0%, #660A43 100%)', padding: 'clamp(120px,12vw,160px) clamp(16px,5vw,80px) 100px', position: 'relative', overflow: 'hidden' }}>
+        <section style={{ background: 'linear-gradient(180deg, #660A43 0%, #8a1258 50%, #660A43 100%)', padding: 'clamp(120px,12vw,160px) clamp(16px,5vw,80px) 100px', position: 'relative', overflow: 'hidden' }}>
           {/* Blobs */}
           <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(190,25,105,0.5) 0%, transparent 65%)', top:'10%', right:'-10%', filter:'blur(50px)', animation:'contact-blob1 7s ease-in-out infinite', pointerEvents:'none' }} />
           <div style={{ position:'absolute', width:380, height:380, borderRadius:'50%', background:'radial-gradient(circle, rgba(160,15,85,0.45) 0%, transparent 65%)', bottom:'-5%', left:'-8%', filter:'blur(45px)', animation:'contact-blob2 9s ease-in-out infinite', pointerEvents:'none' }} />
