@@ -132,12 +132,12 @@ export default function CoachingPage() {
           </h2>
           <div className="coaching-3cols" style={{ display: 'flex', gap: 32, marginBottom: 40 }}>
             {[
-              { icon: '💬', title: 'Tu poses tout.', desc: "Ce que tu ressens, ce que tu observes, ce que tu n'oses plus dire à personne." },
-              { icon: '🔍', title: 'On lit la dynamique.', desc: "Je t'explique ce qui se joue entre vous, les schémas, les peurs, les signaux émotionnels." },
-              { icon: '✨', title: 'Tu repars claire.', desc: 'Avec 3 repères concrets et un plan émotionnel réaliste pour avancer sereinement.' },
+              { icon: <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#660A43" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 6h24a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H13l-7 4V8a2 2 0 0 1 2-2z"/><line x1="11" y1="13" x2="25" y2="13"/><line x1="11" y1="18" x2="19" y2="18"/></svg>, title: 'Tu poses tout.', desc: "Ce que tu ressens, ce que tu observes, ce que tu n'oses plus dire à personne." },
+              { icon: <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#660A43" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="18" cy="18" rx="14" ry="9"/><circle cx="18" cy="18" r="4"/><circle cx="18" cy="18" r="1.5" fill="#660A43" stroke="none"/></svg>, title: 'On lit la dynamique.', desc: "Je t'explique ce qui se joue entre vous, les schémas, les peurs, les signaux émotionnels." },
+              { icon: <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#660A43" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="18" r="13"/><path d="M24 12l-3.5 9.5L11 25l3.5-9.5L24 12z"/><circle cx="18" cy="18" r="2" fill="#660A43" stroke="none"/></svg>, title: 'Tu repars claire.', desc: 'Avec 3 repères concrets et un plan émotionnel réaliste pour avancer sereinement.' },
             ].map((col, i) => (
               <div key={i} style={{ flex: 1, background: '#fff', borderRadius: 20, padding: '32px 28px', boxShadow: '0 4px 24px rgba(102,10,67,0.07)' }}>
-                <div style={{ fontSize: 36, marginBottom: 16 }}>{col.icon}</div>
+                <div style={{ marginBottom: 20 }}>{col.icon}</div>
                 <h3 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 20, fontWeight: 700, marginBottom: 12, lineHeight: 1.2 }}>{col.title}</h3>
                 <p style={{ color: '#5a3040', fontSize: 15, lineHeight: 1.75 }}>{col.desc}</p>
               </div>
@@ -162,7 +162,7 @@ export default function CoachingPage() {
             <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
           </svg>
         </div>
-        <div data-fade style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
+        <div data-fade style={{ maxWidth: 640, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 36 }}>
             Ce que tu ressens peut ressembler à ça…
           </h2>
