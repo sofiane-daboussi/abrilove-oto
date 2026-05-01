@@ -1,8 +1,20 @@
 'use client'
+import { useEffect } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
 export default function CoachingPage() {
+  useEffect(() => {
+    const els = document.querySelectorAll('[data-fade]')
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('fade-in'); obs.unobserve(entry.target) }
+      })
+    }, { threshold: 0.1 })
+    els.forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <div style={{ margin: '-24px -16px' }}>
       <style>{`
@@ -65,7 +77,7 @@ export default function CoachingPage() {
 
       {/* ── TU ANALYSES TOUT ── */}
       <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
-        <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+        <div data-fade style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 24 }}>
             Tu analyses tout. Mais rien ne t'éclaire.
           </h2>
@@ -89,7 +101,7 @@ export default function CoachingPage() {
           </svg>
         </div>
         <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div className="coaching-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
+          <div data-fade className="coaching-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
               <img src="/images/coaching-clarté.avif" alt="L'Abri Clarté" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
@@ -113,6 +125,7 @@ export default function CoachingPage() {
       {/* ── PENDANT LA SESSION ── */}
       <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <div data-fade>
           <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 16 }}>La séance</p>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, textAlign: 'center', marginBottom: 48, lineHeight: 1.2 }}>
             Pendant la session
@@ -133,6 +146,7 @@ export default function CoachingPage() {
           <p style={{ color: '#8a5060', fontSize: 14, textAlign: 'center', fontStyle: 'italic', lineHeight: 1.7 }}>
             À la fin, tu reçois une note vocale personnalisée et un mail récap pour ancrer ce qu'on a vu ensemble.
           </p>
+          </div>
         </div>
       </section>
 
@@ -148,7 +162,7 @@ export default function CoachingPage() {
             <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
           </svg>
         </div>
-        <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
+        <div data-fade style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 36 }}>
             Ce que tu ressens peut ressembler à ça…
           </h2>
@@ -176,7 +190,7 @@ export default function CoachingPage() {
       {/* ── MOI C'EST SOFI ── */}
       <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div className="coaching-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
+          <div data-fade className="coaching-2cols" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
               <img src="/images/coaching-sofi.avif" alt="Sofiane" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
@@ -208,6 +222,7 @@ export default function CoachingPage() {
           </svg>
         </div>
         <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <div data-fade>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, textAlign: 'center', marginBottom: 48, lineHeight: 1.2 }}>
             Elles en parlent mieux que moi
           </h2>
@@ -217,6 +232,7 @@ export default function CoachingPage() {
                 <img src={src} alt={`Témoignage ${i + 1}`} style={{ width: '100%', display: 'block', borderRadius: 18 }} />
               </div>
             ))}
+          </div>
           </div>
         </div>
       </section>
