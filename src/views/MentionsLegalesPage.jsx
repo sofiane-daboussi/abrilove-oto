@@ -1,8 +1,14 @@
 'use client'
+import { useEffect } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
 export default function MentionsLegalesPage() {
+  useEffect(() => {
+    document.documentElement.style.background = '#660A43'
+    return () => { document.documentElement.style.background = '' }
+  }, [])
+
   return (
     <div style={{ margin: '-24px -16px' }}>
       <style>{`
@@ -40,7 +46,7 @@ export default function MentionsLegalesPage() {
 
       {/* ── CONTENU ── */}
       <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(16px,5vw,80px) clamp(56px,6vw,96px)' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ maxWidth: 860, margin: '0 auto' }}>
           <p style={{ color: '#5a3040', fontSize: 15, lineHeight: 1.85, marginBottom: 40 }}>
             Conformément aux dispositions des articles 6-III et 19 de la Loi n°2004-575 du 21 juin 2004 pour la Confiance dans l'Économie Numérique (LCEN), il est porté à la connaissance des utilisateurs et visiteurs du site abrilove.fr les présentes mentions légales.
           </p>
