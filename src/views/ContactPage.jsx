@@ -47,88 +47,72 @@ export default function ContactPage() {
   return (
     <>
       <style>{`
-        .contact-input::placeholder { color: rgba(102,10,67,0.4); }
-        .contact-input:focus { border-color: #660A43 !important; }
-        @keyframes contact-float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
+        .contact-input::placeholder { color: rgba(255,255,255,0.4); }
+        .contact-input:focus { border-color: rgba(255,255,255,0.8) !important; }
+        @keyframes contact-blob1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(30px,-20px) scale(1.1)} }
+        @keyframes contact-blob2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-20px,30px) scale(0.95)} }
+        @keyframes contact-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+        .contact-btn-submit { transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+        .contact-btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,10,67,0.25); }
+        .contact-btn-submit:active:not(:disabled) { transform: translateY(0); }
+        .contact-btn-ia { transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+        .contact-btn-ia:hover { background: #4a0830 !important; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(102,10,67,0.3); animation: contact-bounce 0.6s ease; }
+        .contact-btn-ia:active { transform: translateY(0); }
       `}</style>
       <div style={{ margin: '-24px -16px' }}>
         <Header />
-        <section style={{ background: '#FFF4F7', padding: '120px clamp(16px,5vw,80px) 80px', position: 'relative', overflow: 'hidden' }}>
-          <span style={{ position: 'absolute', bottom: '1rem', left: '15%', fontSize: '2rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 6s ease-in-out infinite' }}>💗</span>
-          <span style={{ position: 'absolute', bottom: '1.5rem', right: '15%', fontSize: '1.8rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 7s ease-in-out infinite reverse' }}>💕</span>
-          <span style={{ position: 'absolute', top: '8rem', left: '15%', fontSize: '2rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 8s ease-in-out infinite' }}>💗</span>
-          <span style={{ position: 'absolute', top: '8rem', right: '15%', fontSize: '1.8rem', opacity: 0.08, pointerEvents: 'none', animation: 'contact-float 5s ease-in-out infinite reverse' }}>💕</span>
 
-          <div style={{ maxWidth: 680, margin: '0 auto' }}>
-            <p style={{
-              color: '#660A43',
-              fontSize: 13,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              marginBottom: 16,
-              textAlign: 'center',
-            }}>
+        {/* ── HERO BORDEAUX ── */}
+        <section style={{ background: 'linear-gradient(180deg, #3a0525 0%, #660A43 100%)', padding: 'clamp(120px,12vw,160px) clamp(16px,5vw,80px) 100px', position: 'relative', overflow: 'hidden' }}>
+          {/* Blobs */}
+          <div style={{ position:'absolute', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(190,25,105,0.5) 0%, transparent 65%)', top:'10%', right:'-10%', filter:'blur(50px)', animation:'contact-blob1 7s ease-in-out infinite', pointerEvents:'none' }} />
+          <div style={{ position:'absolute', width:380, height:380, borderRadius:'50%', background:'radial-gradient(circle, rgba(160,15,85,0.45) 0%, transparent 65%)', bottom:'-5%', left:'-8%', filter:'blur(45px)', animation:'contact-blob2 9s ease-in-out infinite', pointerEvents:'none' }} />
+
+          <div style={{ maxWidth: 680, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16, textAlign: 'center' }}>
               Contact
             </p>
 
-            <h1 style={{
-              fontFamily: 'var(--font-playfair, serif)',
-              color: '#1a0011',
-              fontSize: 'clamp(26px, 5vw, 40px)',
-              fontWeight: 700,
-              textAlign: 'center',
-              marginBottom: 12,
-              lineHeight: 1.2,
-            }}>
+            <h1 style={{ fontFamily: 'var(--font-playfair, serif)', color: '#fff', fontSize: 'clamp(26px, 5vw, 40px)', fontWeight: 700, textAlign: 'center', marginBottom: 12, lineHeight: 1.2 }}>
               Une question ?<br />
-              <em style={{ color: '#660A43', fontStyle: 'italic' }}>On te répond.</em>
+              <em style={{ color: 'rgba(255,200,220,0.9)', fontStyle: 'italic' }}>On te répond.</em>
             </h1>
 
-            <p style={{
-              color: '#8a5060',
-              textAlign: 'center',
-              fontSize: 15,
-              marginBottom: 32,
-              lineHeight: 1.6,
-            }}>
-              Pour toute question sur nos e-books, un problème de commande,
-              ou simplement pour dire bonjour.
+            <p style={{ color: 'rgba(255,255,255,0.65)', textAlign: 'center', fontSize: 15, marginBottom: 40, lineHeight: 1.6 }}>
+              Pour toute question sur nos e-books, un problème de commande,<br />ou simplement pour dire bonjour.
             </p>
 
             {status === 'sent' ? (
               <div style={{ textAlign: 'center', padding: '32px 0' }}>
-                <p style={{ color: '#660A43', fontSize: 20, fontFamily: 'var(--font-playfair, serif)', marginBottom: 8 }}>
+                <p style={{ color: '#fff', fontSize: 20, fontFamily: 'var(--font-playfair, serif)', marginBottom: 8 }}>
                   Message envoyé ✓
                 </p>
-                <p style={{ color: '#8a5060', fontSize: 14 }}>On te répond dans les 24h.</p>
+                <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 14 }}>On te répond dans les 24h.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
                 <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                   <div style={{ flex: 1, minWidth: 200 }}>
-                    <label style={labelStyle}>Prénom <span style={{color:'#660A43'}}>*</span></label>
+                    <label style={labelStyle}>Prénom <span style={{color:'rgba(255,180,200,0.9)'}}>*</span></label>
                     <input
                       type="text"
                       placeholder="Ton prénom"
                       value={form.name}
                       onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setErrors(er => ({...er, name: null})) }}
-                      style={{ ...inputStyle, borderColor: errors.name ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
+                      style={{ ...inputStyle, borderColor: errors.name ? '#f4a0a0' : 'rgba(255,255,255,0.25)' }}
                       className="contact-input"
                     />
                     {errors.name && <p style={errorStyle}>{errors.name}</p>}
                   </div>
                   <div style={{ flex: 1, minWidth: 200 }}>
-                    <label style={labelStyle}>Email <span style={{color:'#660A43'}}>*</span></label>
+                    <label style={labelStyle}>Email <span style={{color:'rgba(255,180,200,0.9)'}}>*</span></label>
                     <input
                       type="email"
                       placeholder="ton@email.com"
                       value={form.email}
                       onChange={e => { setForm(f => ({ ...f, email: e.target.value })); setErrors(er => ({...er, email: null})) }}
-                      style={{ ...inputStyle, borderColor: errors.email ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
+                      style={{ ...inputStyle, borderColor: errors.email ? '#f4a0a0' : 'rgba(255,255,255,0.25)' }}
                       className="contact-input"
                     />
                     {errors.email && <p style={errorStyle}>{errors.email}</p>}
@@ -136,37 +120,37 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>Message <span style={{color:'#660A43'}}>*</span></label>
+                  <label style={labelStyle}>Message <span style={{color:'rgba(255,180,200,0.9)'}}>*</span></label>
                   <textarea
                     rows={5}
                     placeholder="Dis-nous tout…"
                     value={form.message}
                     onChange={e => { setForm(f => ({ ...f, message: e.target.value })); setErrors(er => ({...er, message: null})) }}
-                    style={{ ...inputStyle, resize: 'vertical', minHeight: 130, borderColor: errors.message ? '#c0392b' : 'rgba(102,10,67,0.3)' }}
+                    style={{ ...inputStyle, resize: 'vertical', minHeight: 130, borderColor: errors.message ? '#f4a0a0' : 'rgba(255,255,255,0.25)' }}
                     className="contact-input"
                   />
                   {errors.message && <p style={errorStyle}>{errors.message}</p>}
                 </div>
 
                 {status === 'error' && (
-                  <p style={{ color: '#c0392b', fontSize: 14 }}>
-                    Une erreur s'est produite. Écris-nous à <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
+                  <p style={{ color: '#f4a0a0', fontSize: 14 }}>
+                    Une erreur s'est produite. Écris-nous à <a href="mailto:bonjour@abrilove.fr" style={{ color: '#fff' }}>bonjour@abrilove.fr</a>
                   </p>
                 )}
 
                 <button
                   type="submit"
                   disabled={status === 'sending'}
+                  className="contact-btn-submit"
                   style={{
-                    background: status === 'sending' ? '#4a0830' : '#660A43',
-                    color: '#fff',
+                    background: status === 'sending' ? 'rgba(255,255,255,0.15)' : '#fff',
+                    color: status === 'sending' ? '#fff' : '#660A43',
                     border: 'none',
                     borderRadius: 8,
                     padding: '16px 32px',
                     fontSize: 16,
                     fontWeight: 600,
                     cursor: status === 'sending' ? 'not-allowed' : 'pointer',
-                    transition: 'background 0.2s',
                     letterSpacing: '0.05em',
                   }}
                 >
@@ -176,11 +160,52 @@ export default function ContactPage() {
               </form>
             )}
 
-            <p style={{ color: '#8a5060', fontSize: 13, textAlign: 'center', marginTop: 28 }}>
-              Ou par email : <a href="mailto:bonjour@abrilove.fr" style={{ color: '#660A43' }}>bonjour@abrilove.fr</a>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, textAlign: 'center', marginTop: 28 }}>
+              Ou par email : <a href="mailto:bonjour@abrilove.fr" style={{ color: 'rgba(255,255,255,0.8)' }}>bonjour@abrilove.fr</a>
             </p>
           </div>
+
+          {/* Arc bas */}
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ position:'absolute', bottom:0, left:0, width:'100%', height:80, display:'block' }}>
+            <path d="M0,80 C360,0 1080,0 1440,80 L1440,80 L0,80 Z" fill="#FFF4F7" />
+          </svg>
         </section>
+
+        {/* ── L'ABRI IA ── */}
+        <section style={{ background: '#FFF4F7', padding: 'clamp(56px,6vw,96px) clamp(16px,5vw,80px)' }}>
+          <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+            <p style={{ color: '#660A43', fontSize: 13, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>
+              IA disponible 24h/24
+            </p>
+            <h2 style={{ fontFamily: 'var(--font-playfair, serif)', color: '#1a0011', fontSize: 'clamp(22px,4vw,34px)', fontWeight: 700, marginBottom: 20, lineHeight: 1.25 }}>
+              Ce n'est pas une IA comme les autres.
+            </h2>
+            <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 36 }}>
+              L'Abri IA s'appuie sur tout ce qu'on a construit ces dernières années : des <strong>milliers d'heures de coaching</strong>, des <strong>milliers d'échanges</strong>, et des situations réelles qu'on a accompagnées.<br /><br />
+              Ce n'est pas une réponse générique. C'est une vraie compréhension de ce que tu vis. C'est comme parler à nous, mais disponible à tout moment, <strong>24h/24, 7j/7</strong>.
+            </p>
+            <a
+              href="https://ia.abrilove.fr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-btn-ia"
+              style={{
+                display: 'inline-block',
+                background: '#660A43',
+                color: '#fff',
+                borderRadius: 8,
+                padding: '16px 36px',
+                fontSize: 16,
+                fontWeight: 600,
+                textDecoration: 'none',
+                letterSpacing: '0.05em',
+              }}
+            >
+              Essayer gratuitement →
+            </a>
+          </div>
+        </section>
+
         <Footer />
       </div>
     </>
@@ -188,14 +213,14 @@ export default function ContactPage() {
 }
 
 const errorStyle = {
-  color: '#c0392b',
+  color: '#f4a0a0',
   fontSize: 12,
   marginTop: 4,
 }
 
 const labelStyle = {
   display: 'block',
-  color: '#8a5060',
+  color: 'rgba(255,255,255,0.7)',
   fontSize: 13,
   letterSpacing: '0.08em',
   textTransform: 'uppercase',
@@ -204,11 +229,11 @@ const labelStyle = {
 
 const inputStyle = {
   width: '100%',
-  background: 'transparent',
-  border: '1px solid rgba(102,10,67,0.3)',
+  background: 'rgba(255,255,255,0.08)',
+  border: '1px solid rgba(255,255,255,0.25)',
   borderRadius: 8,
   padding: '14px 16px',
-  color: '#2a0a1a',
+  color: '#fff',
   fontSize: 16,
   outline: 'none',
   transition: 'border-color 0.2s',
