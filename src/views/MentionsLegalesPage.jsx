@@ -5,7 +5,7 @@ import Footer from './Footer'
 
 export default function MentionsLegalesPage() {
   useEffect(() => {
-    document.documentElement.style.background = 'rgb(80,5,50)'
+    document.documentElement.style.background = '#660A43'
     return () => { document.documentElement.style.background = '' }
   }, [])
 
@@ -20,7 +20,7 @@ export default function MentionsLegalesPage() {
 
       {/* ── HERO ── */}
       <section className="ml-hero" style={{
-        background: 'linear-gradient(180deg, rgb(80,5,50) 0%, rgb(130,15,80) 50%, rgb(80,5,50) 100%)',
+        background: 'linear-gradient(180deg, #660A43 0%, #660A43 35%, #8a1258 65%, #660A43 100%)',
         padding: 'clamp(120px,12vw,160px) clamp(16px,5vw,80px) 100px',
         position: 'relative',
         overflow: 'hidden',
