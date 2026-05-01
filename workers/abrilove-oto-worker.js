@@ -8,7 +8,8 @@ var PRICE_IDS = {
   cerebrale: "price_1Syc0CI8ilInoMaXm6oM0m1C",
   reveuse: "price_1SybvJI8ilInoMaXKaWX4Ek0",
   louve: "price_1Sybz1I8ilInoMaXykfkZikR",
-  applis: "price_1TNrJBI8ilInoMaX4KIkTsqY"
+  applis: "price_1TNrJBI8ilInoMaX4KIkTsqY",
+  abrimail: "price_1TSDvsI8ilInoMaXm9G97LG5"
 };
 var BUMP_AMOUNT = 900;
 var BUMP2_AMOUNT = 900;

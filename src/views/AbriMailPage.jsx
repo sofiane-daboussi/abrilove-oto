@@ -1,9 +1,100 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
+const WORKER_URL = 'https://abrilove-oto-worker.sofiane-daboussi.workers.dev'
+const PK = 'pk_live_51Rm9dBI8ilInoMaXKDs2hp5pR1Fq3fcK60MlclXizEDZZxFAUN92E6jpKjILZX0dHtO7gUa3KMfQZKchX6qaPIi8003ZsII2e7'
+
 export default function AbriMailPage() {
+  const [email, setEmail] = useState('')
+  const [paying, setPaying] = useState(false)
+  const [payError, setPayError] = useState('')
+  const [stripeSkeleton, setStripeSkeleton] = useState(true)
+  const [showPopup, setShowPopup] = useState(false)
+  const paiementRef = useRef(null)
+  const stripeRef = useRef(null)
+  const elementsRef = useRef(null)
+
+  // Pre-fill email from URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const emailFromUrl = params.get('email') || params.get('prefilled_email') || ''
+    if (emailFromUrl) setEmail(emailFromUrl)
+  }, [])
+
+  // Stripe lazy load
+  useEffect(() => {
+    if (!paiementRef.current) return
+    const observer = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return
+      const s = document.createElement('script')
+      s.src = 'https://js.stripe.com/v3/'
+      s.onload = () => {
+        const stripe = window.Stripe(PK)
+        stripeRef.current = stripe
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+        const elements = stripe.elements({
+          mode: 'payment', amount: 1500, currency: 'eur',
+          appearance: { theme: 'stripe', variables: { colorPrimary: '#660A43', colorBackground: '#FFF4F7', colorText: '#1E120A', colorDanger: '#C0392B', fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' }, rules: { '.Tab--selected': { backgroundColor: 'rgba(102,10,67,0.08)', boxShadow: 'none' }, '.Tab': { backgroundColor: 'transparent' } } }
+        })
+        elementsRef.current = elements
+        const paymentEl = elements.create('payment', {
+          layout: 'tabs',
+          paymentMethodOrder: isMobile ? ['apple_pay', 'google_pay', 'card'] : ['card', 'apple_pay', 'google_pay']
+        })
+        paymentEl.mount('#abrimail-payment-element')
+        paymentEl.on('ready', () => setStripeSkeleton(false))
+      }
+      document.head.appendChild(s)
+      observer.disconnect()
+    }, { rootMargin: '200px' })
+    observer.observe(paiementRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  // Check redirect return
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const secret = params.get('payment_intent_client_secret')
+    if (!secret) return
+    const check = async () => {
+      paiementRef.current?.scrollIntoView({ behavior: 'smooth' })
+      try {
+        if (stripeRef.current) {
+          const result = await stripeRef.current.retrievePaymentIntent(secret)
+          if (result.paymentIntent?.status === 'succeeded') setShowPopup(true)
+        }
+      } catch (e) {}
+    }
+    setTimeout(check, 1500)
+  }, [])
+
+  async function handlePay() {
+    setPayError('')
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setPayError('Entre ton adresse email valide.'); return }
+    if (!elementsRef.current || !stripeRef.current) { setPayError('Le formulaire de paiement n\'est pas encore chargé.'); return }
+    setPaying(true)
+    const submitResult = await elementsRef.current.submit()
+    if (submitResult.error) { setPayError(submitResult.error.message); setPaying(false); return }
+    try {
+      const res = await fetch(WORKER_URL + '/create-payment-intent', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ profil: 'abrimail', email })
+      })
+      const data = await res.json()
+      if (data.error) { setPayError('Erreur : ' + data.error); setPaying(false); return }
+      const returnUrl = window.location.origin + window.location.pathname + '?email=' + encodeURIComponent(email) + '&payment_intent_client_secret=' + encodeURIComponent(data.clientSecret)
+      const confirmResult = await stripeRef.current.confirmPayment({
+        elements: elementsRef.current, clientSecret: data.clientSecret,
+        confirmParams: { return_url: returnUrl, payment_method_data: { billing_details: { email } } },
+        redirect: 'if_required'
+      })
+      if (confirmResult.error) { setPayError(confirmResult.error.message); setPaying(false); return }
+      if (confirmResult.paymentIntent?.status === 'succeeded') { setShowPopup(true); setPaying(false) }
+    } catch (e) { setPayError('Une erreur est survenue.'); setPaying(false) }
+  }
+
   useEffect(() => {
     const els = document.querySelectorAll('[data-fade]')
     const obs = new IntersectionObserver(entries => {
@@ -242,17 +333,46 @@ export default function AbriMailPage() {
 
       {/* ── PAIEMENT ── */}
       <section id="paiement" style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)', borderTop: '1px solid rgba(102,10,67,0.08)' }}>
-        <div data-fade style={{ maxWidth: 860, margin: '0 auto', textAlign: 'center' }}>
-          <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Paiement</p>
-          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,38px)', fontWeight: 700, marginBottom: 20, lineHeight: 1.2 }}>
+        <div style={{ maxWidth: 560, margin: '0 auto' }}>
+          <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 16 }}>Paiement</p>
+          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,38px)', fontWeight: 700, textAlign: 'center', marginBottom: 40, lineHeight: 1.2 }}>
             Prête à y voir plus clair ?
           </h2>
-          <p style={{ color: '#8a5060', fontSize: 16, lineHeight: 1.7, marginBottom: 40 }}>
-            Le paiement en ligne arrive bientôt. En attendant, envoie-moi un message directement.
-          </p>
-          <a href="/contact" className="coaching-cta coaching-cta-dark">
-            J'envoie mon message
-          </a>
+          {showPopup ? (
+            <div style={{ background: 'rgba(102,10,67,0.06)', borderRadius: 16, padding: '32px 24px', textAlign: 'center' }}>
+              <p style={{ fontSize: 32, marginBottom: 12 }}>💌</p>
+              <p style={{ color: '#660A43', fontWeight: 700, fontSize: 18, marginBottom: 8 }}>Paiement confirmé !</p>
+              <p style={{ color: '#5a3040', fontSize: 15, lineHeight: 1.7 }}>Tu vas recevoir un email avec l'adresse à laquelle m'écrire. Vérifie tes spams si besoin.</p>
+            </div>
+          ) : (
+            <div className="payment-block" ref={paiementRef} style={{ background: 'transparent', border: '2px solid rgba(102,10,67,0.4)', borderRadius: '16px' }}>
+              <div style={{ marginBottom: 20 }}>
+                <p style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontWeight: 700, fontSize: 20, marginBottom: 4 }}>L'Abri Mail</p>
+                <p style={{ color: '#8a5060', fontSize: 14 }}>Réponse personnalisée sous 24h · Envoyée par mail</p>
+              </div>
+              <div className="price-row">
+                <span className="price-current">15€</span>
+              </div>
+              <label className="field-label" htmlFor="abrimail-email">Email · pour recevoir ta réponse</label>
+              <input type="email" id="abrimail-email" className="field-input" placeholder="ton@email.fr" autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} />
+              {stripeSkeleton && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '18px' }}>
+                  <div className="stripe-skeleton-bar" />
+                  <div className="stripe-skeleton-bar" />
+                </div>
+              )}
+              <div id="abrimail-payment-element" />
+              {payError && <div className="payment-errors">{payError}</div>}
+              <button className="btn-pay" disabled={paying} onClick={handlePay}>
+                <span>{paying ? 'Traitement...' : 'J\'envoie mon message → 15€'}</span>
+                {paying && <div className="spinner" />}
+              </button>
+              <div className="secure-note">
+                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Paiement sécurisé · Réponse reçue sous 24h
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
