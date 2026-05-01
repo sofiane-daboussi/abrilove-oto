@@ -117,9 +117,8 @@ export default function Header() {
             fontFamily: 'var(--font-dm-sans, sans-serif)',
             whiteSpace: 'nowrap',
             pointerEvents: 'auto',
-            border: '1.5px solid rgba(232,99,122,0.55)',
           }}>
-            Fais notre quiz gratuit 🩷
+  Fais notre quiz gratuit 🩷
           </a>
         </div>
 
