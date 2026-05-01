@@ -123,7 +123,7 @@ export default function CoachingPage() {
         <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div data-fade className="coaching-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
             <div style={{ flex: 1 }}>
-              <img src="/images/coaching-clarté.avif" alt="L'Abri Clarté" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
+              <img src="/images/coaching-clarte.avif" alt="L'Abri Clarté" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
             <div style={{ flex: 1 }}>
               <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>La séance</p>
