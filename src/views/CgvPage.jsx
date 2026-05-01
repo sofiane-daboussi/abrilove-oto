@@ -15,6 +15,8 @@ export default function CgvPage() {
         @media (max-width: 780px) {
           .cgv-hero { padding-bottom: 56px !important; }
         }
+        .cgv-content ul { padding-left: 20px; margin: 8px 0; }
+        .cgv-content li { margin-bottom: 6px; }
       `}</style>
       <Header />
 
@@ -46,7 +48,7 @@ export default function CgvPage() {
 
       {/* ── CONTENU ── */}
       <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px) clamp(56px,6vw,96px)' }}>
-        <div style={{ maxWidth: 860, margin: '0 auto' }}>
+        <div className="cgv-content" style={{ maxWidth: 860, margin: '0 auto' }}>
 
           <p style={{ color: '#5a3040', fontSize: 14, marginBottom: 40, fontStyle: 'italic' }}>
             Dernière mise à jour : 1er mai 2026
