@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
-const WORKER_URL = 'https://abrilove-oto-worker.sofiane-daboussi.workers.dev'
+const WORKER_URL = 'https://abrilove-abrimail-worker.sofiane-daboussi.workers.dev'
 const PK = 'pk_live_51Rm9dBI8ilInoMaXKDs2hp5pR1Fq3fcK60MlclXizEDZZxFAUN92E6jpKjILZX0dHtO7gUa3KMfQZKchX6qaPIi8003ZsII2e7'
 
 export default function AbriMailPage() {
