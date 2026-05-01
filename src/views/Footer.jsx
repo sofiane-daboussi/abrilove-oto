@@ -12,7 +12,7 @@ const NAV_LINKS = [
 
 const LEGAL_LINKS = [
   { label: 'Mentions légales', href: '/mentions-legales' },
-  { label: 'Politique de confidentialité', href: '/confidentialite' },
+  { label: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
   { label: 'CGV', href: '/cgv' },
   { label: 'Disclaimer', href: '/disclaimer' },
   { label: 'Gérer mes cookies', href: '#cookies', highlight: true },
@@ -178,7 +178,7 @@ export default function Footer() {
               />
               <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, textAlign: 'left', lineHeight: 1.5 }}>
                 J'accepte de recevoir la newsletter d'Abrilove. Je peux me désinscrire à tout moment.{' '}
-                <a href="/confidentialite" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'underline' }}>Politique</a>
+                <a href="/politique-de-confidentialite" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'underline' }}>Politique</a>
               </span>
             </label>
             {consentError && (
