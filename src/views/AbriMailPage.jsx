@@ -40,11 +40,10 @@ export default function AbriMailPage() {
 
       {/* ── HERO ── */}
       <section style={{
-        minHeight: '100vh',
-        paddingTop: 'clamp(110px,12vw,170px)',
+        paddingTop: 'clamp(130px,14vw,190px)',
         paddingLeft: 'clamp(32px,5vw,80px)',
         paddingRight: 'clamp(32px,5vw,80px)',
-        paddingBottom: 'calc(clamp(8px,1.5vw,16px) + 80px)',
+        paddingBottom: 'calc(clamp(48px,6vw,80px) + 80px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -256,7 +255,7 @@ export default function AbriMailPage() {
       </section>
 
       {/* ── COACHING ── */}
-      <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px) clamp(56px,6vw,80px)', borderTop: '1px solid rgba(102,10,67,0.08)' }}>
+      <section style={{ background: '#FFF4F7', padding: 'clamp(56px,6vw,80px) clamp(32px,5vw,80px)', borderTop: '1px solid rgba(102,10,67,0.08)' }}>
         <div data-fade style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
           <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Alternative</p>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
