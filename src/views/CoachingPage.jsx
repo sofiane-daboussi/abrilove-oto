@@ -1,10 +1,19 @@
 'use client'
 import { useEffect } from 'react'
-import Script from 'next/script'
 import Header from './Header'
 import Footer from './Footer'
 
 export default function CoachingPage() {
+  useEffect(() => {
+    if (!document.getElementById('fillout-script')) {
+      const s = document.createElement('script')
+      s.id = 'fillout-script'
+      s.src = 'https://server.fillout.com/embed/v1/'
+      s.async = true
+      document.head.appendChild(s)
+    }
+  }, [])
+
   useEffect(() => {
     const els = document.querySelectorAll('[data-fade]')
     const obs = new IntersectionObserver(entries => {
@@ -253,7 +262,6 @@ export default function CoachingPage() {
             data-fillout-inherit-parameters=""
             data-fillout-dynamic-resize=""
           />
-          <Script src="https://server.fillout.com/embed/v1/" strategy="afterInteractive" />
         </div>
       </section>
 
