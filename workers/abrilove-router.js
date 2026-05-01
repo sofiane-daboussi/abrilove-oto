@@ -25,6 +25,7 @@ export default {
       p === '/mentions-legales' || p.startsWith('/mentions-legales/') ||
       p === '/politique-de-confidentialite' || p.startsWith('/politique-de-confidentialite/') ||
       p === '/cgv' || p.startsWith('/cgv/') ||
+      p === '/disclaimer' || p.startsWith('/disclaimer/') ||
       p.startsWith('/_next') ||
       p.startsWith('/images') ||
       p === '/favicon.ico' || p === '/favicon-v2.ico'
