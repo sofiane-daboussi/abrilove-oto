@@ -26,6 +26,7 @@ export default function AbriMailPage() {
           .abrimail-2cols-rev { flex-direction: column-reverse !important; }
           .abrimail-3cols { flex-direction: column !important; }
           .abrimail-4cols { flex-direction: column !important; }
+          .abrimail-section-img { flex: none !important; width: 100% !important; }
         }
         @keyframes coaching-pulse { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
         .coaching-cta { display:inline-flex; align-items:center; text-decoration:none; padding:16px 28px; border-radius:999px; font-weight:700; font-size:15px; font-family:var(--font-dm-sans,sans-serif); transition:transform 0.2s, box-shadow 0.2s; animation:coaching-pulse 2.5s ease-in-out infinite; will-change:transform; }
@@ -105,8 +106,8 @@ export default function AbriMailPage() {
         </div>
         <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div data-fade className="abrimail-2cols-rev" style={{ display: 'flex', alignItems: 'center', gap: 60 }}>
-            <div style={{ flex: 1 }}>
-              <img src="/images/abrimail-section.jpg" alt="L'Abri Mail" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
+            <div className="abrimail-section-img" style={{ flex: '0 0 38%' }}>
+              <img src="/images/abrimail-section.jpg" alt="L'Abri Mail" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 560 }} />
             </div>
             <div style={{ flex: 1 }}>
               <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>L'Abri Mail</p>
