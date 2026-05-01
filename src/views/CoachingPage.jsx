@@ -15,6 +15,14 @@ export default function CoachingPage() {
     return () => obs.disconnect()
   }, [])
 
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://server.fillout.com/embed/v1/'
+    script.async = true
+    document.body.appendChild(script)
+    return () => { document.body.removeChild(script) }
+  }, [])
+
   return (
     <div style={{ margin: '-24px -16px' }}>
       <style>{`
@@ -234,6 +242,40 @@ export default function CoachingPage() {
             ))}
           </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── FILLOUT RÉSERVATION ── */}
+      <section id="reserver" style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
+        <div data-fade style={{ maxWidth: 860, margin: '0 auto' }}>
+          <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 16 }}>Réservation</p>
+          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,38px)', fontWeight: 700, textAlign: 'center', marginBottom: 40, lineHeight: 1.2 }}>
+            Réserve ton appel Abri Clarté
+          </h2>
+          <div
+            style={{ width: '100%', height: 500 }}
+            data-fillout-id="wFDYhHfmwDus"
+            data-fillout-embed-type="standard"
+            data-fillout-inherit-parameters
+            data-fillout-dynamic-resize
+          />
+        </div>
+      </section>
+
+      {/* ── L'ABRI MAIL ── */}
+      <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)', borderTop: '1px solid rgba(102,10,67,0.08)' }}>
+        <div data-fade style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ color: '#660A43', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Alternative</p>
+          <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(22px,3vw,34px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 20 }}>
+            Pas encore prête pour un appel ?
+          </h2>
+          <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 32 }}>
+            Tu veux d'abord déposer ce que tu ressens à l'écrit, sans visio, sans échange en direct ?<br /><br />
+            Découvre <strong>L'Abri Mail</strong>, une lecture écrite et personnalisée de ta situation amoureuse. Tu m'écris, je te réponds personnellement sous 24h avec une analyse lucide et bienveillante pour t'aider à y voir plus clair.
+          </p>
+          <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', background: '#660A43', color: '#fff', textDecoration: 'none', padding: '16px 28px', borderRadius: 999, fontWeight: 700, fontSize: 15, boxShadow: '0 6px 20px rgba(102,10,67,0.3)', fontFamily: 'var(--font-dm-sans,sans-serif)' }}>
+            J'envoie mon message
+          </a>
         </div>
       </section>
 
