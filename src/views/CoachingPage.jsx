@@ -82,7 +82,7 @@ export default function CoachingPage() {
         @keyframes blob2 { 0%,100% { transform:translate(0,0) scale(1); } 33% { transform:translate(-70px,50px) scale(1.12); } 66% { transform:translate(60px,-40px) scale(0.9); } }
         @keyframes blob3 { 0%,100% { transform:translate(0,0) scale(1); } 50% { transform:translate(60px,-70px) scale(1.1); } }
         @media (max-width: 720px) {
-          .coaching-hero-cols { flex-direction: column !important; }
+          .coaching-hero-cols { flex-direction: column !important; padding-top: 20px; }
         }
       `}</style>
     </div>
