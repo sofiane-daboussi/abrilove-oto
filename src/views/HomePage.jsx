@@ -1063,7 +1063,7 @@ export default function HomePage() {
               </div>
             </div>
             <div style={{ flex: 1 }}>
-              <img src="/images/section-img-1.jpg" alt="Ebook gratuit Abrilove" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
+              <img src="/images/reperes.png" alt="Ebook gratuit Abrilove" style={{ width: '100%', borderRadius: 24, objectFit: 'cover', maxHeight: 500 }} />
             </div>
           </div>
         </div>
