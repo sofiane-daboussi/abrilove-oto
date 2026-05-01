@@ -7,13 +7,20 @@ export default function CoachingPage() {
   const filloutRef = useRef(null)
 
   useEffect(() => {
-    if (!filloutRef.current) return
-    const existing = document.getElementById('fillout-script')
-    if (existing) existing.remove()
+    const container = filloutRef.current
+    if (!container) return
+    container.innerHTML = ''
+    const div = document.createElement('div')
+    div.style.width = '100%'
+    div.style.height = '500px'
+    div.setAttribute('data-fillout-id', 'wFDYhHfmwDus')
+    div.setAttribute('data-fillout-embed-type', 'standard')
+    div.setAttribute('data-fillout-inherit-parameters', '')
+    div.setAttribute('data-fillout-dynamic-resize', '')
+    container.appendChild(div)
     const s = document.createElement('script')
-    s.id = 'fillout-script'
     s.src = 'https://server.fillout.com/embed/v1/'
-    filloutRef.current.appendChild(s)
+    container.appendChild(s)
   }, [])
 
   useEffect(() => {
@@ -257,15 +264,7 @@ export default function CoachingPage() {
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,38px)', fontWeight: 700, textAlign: 'center', marginBottom: 40, lineHeight: 1.2 }}>
             Réserve ton appel Abri Clarté
           </h2>
-          <div ref={filloutRef}>
-            <div
-              style={{ width: '100%', height: 500 }}
-              data-fillout-id="wFDYhHfmwDus"
-              data-fillout-embed-type="standard"
-              data-fillout-inherit-parameters=""
-              data-fillout-dynamic-resize=""
-            />
-          </div>
+          <div ref={filloutRef} style={{ minHeight: 500 }} />
         </div>
       </section>
 
