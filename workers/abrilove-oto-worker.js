@@ -8,7 +8,8 @@ var PRICE_IDS = {
   cerebrale: "price_1Syc0CI8ilInoMaXm6oM0m1C",
   reveuse: "price_1SybvJI8ilInoMaXKaWX4Ek0",
   louve: "price_1Sybz1I8ilInoMaXykfkZikR",
-  applis: "price_1TNrJBI8ilInoMaX4KIkTsqY"
+  applis: "price_1TNrJBI8ilInoMaX4KIkTsqY",
+  abrimail: "price_1TSDvsI8ilInoMaXm9G97LG5"
 };
 var BUMP_AMOUNT = 900;
 var BUMP2_AMOUNT = 900;
@@ -148,6 +149,51 @@ var oto_worker_clean_default = {
                 updateEnabled: true
               })
             });
+          }
+          if (email && profil === "abrimail") {
+            await fetch("https://api.brevo.com/v3/contacts", {
+              method: "POST",
+              headers: {
+                "accept": "application/json",
+                "content-type": "application/json",
+                "api-key": env.BREVO_API_KEY
+              },
+              body: JSON.stringify({
+                email,
+                listIds: [40, 7],
+                updateEnabled: true
+              })
+            });
+            const mailRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+              method: "POST",
+              headers: {
+                "accept": "application/json",
+                "content-type": "application/json",
+                "api-key": env.BREVO_API_KEY
+              },
+              body: JSON.stringify({
+                sender: { email: "bonjour@abrilove.fr", name: "Sofi & Oli" },
+                to: [{ email }],
+                subject: "💌 Merci pour ta confiance, envoie-moi ton histoire",
+                htmlContent: `<p>Coucou,</p><p>Merci beaucoup pour ta confiance 🤍</p><p>Pour que je puisse te répondre de la manière la plus juste possible, tu peux m'envoyer ton message (ou ta situation) directement ici, en réponse à ce mail.</p><p>Dis-moi ce que tu vis, ce que tu ressens, et sur quoi tu aimerais que je t'apporte de la clarté.</p><p>Je te répondrai personnellement 🤍</p><p>À très vite,<br>Sofi & Oli 🌸</p>`
+              })
+            });
+            if (mailRes.ok) {
+              await fetch("https://api.brevo.com/v3/smtp/email", {
+                method: "POST",
+                headers: {
+                  "accept": "application/json",
+                  "content-type": "application/json",
+                  "api-key": env.BREVO_API_KEY
+                },
+                body: JSON.stringify({
+                  sender: { email: "bonjour@abrilove.fr", name: "Sofi & Oli" },
+                  to: [{ email: "bonjour@abrilove.fr" }],
+                  subject: `✅ Mail AbriMail envoyé à ${email}`,
+                  htmlContent: `<p>Le mail de confirmation AbriMail a bien été envoyé à <strong>${email}</strong>.</p>`
+                })
+              });
+            }
           }
         }
         return new Response(JSON.stringify({ received: true }), {
