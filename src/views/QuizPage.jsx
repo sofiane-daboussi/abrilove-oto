@@ -77,8 +77,6 @@ const CSS = `
   font-family: var(--font-dm-sans, sans-serif);
   font-size: 12px;
   font-weight: 400;
-  margin-top: 28px;
-  margin-bottom: 40px;
   transition: color 0.2s;
 }
 .qz-back-home:hover { color: rgba(255,241,231,0.7); }
