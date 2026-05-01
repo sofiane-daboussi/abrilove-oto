@@ -132,8 +132,8 @@ export default function CoachingPage() {
           </h2>
           <div className="coaching-3cols" style={{ display: 'flex', gap: 32, marginBottom: 40 }}>
             {[
-              { icon: '💬', title: 'Tu poses tout.', desc: 'Ce que tu ressens, ce que tu observes, ce que tu n'oses plus dire à personne.' },
-              { icon: '🔍', title: 'On lit la dynamique.', desc: 'Je t'explique ce qui se joue entre vous, les schémas, les peurs, les signaux émotionnels.' },
+              { icon: '💬', title: 'Tu poses tout.', desc: "Ce que tu ressens, ce que tu observes, ce que tu n'oses plus dire à personne." },
+              { icon: '🔍', title: 'On lit la dynamique.', desc: "Je t'explique ce qui se joue entre vous, les schémas, les peurs, les signaux émotionnels." },
               { icon: '✨', title: 'Tu repars claire.', desc: 'Avec 3 repères concrets et un plan émotionnel réaliste pour avancer sereinement.' },
             ].map((col, i) => (
               <div key={i} style={{ flex: 1, background: '#fff', borderRadius: 20, padding: '32px 28px', boxShadow: '0 4px 24px rgba(102,10,67,0.07)' }}>
@@ -168,9 +168,9 @@ export default function CoachingPage() {
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 40, textAlign: 'left' }}>
             {[
-              'Tu veux comprendre pourquoi il s'éloigne sans raison apparente.',
+              "Tu veux comprendre pourquoi il s'éloigne sans raison apparente.",
               'Tu sens que quelque chose cloche, mais tu ne veux pas te mentir.',
-              'Tu hésites à lâcher ou à rester, et tu ne sais plus ce qui est juste.',
+              "Tu hésites à lâcher ou à rester, et tu ne sais plus ce qui est juste.",
             ].map((item, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, background: 'rgba(255,241,231,0.08)', borderRadius: 14, padding: '16px 20px' }}>
                 <span style={{ fontSize: 18, flexShrink: 0 }}>✅</span>
