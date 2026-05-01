@@ -33,7 +33,7 @@ export default function SofiEtOliPage() {
           .sao-hero-cols { flex-direction: column !important; gap: 24px !important; }
           .sao-hero-imgs { width: 100% !important; flex: none !important; flex-direction: row !important; gap: 12px !important; }
           .sao-hero-imgs img { max-height: 220px !important; }
-          .sao-hero-section { padding-top: 140px !important; padding-bottom: calc(8px + 36px) !important; }
+          .sao-hero-section { padding-top: 140px !important; }
           .sao-2cols { flex-direction: column !important; }
           .sao-2cols-rev { flex-direction: column-reverse !important; }
           .sao-3cols { flex-direction: column !important; }
