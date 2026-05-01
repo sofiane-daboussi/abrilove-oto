@@ -166,7 +166,7 @@ export default function SofiEtOliPage() {
                 },
                 {
                   icon: <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#660A43" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 6h24a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H13l-7 4V8a2 2 0 0 1 2-2z"/><line x1="11" y1="13" x2="25" y2="13"/><line x1="11" y1="18" x2="19" y2="18"/></svg>,
-                  title: 'Une autre façon d'en parler',
+                  title: "Une autre façon d'en parler",
                   desc: "On croit à une parole plus vraie sur l'amour. Avec nuance, honnêteté et courage. Sans masque ni façade."
                 },
               ].map((col, i) => (
