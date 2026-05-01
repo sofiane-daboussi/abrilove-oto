@@ -21,6 +21,7 @@ export default {
       p === '/contact' || p.startsWith('/contact/') ||
       p === '/coaching' || p.startsWith('/coaching/') ||
       p === '/abri-mail' || p.startsWith('/abri-mail/') ||
+      p === '/sofi-et-oli' || p.startsWith('/sofi-et-oli/') ||
       p.startsWith('/_next') ||
       p.startsWith('/images') ||
       p === '/favicon.ico' || p === '/favicon-v2.ico'
