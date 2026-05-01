@@ -690,7 +690,7 @@ export default function HomePage() {
   const [heroWordIdx, setHeroWordIdx] = useState(0)
 
   useEffect(() => {
-    const t = setInterval(() => setHeroWordIdx(i => (i + 1) % HERO_WORDS.length), 1800)
+    const t = setInterval(() => setHeroWordIdx(i => (i + 1) % HERO_WORDS.length), 2300)
     return () => clearInterval(t)
   }, [])
 
@@ -857,7 +857,7 @@ export default function HomePage() {
               <h1 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,5vw,62px)', fontWeight: 700, lineHeight: 1.25, marginBottom: 24 }}>
                 Tu mérites mieux que<br />
                 <span style={{ display: 'block', overflow: 'hidden', height: '1.3em' }}>
-                  <em key={heroWordIdx} style={{ display: 'block', color: '#FFC2D4', fontStyle: 'italic', animation: 'hero-word-in 0.45s cubic-bezier(0.22,1,0.36,1) both' }}>
+                  <em key={heroWordIdx} style={{ display: 'block', color: '#FF8FAB', fontStyle: 'italic', animation: 'hero-word-in 0.45s cubic-bezier(0.22,1,0.36,1) both' }}>
                     {HERO_WORDS[heroWordIdx]}
                   </em>
                 </span>
