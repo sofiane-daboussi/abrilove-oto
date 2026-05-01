@@ -33,7 +33,7 @@ export default function CoachingPage() {
               <p style={{ color: 'rgba(255,241,231,0.55)', fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 20 }}>
                 Coaching individuel
               </p>
-              <h1 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(28px,4vw,54px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
+              <h1 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(22px,4vw,54px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 24 }}>
                 Une heure pour comprendre ce qui se joue entre toi et lui.
               </h1>
               <p style={{ color: 'rgba(255,241,231,0.85)', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85, marginBottom: 36, maxWidth: 520 }}>
@@ -57,7 +57,7 @@ export default function CoachingPage() {
               </a>
             </div>
 
-            <div className="coaching-hero-img" style={{ flex: 1, flexShrink: 0 }}>
+            <div className="coaching-hero-img" style={{ flex: '0 0 38%', flexShrink: 0 }}>
               <img
                 src="/images/coaching-bg.jpg"
                 alt="Coaching Abrilove"
