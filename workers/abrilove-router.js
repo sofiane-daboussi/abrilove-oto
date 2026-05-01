@@ -23,6 +23,7 @@ export default {
       p === '/abri-mail' || p.startsWith('/abri-mail/') ||
       p === '/sofi-et-oli' || p.startsWith('/sofi-et-oli/') ||
       p === '/mentions-legales' || p.startsWith('/mentions-legales/') ||
+      p === '/politique-de-confidentialite' || p.startsWith('/politique-de-confidentialite/') ||
       p.startsWith('/_next') ||
       p.startsWith('/images') ||
       p === '/favicon.ico' || p === '/favicon-v2.ico'
