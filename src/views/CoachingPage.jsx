@@ -104,7 +104,7 @@ export default function CoachingPage() {
 
       {/* ── TU ANALYSES TOUT ── */}
       <section style={{ background: '#FFF4F7', padding: 'clamp(32px,4vw,56px) clamp(32px,5vw,80px)' }}>
-        <div data-fade style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+        <div data-fade style={{ maxWidth: 720, margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 24 }}>
             Tu analyses tout. Mais rien ne t'éclaire.
           </h2>

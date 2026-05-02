@@ -184,7 +184,7 @@ export default function ContactPage() {
 
         {/* ── L'ABRI IA ── */}
         <section style={{ background: '#FFF4F7', padding: 'clamp(56px,6vw,96px) clamp(16px,5vw,80px)' }}>
-          <div data-fade style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+          <div data-fade style={{ maxWidth: 680, margin: '0 auto' }}>
             <p style={{ color: '#660A43', fontSize: 13, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>
               Ta situation mérite une vraie réponse.
             </p>

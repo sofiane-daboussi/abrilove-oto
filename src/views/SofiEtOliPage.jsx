@@ -99,7 +99,7 @@ export default function SofiEtOliPage() {
 
       {/* ── À DEUX, MAIS PAS QUE POUR NOUS ── */}
       <section id="adeux" style={{ background: '#FFF4F7', padding: 'clamp(56px,6vw,96px) clamp(32px,5vw,80px)' }}>
-        <div data-fade style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+        <div data-fade style={{ maxWidth: 720, margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 32 }}>
             À deux, mais pas que pour nous ❤️
           </h2>
