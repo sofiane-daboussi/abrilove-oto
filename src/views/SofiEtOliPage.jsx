@@ -101,7 +101,7 @@ export default function SofiEtOliPage() {
       <section id="adeux" style={{ background: '#FFF4F7', padding: 'clamp(56px,6vw,96px) clamp(32px,5vw,80px)' }}>
         <div data-fade style={{ maxWidth: 720, margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#660A43', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.3, marginBottom: 32 }}>
-            À deux, mais pas que pour nous ❤️
+            À deux, mais pas que pour nous
           </h2>
           <p style={{ color: '#5a3040', fontSize: 'clamp(15px,1.6vw,17px)', lineHeight: 1.85 }}>
             On est en couple dans la vie, mais aussi dans ce projet un peu fou qu'est Abrilove.<br /><br />
@@ -109,7 +109,7 @@ export default function SofiEtOliPage() {
             <em style={{ fontStyle: 'italic', color: '#660A43' }}>"Et si on créait un espace pour parler d'amour autrement ?"</em><br /><br />
             Pas comme une formule magique.<br />
             Pas comme un mode d'emploi.<br /><br />
-            Mais comme un refuge sincère, pour celles et ceux qui aiment fort, et veulent aimer juste.
+            Mais comme un refuge sincère, pour celles et ceux qui aiment fort, et veulent aimer juste. <span style={{ color: '#660A43' }}>❤️</span>
           </p>
         </div>
       </section>

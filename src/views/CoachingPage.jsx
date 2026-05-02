@@ -189,7 +189,7 @@ export default function CoachingPage() {
             <path d="M0,35 Q720,58 1440,35 L1440,80 L0,80 Z" fill="#FFF4F7" />
           </svg>
         </div>
-        <div data-fade style={{ maxWidth: 640, margin: '0 auto', position: 'relative', zIndex: 1, textAlign: 'center' }}>
+        <div data-fade style={{ maxWidth: 640, margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <h2 style={{ fontFamily: 'var(--font-playfair,serif)', color: '#FFF1E7', fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, lineHeight: 1.2, marginBottom: 36 }}>
             Ce que tu ressens peut ressembler à ça…
           </h2>
